@@ -1,0 +1,16 @@
+﻿
+item.dilithiumCrystal.name=Dilithium Crystal
+item.latinumIngot.name=Latinum Ingot
+item.duraniumIngot.name=Duranium Ingot
+item.phaser.name=Type II Phaser
+item.phaserRifle.name=Type III Phaser
+item.powerCell.name=Power Cell
+item.batleth.name=bat'leth
+item.goldLatinum.name=Gold-pressed Latinum
+
+tile.dilithiumOre.name=Dilithium Ore
+tile.latinumOre.name=Latinum Ore
+tile.duraniumOre.name=Duranium Ore
+
+itemGroup.tabSTItems=Star Trek Items
+itemGroup.tabSTBlocks=Star Trek Blocks

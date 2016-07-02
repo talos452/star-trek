@@ -1,0 +1,20 @@
+{
+	"modListVersion": 2,
+	"modList": [
+		{
+			"modid": "startrekmod",
+			"name": "Star Trek Mod",
+			"description": "A Star Trek mod.",
+			"mcversion": "${mcversion}",
+			"version": "${version}",
+			"authorList": [
+				"VulcanForge"
+			],
+			"credits": "VulcanForge and Pizza_man007",
+			"dependants": [  ],
+			"parent": "",
+			"screenshots": [  ],
+			"useDependencyInformation": true
+		}
+	]
+}
