@@ -1,0 +1,7 @@
+1.0.0 - 1.2.2
+
+Beta, unreleased versions.
+
+1.3.0
+
+Added phasers, phaser rifles, bat'leths, and three kinds of ore and their ingots.
