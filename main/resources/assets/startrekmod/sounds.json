@@ -1,0 +1,10 @@
+{
+	"phaser_blast":
+	{
+		"category": "neutral",
+		"sounds":
+        [
+            "phaser_blast"
+        ]
+	}
+}

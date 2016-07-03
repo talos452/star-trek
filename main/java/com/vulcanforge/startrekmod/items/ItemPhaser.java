@@ -29,10 +29,12 @@ public class ItemPhaser extends STItem
 		{
 			EntityPhaserBlast epb = new EntityPhaserBlast(w, ep, false);
 			w.spawnEntityInWorld(epb);
-		}
 		
-		if(!ep.capabilities.isCreativeMode)
-			i.damageItem(1, ep);
+			if(!ep.capabilities.isCreativeMode)
+				i.damageItem(1, ep);
+			
+			w.playSoundAtEntity(ep, "startrekmod:phaser_blast", 1, 1);
+		}
 		
 		return i;
 	}
