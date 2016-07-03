@@ -24,8 +24,7 @@ public class EntityPhaserBlast extends EntityThrowable
 {
 	boolean hitOnce;
 	boolean isRifle;
-	EntityPlayer ep;
-	int ticksInAir = 100;
+	int ticksInAir = 0;
 	
 	public EntityPhaserBlast(World w)
 	{
@@ -35,10 +34,8 @@ public class EntityPhaserBlast extends EntityThrowable
 	public EntityPhaserBlast(World w, EntityLivingBase player, boolean rifle) 
 	{
 		super(w, player);
-		setRotation(player.rotationYawHead, player.rotationPitch);
 		setVelocity(motionX * 3, motionY * 3, motionZ * 3);
 		isRifle = rifle;
-		ep = (EntityPlayer)player;
 	}
 	
 	public EntityPhaserBlast(World w, EntityLivingBase player, Entity drill)
@@ -68,29 +65,32 @@ public class EntityPhaserBlast extends EntityThrowable
 
 	}
 
+	@Override
 	protected void onImpact(MovingObjectPosition hitInfo) 
 	{
+		EntityPlayer shooter = (EntityPlayer)getThrower();
+		
 		if(isRifle)
 			if(hitInfo.typeOfHit == MovingObjectType.BLOCK)
-				worldObj.createExplosion(ep, hitInfo.blockX, hitInfo.blockY, hitInfo.blockZ, 4.0F, true);
+				worldObj.createExplosion(shooter, hitInfo.blockX, hitInfo.blockY, hitInfo.blockZ, 4.0F, true);
 			else
-				worldObj.createExplosion(ep, hitInfo.entityHit.posX, hitInfo.entityHit.posY, hitInfo.entityHit.posZ, 4.0F, true);
+				worldObj.createExplosion(shooter, hitInfo.entityHit.posX, hitInfo.entityHit.posY, hitInfo.entityHit.posZ, 4.0F, true);
 		
 		if(hitInfo.entityHit != null)
 			if(isRifle)
-				hitInfo.entityHit.attackEntityFrom(DamageSource.causePlayerDamage(ep), 100);
+				hitInfo.entityHit.attackEntityFrom(DamageSource.causePlayerDamage(shooter), 100);
 			else
-				hitInfo.entityHit.attackEntityFrom(DamageSource.causePlayerDamage(ep), 12);
+				hitInfo.entityHit.attackEntityFrom(DamageSource.causePlayerDamage(shooter), 10);
 		
 		setDead();
 	}
-
+	
 	@Override
-	public void setThrowableHeading(double x, double y,
-			double z, float speed, float dummy) 
+	public void onUpdate()
 	{
-		this.motionX = x * Math.sqrt(speed);
-		this.motionY = y * Math.sqrt(speed);
-		this.motionZ = z * Math.sqrt(speed);
+		super.onUpdate();
+		
+		if(++this.ticksInAir >= 100)
+			this.setDead();
 	}
 }

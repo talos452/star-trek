@@ -21,6 +21,7 @@ public class RenderPhaserBlast extends Render {
 		GL11.glScaled(1, 1, 1);
 		EntityPhaserBlast epb = (EntityPhaserBlast)e;
 		GL11.glRotated(epb.rotationYaw + 90, 0, 1, 0);
+		GL11.glRotated(epb.rotationPitch, 0, 0, -1);
 		mpb.render(.0625F);
 		GL11.glPopMatrix();
 	}
