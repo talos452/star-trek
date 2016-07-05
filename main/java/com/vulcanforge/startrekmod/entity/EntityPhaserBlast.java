@@ -70,10 +70,16 @@ public class EntityPhaserBlast extends EntityThrowable
 	{
 		EntityPlayer shooter = (EntityPlayer)getThrower();
 		
+		if(shooter == null)
+		{
+			setDead();
+			return;
+		}
+		
 		if(isRifle)
-			if(hitInfo.typeOfHit == MovingObjectType.BLOCK)
+			if(hitInfo.typeOfHit == MovingObjectType.BLOCK && worldObj.getBlock(hitInfo.blockX, hitInfo.blockY, hitInfo.blockZ).isBlockNormalCube())
 				worldObj.createExplosion(shooter, hitInfo.blockX, hitInfo.blockY, hitInfo.blockZ, 4.0F, true);
-			else
+			else if(hitInfo.typeOfHit == MovingObjectType.ENTITY)
 				worldObj.createExplosion(shooter, hitInfo.entityHit.posX, hitInfo.entityHit.posY, hitInfo.entityHit.posZ, 4.0F, true);
 		
 		if(hitInfo.entityHit != null)
@@ -82,7 +88,8 @@ public class EntityPhaserBlast extends EntityThrowable
 			else
 				hitInfo.entityHit.attackEntityFrom(DamageSource.causePlayerDamage(shooter), 10);
 		
-		setDead();
+		if(hitInfo.typeOfHit == MovingObjectType.ENTITY || worldObj.getBlock(hitInfo.blockX, hitInfo.blockY, hitInfo.blockZ).isBlockNormalCube())
+			setDead();
 	}
 	
 	@Override
