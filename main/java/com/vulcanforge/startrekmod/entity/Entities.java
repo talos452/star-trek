@@ -1,10 +1,11 @@
 package com.vulcanforge.startrekmod.entity;
 
 import com.vulcanforge.startrekmod.StarTrekMod;
+import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlastDrill;
+import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlastKill;
+import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlastStun;
 
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Entities 
 {

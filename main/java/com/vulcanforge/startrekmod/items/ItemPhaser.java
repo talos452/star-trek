@@ -1,7 +1,7 @@
 package com.vulcanforge.startrekmod.items;
 
-import com.vulcanforge.startrekmod.entity.EntityPhaserBlast;
-import com.vulcanforge.startrekmod.entity.EntityPhaserBlastStun;
+import com.vulcanforge.startrekmod.entity.*;
+import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlastStun;
 
 import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,25 +18,26 @@ public class ItemPhaser extends STItem
 	}
 	
 	@Override
-	public ItemStack onItemRightClick(ItemStack i, World w, EntityPlayer ep)
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
-		if(i.getItemDamage() == i.getMaxDamage())
+		if(stack.getItemDamage() == stack.getMaxDamage())
 		{
-			w.playSoundEffect(ep.posX + 0.5, ep.posY + 0.5, ep.posZ + 0.5, "fire.ignite", 1.0F, 1.0F);
-			return i;
+			world.playSoundEffect(player.posX + 0.5, player.posY + 0.5, player.posZ + 0.5,
+					"fire.ignite", 1.0F, 1.0F);
+			return stack;
 		}
 		
-		if(!w.isRemote)
+		if(!world.isRemote)
 		{
-			EntityPhaserBlastStun blast = new EntityPhaserBlastStun(w, ep);
-			w.spawnEntityInWorld(blast);
+			EntityPhaserBlastStun blast = new EntityPhaserBlastStun(world, player);
+			world.spawnEntityInWorld(blast);
 		
-			if(!ep.capabilities.isCreativeMode)
-				i.damageItem(1, ep);
+			if(!player.capabilities.isCreativeMode)
+				stack.damageItem(1, player);
 			
-			w.playSoundAtEntity(ep, "startrekmod:phaser_blast", 1, 1);
+			world.playSoundAtEntity(player, "startrekmod:phaser_blast", 1, 1);
 		}
 		
-		return i;
+		return stack;
 	}
 }

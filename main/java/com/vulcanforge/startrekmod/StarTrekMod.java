@@ -1,22 +1,16 @@
 package com.vulcanforge.startrekmod;
 
 import com.vulcanforge.startrekmod.blocks.*;
-import com.vulcanforge.startrekmod.dimension.OreSpawnWorldGen;
-import com.vulcanforge.startrekmod.dimension.SpaceDimension;
 import com.vulcanforge.startrekmod.entity.Entities;
-import com.vulcanforge.startrekmod.entity.EntityPhaserBlast;
+import com.vulcanforge.startrekmod.generation.OreSpawnWorldGen;
 import com.vulcanforge.startrekmod.items.*;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

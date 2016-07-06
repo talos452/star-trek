@@ -16,7 +16,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class STItem extends Item
 {
-	public static ToolMaterial BATLETH = EnumHelper.addToolMaterial("BATLETH", 0, 1024 * 1024, 1.0F, 11F, 0);
+	public static ToolMaterial BATLETH = EnumHelper
+			.addToolMaterial("BATLETH", 0, 1024 * 1024, 1.0F, 11F, 0);
+	
     public static final CreativeTabs tabSTItems = new CreativeTabs("tabSTItems")
     {
     	@Override
@@ -35,7 +37,7 @@ public class STItem extends Item
 	public static Item dilithiumCrystal = new STItem("dilithiumCrystal");
 	public static Item goldLatinum = new STItem("goldLatinum");
 	public static Item batleth = new ItemSword(BATLETH)
-	.setTextureName(StarTrekMod.MODID + ":batleth").setUnlocalizedName("batleth");
+			.setTextureName(StarTrekMod.MODID + ":batleth").setUnlocalizedName("batleth");
 	
 	public STItem(String texturename)
 	{

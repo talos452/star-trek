@@ -1,4 +1,4 @@
-package com.vulcanforge.startrekmod.entity;
+package com.vulcanforge.startrekmod.entity.phaserblast;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.DamageSource;
@@ -7,14 +7,14 @@ import net.minecraft.world.World;
 
 public class EntityPhaserBlastKill extends EntityPhaserBlast {
 
-	public EntityPhaserBlastKill(World w) 
+	public EntityPhaserBlastKill(World world) 
 	{
-		super(w);
+		super(world);
 	}
 
-	public EntityPhaserBlastKill(World w, EntityLivingBase player) 
+	public EntityPhaserBlastKill(World world, EntityLivingBase player) 
 	{
-		super(w, player);
+		super(world, player);
 	}
 
 	@Override

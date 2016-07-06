@@ -1,4 +1,4 @@
-package com.vulcanforge.startrekmod.dimension;
+package com.vulcanforge.startrekmod.generation;
 
 import java.util.Random;
 
@@ -24,14 +24,17 @@ public class OreSpawnWorldGen implements IWorldGenerator
 		
 		for(int i = 0; i < 4; i++)
 			dilithium.generate(world, random, 
-					chunkX * 16 + random.nextInt(16), 8 + random.nextInt(4), chunkZ * 16 + random.nextInt(16));
+					chunkX * 16 + random.nextInt(16), 8 + random.nextInt(4),
+					chunkZ * 16 + random.nextInt(16));
 		
 		for(int i = 0; i < 16; i++)
 			duranium.generate(world, random,
-					chunkX * 16 + random.nextInt(16), 8 + random.nextInt(56), chunkZ * 16 + random.nextInt(16));
+					chunkX * 16 + random.nextInt(16), 8 + random.nextInt(56),
+					chunkZ * 16 + random.nextInt(16));
 		
 		for(int i = 0; i < 4; i++)
 			latinum.generate(world, random,
-					chunkX * 16 + random.nextInt(16), 8 + random.nextInt(24), chunkZ * 16 + random.nextInt(16));
+					chunkX * 16 + random.nextInt(16), 8 + random.nextInt(24),
+					chunkZ * 16 + random.nextInt(16));
 	}
 }

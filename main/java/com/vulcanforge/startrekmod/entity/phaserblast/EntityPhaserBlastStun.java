@@ -1,4 +1,4 @@
-package com.vulcanforge.startrekmod.entity;
+package com.vulcanforge.startrekmod.entity.phaserblast;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -11,14 +11,14 @@ import net.minecraft.world.World;
 
 public class EntityPhaserBlastStun extends EntityPhaserBlast {
 
-	public EntityPhaserBlastStun(World w) 
+	public EntityPhaserBlastStun(World world) 
 	{
-		super(w);
+		super(world);
 	}
 
-	public EntityPhaserBlastStun(World w, EntityLivingBase player) 
+	public EntityPhaserBlastStun(World world, EntityLivingBase player) 
 	{
-		super(w, player);
+		super(world, player);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.vulcanforge.startrekmod.entity;
+package com.vulcanforge.startrekmod.entity.phaserblast;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MovingObjectPosition;
@@ -6,14 +6,14 @@ import net.minecraft.world.World;
 
 public class EntityPhaserBlastDrill extends EntityPhaserBlast {
 
-	public EntityPhaserBlastDrill(World w) 
+	public EntityPhaserBlastDrill(World world) 
 	{
-		super(w);
+		super(world);
 	}
 
-	public EntityPhaserBlastDrill(World w, EntityLivingBase player) 
+	public EntityPhaserBlastDrill(World world, EntityLivingBase player) 
 	{
-		super(w, player);
+		super(world, player);
 	}
 
 	@Override

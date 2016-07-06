@@ -1,7 +1,10 @@
 package com.vulcanforge.startrekmod;
 
 import com.vulcanforge.startrekmod.entity.*;
-import com.vulcanforge.startrekmod.entity.RenderPhaserBlast;
+import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlastDrill;
+import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlastKill;
+import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlastStun;
+import com.vulcanforge.startrekmod.graphics.RenderPhaserBlast;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
