@@ -28,9 +28,9 @@ public class STBlock extends Block
 	public static Block latinumOre = new STBlock(Material.rock, "latinumOre");
 	public static Block duraniumOre = new STBlock(Material.rock, "duraniumOre");
 	
-	public STBlock(Material m, String texturename)
+	public STBlock(Material material, String texturename)
 	{
-		super(m);
+		super(material);
 		setBlockTextureName(StarTrekMod.MODID + ":" + texturename);
 		setBlockName(texturename);
 	}
