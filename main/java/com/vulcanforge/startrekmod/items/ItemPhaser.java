@@ -1,6 +1,7 @@
 package com.vulcanforge.startrekmod.items;
 
 import com.vulcanforge.startrekmod.entity.EntityPhaserBlast;
+import com.vulcanforge.startrekmod.entity.EntityPhaserBlastStun;
 
 import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,8 +28,8 @@ public class ItemPhaser extends STItem
 		
 		if(!w.isRemote)
 		{
-			EntityPhaserBlast epb = new EntityPhaserBlast(w, ep, false);
-			w.spawnEntityInWorld(epb);
+			EntityPhaserBlastStun blast = new EntityPhaserBlastStun(w, ep);
+			w.spawnEntityInWorld(blast);
 		
 			if(!ep.capabilities.isCreativeMode)
 				i.damageItem(1, ep);

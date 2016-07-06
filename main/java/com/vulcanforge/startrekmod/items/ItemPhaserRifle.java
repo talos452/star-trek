@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import com.vulcanforge.startrekmod.entity.EntityPhaserBlast;
+import com.vulcanforge.startrekmod.entity.*;
 
 public class ItemPhaserRifle extends ItemPhaser 
 {
@@ -25,8 +25,8 @@ public class ItemPhaserRifle extends ItemPhaser
 		
 		if(!w.isRemote)
 		{
-			EntityPhaserBlast epb = new EntityPhaserBlast(w, ep, true);
-			w.spawnEntityInWorld(epb);
+			EntityPhaserBlastKill blast = new EntityPhaserBlastKill(w, ep);
+			w.spawnEntityInWorld(blast);
 		
 			if(!ep.capabilities.isCreativeMode)
 				i.damageItem(1, ep);
