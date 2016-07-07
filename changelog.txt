@@ -9,3 +9,8 @@ Added phasers, phaser rifles, bat'leths, and three kinds of ore and their ingots
 1.3.1
 
 Phaser beams now pass through non-solid blocks.
+
+1.4.0
+
+Added phaser drills.
+Added gagh.
