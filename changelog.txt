@@ -5,3 +5,7 @@ Beta, unreleased versions.
 1.3.0
 
 Added phasers, phaser rifles, bat'leths, and three kinds of ore and their ingots.
+
+1.3.1
+
+Phaser beams now pass through non-solid blocks.

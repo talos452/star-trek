@@ -5,6 +5,7 @@ import com.vulcanforge.startrekmod.blocks.STBlock;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.init.Blocks;
@@ -38,12 +39,15 @@ public class STItem extends Item
 	public static Item goldLatinum = new STItem("goldLatinum");
 	public static Item batleth = new ItemSword(BATLETH)
 			.setTextureName(StarTrekMod.MODID + ":batleth").setUnlocalizedName("batleth");
+	public static Item phaserDrill = new ItemPhaserDrill("phaserDrill");
+	public static Item gagh = new ItemGagh();
 	
 	public STItem(String texturename)
 	{
 		super();
 		setTextureName(StarTrekMod.MODID + ":" + texturename);
 		setUnlocalizedName(texturename);
+		GameRegistry.registerItem(this, texturename);
 	}
 	
 	public static void init()
@@ -56,15 +60,11 @@ public class STItem extends Item
 		latinumIngot.setCreativeTab(tabSTItems);
 		dilithiumCrystal.setCreativeTab(tabSTItems);
 		goldLatinum.setCreativeTab(tabSTItems);
+		phaserDrill.setCreativeTab(tabSTItems);
+		gagh.setCreativeTab(tabSTItems);
 		
-		GameRegistry.registerItem(phaser, "phaser");
-		GameRegistry.registerItem(phaserRifle, "phaserRifle");
 		GameRegistry.registerItem(batleth, "batleth");
-		GameRegistry.registerItem(powerCell, "powerCell");
-		GameRegistry.registerItem(duraniumIngot, "duraniumIngot");
-		GameRegistry.registerItem(latinumIngot, "latinumIngot");
-		GameRegistry.registerItem(dilithiumCrystal, "dilithiumCrystal");
-		GameRegistry.registerItem(goldLatinum, "goldLatinum");
+		GameRegistry.registerItem(gagh, "gagh");
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(phaser), new Object[] {new ItemStack(phaser, 0, phaser.getMaxDamage()), powerCell});
 		GameRegistry.addShapelessRecipe(new ItemStack(phaserRifle), new Object[] {new ItemStack(phaserRifle, 0, phaserRifle.getMaxDamage()), powerCell});
