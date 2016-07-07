@@ -21,9 +21,8 @@ public class RenderPhaserBlast extends Render
 		bindTexture(getEntityTexture(entity));
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glScaled(1, 1, 1);
-		EntityPhaserBlast epb = (EntityPhaserBlast)entity;
-		GL11.glRotated(epb.rotationYaw + 90, 0, 1, 0);
-		GL11.glRotated(epb.rotationPitch, 0, 0, -1);
+		GL11.glRotated(entity.rotationYaw + 90, 0, 1, 0);
+		GL11.glRotated(entity.rotationPitch, 0, 0, -1);
 		mpb.render(.0625F);
 		GL11.glPopMatrix();
 	}

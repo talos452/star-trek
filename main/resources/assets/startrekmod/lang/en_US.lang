@@ -7,6 +7,8 @@ item.phaserRifle.name=Type III Phaser
 item.powerCell.name=Power Cell
 item.batleth.name=bat'leth
 item.goldLatinum.name=Gold-pressed Latinum
+item.phaserDrill.name=Phaser Drill
+item.gagh.name=gagh
 
 tile.dilithiumOre.name=Dilithium Ore
 tile.latinumOre.name=Latinum Ore
