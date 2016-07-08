@@ -14,3 +14,7 @@ Phaser beams now pass through non-solid blocks.
 
 Added phaser drills.
 Added gagh.
+
+1.4.1
+
+Added recipes for phaser drills and gagh.

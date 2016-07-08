@@ -73,6 +73,8 @@ public class STItem extends Item
 		GameRegistry.addRecipe(new ItemStack(batleth), new Object[] {"  D", " DS", "DS ", 'D', duraniumIngot, 'S', Items.stick});
 		GameRegistry.addShapelessRecipe(new ItemStack(powerCell), new Object[] {duraniumIngot, Items.redstone});
 		GameRegistry.addShapelessRecipe(new ItemStack(goldLatinum, 2), new Object[] {latinumIngot, Items.gold_ingot});
+		GameRegistry.addRecipe(new ItemStack(phaserDrill), new Object[] {"DUC", " UU", " UU", 'D', dilithiumCrystal, 'U', duraniumIngot, 'C', Items.compass});
+		GameRegistry.addRecipe(new ItemStack(gagh), new Object[] {"D", "B", 'D', Blocks.dirt, 'B', Items.bowl});
 		
 		GameRegistry.addSmelting(STBlock.dilithiumOre, new ItemStack(dilithiumCrystal), 0);
 		GameRegistry.addSmelting(STBlock.duraniumOre, new ItemStack(duraniumIngot), 0);
