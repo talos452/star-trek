@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 public class EntityPhaserDrill extends Entity
 {
-	EntityLivingBase controllingEntity;
+	EntityLivingBase controllingEntity; //deprecated, will be changed to EntityRideable
 	
 	public EntityPhaserDrill(World world)
 	{
@@ -27,6 +27,7 @@ public class EntityPhaserDrill extends Entity
 		controllingEntity = player;
 	}
 	
+	//activates drill on right-click
 	@Override
 	public boolean interactFirst(EntityPlayer player)
 	{
@@ -39,6 +40,7 @@ public class EntityPhaserDrill extends Entity
 		return true;
 	}
 	
+	//breaks drill from a punch
 	@Override
 	public boolean attackEntityFrom(DamageSource damage, float damageLevel)
 	{
@@ -50,18 +52,21 @@ public class EntityPhaserDrill extends Entity
 		return true;
 	}
 	
+	//required to return true for player to punch or right-click
 	@Override
 	public boolean canBeCollidedWith()
 	{
 		return true;
 	}
 
+	//makes bounding box large enough
 	@Override
 	protected void entityInit()
 	{
 		setSize(4F, 3F);		
 	}
 	
+	//deprecated, will be changed to EntityRideable
 	@Override
 	public void onUpdate()
 	{

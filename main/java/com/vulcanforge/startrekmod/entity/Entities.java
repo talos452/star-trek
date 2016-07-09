@@ -9,7 +9,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class Entities 
 {
-	static int counter = 0; //yes, this is some very screwy code :(
+	static int counter = 0;
 	
 	public static void init()
 	{
@@ -19,6 +19,9 @@ public class Entities
 		EntityRegistry.registerModEntity(EntityPhaserDrill.class, "PhaserDrill", getNextID(), StarTrekMod.instance, 64, 20, false);
 	}
 	
+	//EntityRegistry.findGloballyUniqueEntityID() returns the same value on all calls
+	//Forge now stores entities sorted by mod, so unique ID's for this mod
+	//will not conflict with any other mod
 	public static int getNextID()
 	{
 		return counter++;

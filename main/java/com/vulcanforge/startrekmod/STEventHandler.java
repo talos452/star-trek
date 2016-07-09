@@ -9,6 +9,7 @@ public class STEventHandler
 	@SubscribeEvent
 	public void interceptRifleThrowback(LivingAttackEvent event)
 	{
+		//stops shooter from taking explosion damage
 		if(event.entityLiving instanceof EntityLivingBase)
 			if(event.source.isExplosion())
 				if(event.source.getSourceOfDamage() == event.entityLiving )

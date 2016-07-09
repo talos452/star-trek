@@ -21,8 +21,8 @@ public class RenderPhaserDrill extends Render
 		GL11.glTranslated(transX, transY + 3, transZ);
 		GL11.glScaled(1, 1, 1);
 		GL11.glRotated(entity.rotationYaw, 0, -1, 0);
-		GL11.glRotated(180, 0, 0, 1); //fix improperly rotated model
-		mpc.render(.125F);
+		GL11.glRotated(180, 0, 0, 1); //fix upside down model
+		mpc.render(.125F); //render at reasonable size
 		GL11.glPopMatrix();
 	}
 

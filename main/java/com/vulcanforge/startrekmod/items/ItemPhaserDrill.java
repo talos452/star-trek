@@ -18,9 +18,11 @@ public class ItemPhaserDrill extends STItem
 			int blockPosX, int blockPosY, int blockPosZ, int side,
 			float innerPosX, float innerPosY, float innerPosZ)
 			{
-				if(side == 1 && !world.isRemote)
+				//side == 1 tests for placement on top of a block
+				if(side == 1 && !world.isRemote) 
 				{
-					EntityPhaserDrill drill = new EntityPhaserDrill(world, player, blockPosX, blockPosY, blockPosZ);
+					EntityPhaserDrill drill = new EntityPhaserDrill(world, player,
+							blockPosX, blockPosY, blockPosZ);
 					world.spawnEntityInWorld(drill);
 				}
 				

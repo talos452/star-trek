@@ -20,7 +20,7 @@ public class ItemGagh extends ItemFood
 	@Override
 	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
 	{
-		PotionEffect effect = new PotionEffect(9, 200);
+		PotionEffect effect = new PotionEffect(9, 200); //9 is Nausea effect, 200 is 10 seconds
 		player.addPotionEffect(effect);
 		return super.onEaten(stack, world, player);
 	}

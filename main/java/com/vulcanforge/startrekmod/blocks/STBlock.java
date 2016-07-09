@@ -20,7 +20,7 @@ public class STBlock extends Block
     	@SideOnly(Side.CLIENT)
     	public Item getTabIconItem()
     	{
-    		return Item.getItemFromBlock(dilithiumOre);
+    		return Item.getItemFromBlock(dilithiumOre); //set icon to use for tab
     	}
     };
     

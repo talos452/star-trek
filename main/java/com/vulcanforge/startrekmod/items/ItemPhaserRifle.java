@@ -21,7 +21,7 @@ public class ItemPhaserRifle extends ItemPhaser
 		if(stack.getItemDamage() == stack.getMaxDamage())
 		{
 			world.playSoundEffect(player.posX + 0.5, player.posY + 0.5, player.posZ + 0.5,
-					"fire.ignite", 1.0F, 1.0F);
+					"fire.ignite", 1.0F, 1.0F); //phaser is empty
 			return stack;
 		}
 		

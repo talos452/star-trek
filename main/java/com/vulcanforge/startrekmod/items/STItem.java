@@ -26,7 +26,7 @@ public class STItem extends Item
     	@SideOnly(Side.CLIENT)
     	public Item getTabIconItem()
     	{
-    		return phaser;
+    		return phaser; //sets icon for STItems tab
     	}
     };
     
