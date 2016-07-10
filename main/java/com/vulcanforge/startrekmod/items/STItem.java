@@ -38,7 +38,7 @@ public class STItem extends Item
 	public static Item dilithiumCrystal = new STItem("dilithiumCrystal");
 	public static Item goldLatinum = new STItem("goldLatinum");
 	public static Item batleth = new ItemSword(BATLETH)
-			.setTextureName(StarTrekMod.MODID + ":batleth").setUnlocalizedName("batleth");
+		.setTextureName(StarTrekMod.MODID + ":batleth").setUnlocalizedName("batleth");
 	public static Item phaserDrill = new ItemPhaserDrill("phaserDrill");
 	public static Item gagh = new ItemGagh();
 	
@@ -65,19 +65,5 @@ public class STItem extends Item
 		
 		GameRegistry.registerItem(batleth, "batleth");
 		GameRegistry.registerItem(gagh, "gagh");
-		
-		GameRegistry.addShapelessRecipe(new ItemStack(phaser), new Object[] {new ItemStack(phaser, 0, phaser.getMaxDamage()), powerCell});
-		GameRegistry.addShapelessRecipe(new ItemStack(phaserRifle), new Object[] {new ItemStack(phaserRifle, 0, phaserRifle.getMaxDamage()), powerCell});
-		GameRegistry.addRecipe(new ItemStack(phaser, 1, phaser.getMaxDamage()), new Object[] {"DTU", 'D', dilithiumCrystal, 'T', Blocks.stone_button, 'U', duraniumIngot});
-		GameRegistry.addRecipe(new ItemStack(phaserRifle, 1, phaserRifle.getMaxDamage()), new Object[] {"DUU", " TU", 'D', dilithiumCrystal, 'T', Blocks.stone_button, 'U', duraniumIngot});
-		GameRegistry.addRecipe(new ItemStack(batleth), new Object[] {"  D", " DS", "DS ", 'D', duraniumIngot, 'S', Items.stick});
-		GameRegistry.addShapelessRecipe(new ItemStack(powerCell), new Object[] {duraniumIngot, Items.redstone});
-		GameRegistry.addShapelessRecipe(new ItemStack(goldLatinum, 2), new Object[] {latinumIngot, Items.gold_ingot});
-		GameRegistry.addRecipe(new ItemStack(phaserDrill), new Object[] {"DUC", " UU", " UU", 'D', dilithiumCrystal, 'U', duraniumIngot, 'C', Items.compass});
-		GameRegistry.addRecipe(new ItemStack(gagh), new Object[] {"D", "B", 'D', Blocks.dirt, 'B', Items.bowl});
-		
-		GameRegistry.addSmelting(STBlock.dilithiumOre, new ItemStack(dilithiumCrystal), 0);
-		GameRegistry.addSmelting(STBlock.duraniumOre, new ItemStack(duraniumIngot), 0);
-		GameRegistry.addSmelting(STBlock.latinumOre, new ItemStack(latinumIngot), 0);
 	}
 }

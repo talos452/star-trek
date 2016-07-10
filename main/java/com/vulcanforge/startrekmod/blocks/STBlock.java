@@ -27,12 +27,14 @@ public class STBlock extends Block
 	public static Block dilithiumOre = new STBlock(Material.rock, "dilithiumOre");
 	public static Block latinumOre = new STBlock(Material.rock, "latinumOre");
 	public static Block duraniumOre = new STBlock(Material.rock, "duraniumOre");
+	public static Block duraniumBlock = new STBlock(Material.iron, "duraniumBlock");
 	
 	public STBlock(Material material, String texturename)
 	{
 		super(material);
 		setBlockTextureName(StarTrekMod.MODID + ":" + texturename);
 		setBlockName(texturename);
+		GameRegistry.registerBlock(this, texturename);
 	}
 	
 	public static void init()
@@ -40,9 +42,6 @@ public class STBlock extends Block
 		dilithiumOre.setHardness(3F).setResistance(2000F).setCreativeTab(tabSTBlocks);
 		latinumOre.setHardness(2F).setResistance(0F).setCreativeTab(tabSTBlocks);
 		duraniumOre.setHardness(5F).setResistance(2000F).setCreativeTab(tabSTBlocks);
-		
-		GameRegistry.registerBlock(dilithiumOre, "dilithiumOre");
-		GameRegistry.registerBlock(latinumOre, "latinumOre");
-		GameRegistry.registerBlock(duraniumOre, "duraniumOre");
+		duraniumBlock.setHardness(5F).setResistance(2000F).setCreativeTab(tabSTBlocks);
 	}
 }

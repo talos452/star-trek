@@ -22,7 +22,8 @@ public class StarTrekMod
     public static final String VERSION = "1.4.1";
     public static final String NAME = "Star Trek Mod";
     
-    @SidedProxy(clientSide = "com.vulcanforge.startrekmod.ClientProxy", serverSide = "com.vulcanforge.startrekmod.ServerProxy")
+    @SidedProxy(clientSide = "com.vulcanforge.startrekmod.ClientProxy",
+    	serverSide = "com.vulcanforge.startrekmod.ServerProxy")
     public static CommonProxy proxy;
     
     @Instance
@@ -33,6 +34,7 @@ public class StarTrekMod
     {
 		STBlock.init();
 		STItem.init();
+		CraftingRecipes.init();
 		Entities.init();
 		proxy.init();
 		GameRegistry.registerWorldGenerator(new OreSpawnWorldGen(), 0);
