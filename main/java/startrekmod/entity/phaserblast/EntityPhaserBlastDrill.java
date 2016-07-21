@@ -10,7 +10,6 @@ import net.minecraft.world.World;
 
 public class EntityPhaserBlastDrill extends EntityPhaserBlast
 {
-	EntityPhaserDrill blastSource;
 	DirectionMode direction;
 	
 	public EntityPhaserBlastDrill(World world) 
@@ -20,19 +19,16 @@ public class EntityPhaserBlastDrill extends EntityPhaserBlast
 
 	public EntityPhaserBlastDrill(World world, EntityLivingBase player, EntityPhaserDrill source) 
 	{
-		super(world, player);
-		blastSource = source;
-		setPosition(source.posX, source.posY + 2, source.posZ);
-		direction = source.direction;
-		setThrowableHeading();
+		super(world, player, source);
+		setPosition(posX, posY + 3, posZ);
 	}
 
 	@Override
-	protected void onImpact(MovingObjectPosition hitInfo) 
+	public void onImpact(MovingObjectPosition hitInfo) 
 	{
-		if(getThrower() == null) return;
+		if(operator == null) return;
 		
-		if(hitInfo.entityHit == blastSource) return;
+		if(hitInfo.entityHit == source) return;
 		
 		if(hitInfo.entityHit != null)
 		{
@@ -40,34 +36,7 @@ public class EntityPhaserBlastDrill extends EntityPhaserBlast
 			return;
 		}
 		
-		worldObj.createExplosion(getThrower(), posX, posY, posZ, 4.0F, true);
+		worldObj.createExplosion(operator, posX, posY, posZ, 4.0F, true);
 		setDead();
-	}
-	
-	public void setThrowableHeading()
-	{
-		rotationYaw = blastSource.rotationYaw;
-		
-		switch(direction)
-		{
-		case NORTH:
-			motionX = 0;
-			motionZ = -.05;
-			break;
-		case SOUTH:
-			motionX = 0;
-			motionZ = .05;
-			break;
-		case EAST:
-			motionX = .05;
-			motionZ = 0;
-			break;
-		case WEST:
-			motionX = -.05;
-			motionZ = 0;
-			break;
-		}
-		
-		motionY = 0;
 	}
 }

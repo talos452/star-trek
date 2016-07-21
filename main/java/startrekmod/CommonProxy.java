@@ -36,7 +36,8 @@ public abstract class CommonProxy implements IGuiHandler
 		switch(ID)
 		{
 		case GUI_PHASER_DRILL:
-			return new GuiPhaserDrill((EntityPhaserDrill)world.getEntityByID(x));
+			return new GuiPhaserDrill((EntityPhaserDrill)world.getEntityByID(x),
+				(EntityPlayer)world.getEntityByID(y));
 		}
 		
 		return null;

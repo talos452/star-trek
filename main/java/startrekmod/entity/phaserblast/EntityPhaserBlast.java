@@ -1,5 +1,6 @@
 package startrekmod.entity.phaserblast;
 
+import startrekmod.util.EntityProjectile;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -8,7 +9,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 
-public abstract class EntityPhaserBlast extends EntityThrowable
+public abstract class EntityPhaserBlast extends EntityProjectile
 {
 	int ticksInAir = 0;
 	
@@ -17,20 +18,15 @@ public abstract class EntityPhaserBlast extends EntityThrowable
 		super(world);
 	}
 	
-	protected EntityPhaserBlast(World world, EntityLivingBase player) 
+	public EntityPhaserBlast(World world, EntityLivingBase player) 
 	{
-		super(world, player);
-		setVelocity(motionX * 3, motionY * 3, motionZ * 3);
+		super(world, player, 5);
 	}
 	
-	@Override
-	protected float getGravityVelocity()
+	public EntityPhaserBlast(World world, EntityLivingBase player, Entity source)
 	{
-		return 0F;
+		super(world, player, source, 1);
 	}
-
-	@Override
-	protected abstract void onImpact(MovingObjectPosition hitInfo) ;
 	
 	@Override
 	public void onUpdate()

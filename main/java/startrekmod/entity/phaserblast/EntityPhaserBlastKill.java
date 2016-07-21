@@ -18,9 +18,9 @@ public class EntityPhaserBlastKill extends EntityPhaserBlast {
 	}
 
 	@Override
-	protected void onImpact(MovingObjectPosition hitInfo)
+	public void onImpact(MovingObjectPosition hitInfo)
 	{
-		if(getThrower() == null)
+		if(operator == null)
 		{
 			setDead();
 			return;
@@ -33,7 +33,7 @@ public class EntityPhaserBlastKill extends EntityPhaserBlast {
 		}
 		else
 		{
-			worldObj.createExplosion(getThrower(), posX, posY, posZ, 2.0F, true);
+			worldObj.createExplosion(operator, posX, posY, posZ, 2.0F, true);
 		}
 		
 		setDead();

@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public class EntityPhaserDrill extends Entity
 {
 	public int countdownTicks = -1;
-	EntityPlayer operator;
+	public EntityPlayer operator;
 	public DirectionMode direction;
 	
 	public EntityPhaserDrill(World world)
@@ -41,7 +41,8 @@ public class EntityPhaserDrill extends Entity
 	{
 		if(!worldObj.isRemote) return false;
 		
-		player.openGui(STMod.INSTANCE, CommonProxy.GUI_PHASER_DRILL, worldObj, getEntityId(), 0, 0);
+		player.openGui(STMod.INSTANCE, CommonProxy.GUI_PHASER_DRILL, worldObj,
+			getEntityId(), player.getEntityId(), 0);
 		return true;
 	}
 	
@@ -67,23 +68,21 @@ public class EntityPhaserDrill extends Entity
 	@Override
 	protected void entityInit()
 	{
-		setSize(2.75F, 2.25F);		
+		setSize(2F, 2F);		
 	}
 	
 	@Override
 	public void onUpdate()
 	{
-		if(operator == null && !worldObj.isRemote)
-		{
-			setDead();
-			return;
-		}
+		if(operator == null) return;
+		if(countdownTicks == -1) return;
 		
-		if(countdownTicks == -1) return;		
 		if(countdownTicks % 20 == 0)
-			operator.addChatComponentMessage(new ChatComponentText("Firing in " + (countdownTicks / 20)));		
+			operator.addChatComponentMessage(new ChatComponentText("Firing in " + (countdownTicks / 20)));
+		
 		if(countdownTicks-- != 0) return;
 		
+		worldObj.playSoundAtEntity(this, "startrekmod:phaser_blast", 1, 1);
 		Entity blast = new EntityPhaserBlastDrill(worldObj, operator, this);
 		worldObj.spawnEntityInWorld(blast);
 	}
@@ -92,20 +91,12 @@ public class EntityPhaserDrill extends Entity
 	protected void readEntityFromNBT(NBTTagCompound reader)
 	{
 		countdownTicks = reader.getInteger("FireTick");
-		String uuid = reader.getString("OperatorUUID");
-		
-		if(!uuid.isEmpty())
-			//func_152378_a returns the player with given UUID
-			operator = worldObj.func_152378_a(UUID.fromString(uuid));
 	}
 
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound writer)
 	{
 		writer.setInteger("FireTick", countdownTicks);
-		
-		if(operator != null)
-			writer.setString("OperatorUUID", operator.getUniqueID().toString());
 	}
 	
 	public void setDirection(DirectionMode direction)

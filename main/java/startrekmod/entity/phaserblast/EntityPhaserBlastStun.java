@@ -22,9 +22,9 @@ public class EntityPhaserBlastStun extends EntityPhaserBlast {
 	}
 
 	@Override
-	protected void onImpact(MovingObjectPosition hitInfo)
+	public void onImpact(MovingObjectPosition hitInfo)
 	{
-		if(getThrower() == null || hitInfo.typeOfHit == MovingObjectType.BLOCK)
+		if(operator == null || hitInfo.typeOfHit == MovingObjectType.BLOCK)
 		{
 			setDead();
 			return;

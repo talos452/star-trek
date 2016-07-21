@@ -9,17 +9,20 @@ import startrekmod.entity.EntityPhaserDrill;
 import startrekmod.network.packet.*;
 import startrekmod.util.DirectionMode;
 import net.minecraft.client.gui.*;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiPhaserDrill extends STGui
 {
 	EntityPhaserDrill drill;
+	EntityPlayer operator;
 	GuiButton north, east, south, west, fire;
 	
-	public GuiPhaserDrill(EntityPhaserDrill drill)
+	public GuiPhaserDrill(EntityPhaserDrill drill, EntityPlayer operator)
 	{
 		super("guiPhaserDrill");
 		this.drill = drill;
+		this.operator = operator;
 	}
 	
 	@Override
@@ -53,9 +56,9 @@ public class GuiPhaserDrill extends STGui
 		IMessage packet;
 		
 		if(clicked.id == 1)
-			packet = new PacketPhaserDrill(null, drill);
+			packet = new PacketPhaserDrill(null, drill, operator);
 		else
-			packet = new PacketPhaserDrill(DirectionMode.fromAngle(clicked.id), drill);
+			packet = new PacketPhaserDrill(DirectionMode.fromAngle(clicked.id), drill, operator);
 		
 		STNetwork.network.sendToServer(packet);
 		mc.displayGuiScreen(null);
