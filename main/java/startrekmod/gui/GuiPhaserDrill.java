@@ -1,12 +1,13 @@
-package com.vulcanforge.startrekmod.gui;
+package startrekmod.gui;
 
 import org.lwjgl.opengl.GL11;
 
-import vulcanforge.startrekmod.STMod;
-
-import com.vulcanforge.startrekmod.entity.EntityPhaserDrill;
-import com.vulcanforge.startrekmod.network.packet.*;
-
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import startrekmod.network.STNetwork;
+import startrekmod.STMod;
+import startrekmod.entity.EntityPhaserDrill;
+import startrekmod.network.packet.*;
+import startrekmod.util.DirectionMode;
 import net.minecraft.client.gui.*;
 import net.minecraft.util.ResourceLocation;
 
@@ -26,11 +27,11 @@ public class GuiPhaserDrill extends STGui
 	{
 		super.initGui();
 		
-		fire = new GuiButton(0, posX + 80, posY + 118, 96, 20, "Firing Sequence");
-		north = new GuiButton(1, posX + 80, posY + 88, 96, 20, "Aim North");
-		east = new GuiButton(2, posX, posY + 118, 72, 20, "Aim East");
-		south = new GuiButton(3, posX + 80, posY + 148, 96, 20, "Aim South");
-		west = new GuiButton(4, posX + 184, posY + 118, 72, 20, "Aim West");
+		fire = new GuiButton(1, posX + 80, posY + 118, 96, 20, "Firing Sequence");
+		north = new GuiButton(180, posX + 80, posY + 88, 96, 20, "Aim North");
+		east = new GuiButton(270, posX, posY + 118, 72, 20, "Aim East");
+		south = new GuiButton(0, posX + 80, posY + 148, 96, 20, "Aim South");
+		west = new GuiButton(90, posX + 184, posY + 118, 72, 20, "Aim West");
 		
 		buttonList.add(fire);
 		buttonList.add(north);
@@ -49,13 +50,14 @@ public class GuiPhaserDrill extends STGui
 	@Override
 	public void actionPerformed(GuiButton clicked)
 	{
-		PacketPhaserDrill packet;
+		IMessage packet;
 		
-		if(clicked.id == 0)
-			packet = new PacketPhaserDrill(true, 0, drill);
+		if(clicked.id == 1)
+			packet = new PacketPhaserDrill(null, drill);
 		else
-			packet = new PacketPhaserDrill(false, clicked.id, drill);
+			packet = new PacketPhaserDrill(DirectionMode.fromAngle(clicked.id), drill);
 		
-		STMod.instance.network.sendToServer(packet);
+		STNetwork.network.sendToServer(packet);
+		mc.displayGuiScreen(null);
 	}
 }

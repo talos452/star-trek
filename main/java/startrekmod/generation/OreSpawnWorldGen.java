@@ -1,9 +1,7 @@
-package com.vulcanforge.startrekmod.generation;
+package startrekmod.generation;
 
 import java.util.Random;
-
-import com.vulcanforge.startrekmod.blocks.STBlock;
-
+import startrekmod.blocks.STBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;

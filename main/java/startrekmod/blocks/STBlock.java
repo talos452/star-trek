@@ -1,9 +1,10 @@
-package com.vulcanforge.startrekmod.blocks;
+package startrekmod.blocks;
 
-import vulcanforge.startrekmod.STMod;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.vulcanforge.startrekmod.items.STItem;
-
+import startrekmod.STMod;
+import startrekmod.items.STItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,13 +29,14 @@ public class STBlock extends Block
 	public static Block dilithiumOre = new STBlock(Material.rock, "dilithiumOre");
 	public static Block latinumOre = new STBlock(Material.rock, "latinumOre");
 	public static Block duraniumOre = new STBlock(Material.rock, "duraniumOre");
-	public static Block duraniumBlock = new STBlock(Material.iron, "duraniumBlock");
-	public static Block dilithiumBlock = new STBlock(Material.ice, "dilithiumBlock");
+	public static List<STBlockOre> oreBlockList = new ArrayList<STBlockOre>();
+	public static Block duraniumBlock = new STBlockOre(STItem.duraniumIngot, "duraniumBlock");
+	public static Block dilithiumBlock = new STBlockOre(STItem.dilithiumCrystal, "dilithiumBlock");
 	
 	public STBlock(Material material, String texturename)
 	{
 		super(material);
-		setBlockTextureName(STMod.MODID + ":" + texturename);
+		setBlockTextureName(STMod.MODID + ':' + texturename);
 		setBlockName(texturename);
 		GameRegistry.registerBlock(this, texturename);
 	}
@@ -44,7 +46,5 @@ public class STBlock extends Block
 		dilithiumOre.setHardness(3F).setResistance(2000F).setCreativeTab(tabSTBlocks);
 		latinumOre.setHardness(2F).setResistance(0F).setCreativeTab(tabSTBlocks);
 		duraniumOre.setHardness(5F).setResistance(2000F).setCreativeTab(tabSTBlocks);
-		duraniumBlock.setHardness(5F).setResistance(2000F).setCreativeTab(tabSTBlocks);
-		dilithiumBlock.setHardness(5F).setResistance(2000F).setCreativeTab(tabSTBlocks);
 	}
 }

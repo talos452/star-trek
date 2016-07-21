@@ -1,4 +1,4 @@
-package com.vulcanforge.startrekmod.entity.phaserblast;
+package startrekmod.entity.phaserblast;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

@@ -1,7 +1,6 @@
-package com.vulcanforge.startrekmod.graphics;
+package startrekmod.graphics;
 
 import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,11 +17,11 @@ public class RenderPhaserDrill extends Render
 	{
 		GL11.glPushMatrix();
 		bindTexture(getEntityTexture(entity));
-		GL11.glTranslated(transX, transY + 3, transZ);
+		GL11.glTranslated(transX, transY + 2.25, transZ - .75);
 		GL11.glScaled(1, 1, 1);
 		GL11.glRotated(entity.rotationYaw, 0, -1, 0);
 		GL11.glRotated(180, 0, 0, 1); //fix upside down model
-		model.render(.125F); //render at reasonable size
+		model.render(.09375F); //render at reasonable size
 		GL11.glPopMatrix();
 	}
 

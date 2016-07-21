@@ -1,5 +1,6 @@
-package com.vulcanforge.startrekmod.gui;
+package startrekmod.gui;
 
+import startrekmod.STMod;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 
@@ -25,5 +26,11 @@ public class STGui extends GuiScreen
 	{
 		drawDefaultBackground();
 		super.drawScreen(mousePosX, mousePosY, f3);
+	}
+	
+	@Override
+	public boolean doesGuiPauseGame()
+	{
+		return false;
 	}
 }

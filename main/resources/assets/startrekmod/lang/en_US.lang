@@ -18,3 +18,5 @@ tile.dilithiumBlock.name=Dilithium Block
 
 itemGroup.tabSTItems=Star Trek Items
 itemGroup.tabSTBlocks=Star Trek Blocks
+
+entity.startrekmod.Klingon.name=Klingon

@@ -1,11 +1,11 @@
-package com.vulcanforge.startrekmod.items;
+package startrekmod.items;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import com.vulcanforge.startrekmod.entity.*;
-import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlastKill;
+import startrekmod.entity.*;
+import startrekmod.entity.phaserblast.EntityPhaserBlastKill;
 
 public class ItemPhaserRifle extends ItemPhaser 
 {

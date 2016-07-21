@@ -1,6 +1,6 @@
-package com.vulcanforge.startrekmod.items;
+package startrekmod.items;
 
-import com.vulcanforge.startrekmod.entity.EntityPhaserDrill;
+import startrekmod.entity.EntityPhaserDrill;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -20,7 +20,8 @@ public class ItemPhaserDrill extends STItem
 			{
 				//side == 1 tests for placement on top of a block
 				if(side == 1 && !world.isRemote &&
-						player.inventory.consumeInventoryItem(STItem.phaserDrill))
+						(player.capabilities.isCreativeMode || 
+						player.inventory.consumeInventoryItem(STItem.phaserDrill)))
 				{
 					EntityPhaserDrill drill = new EntityPhaserDrill(world, player,
 							blockPosX, blockPosY + 1, blockPosZ);

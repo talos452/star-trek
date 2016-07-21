@@ -1,9 +1,7 @@
-package com.vulcanforge.startrekmod.graphics;
+package startrekmod.graphics;
 
 import org.lwjgl.opengl.GL11;
-
-import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlast;
-
+import startrekmod.entity.phaserblast.EntityPhaserBlast;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;

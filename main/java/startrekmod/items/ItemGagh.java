@@ -1,6 +1,6 @@
-package com.vulcanforge.startrekmod.items;
+package startrekmod.items;
 
-import vulcanforge.startrekmod.STMod;
+import startrekmod.STMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;

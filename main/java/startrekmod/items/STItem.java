@@ -1,8 +1,8 @@
-package com.vulcanforge.startrekmod.items;
+package startrekmod.items;
 
-import vulcanforge.startrekmod.STMod;
+import startrekmod.STMod;
 
-import com.vulcanforge.startrekmod.blocks.STBlock;
+import startrekmod.blocks.STBlock;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

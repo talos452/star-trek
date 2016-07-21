@@ -1,4 +1,4 @@
-package com.vulcanforge.startrekmod.graphics;
+package startrekmod.graphics;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;

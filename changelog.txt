@@ -18,3 +18,9 @@ Added gagh.
 1.4.1
 
 Added recipes for phaser drills and gagh.
+
+1.5.0
+
+Added new GUI for phaser drill.
+Added Klingon NPC.
+Added duranium and dilithium blocks.

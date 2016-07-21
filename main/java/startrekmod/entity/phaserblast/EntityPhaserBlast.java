@@ -1,4 +1,4 @@
-package com.vulcanforge.startrekmod.entity.phaserblast;
+package startrekmod.entity.phaserblast;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -37,7 +37,7 @@ public abstract class EntityPhaserBlast extends EntityThrowable
 	{
 		super.onUpdate();
 		
-		if(++this.ticksInAir >= 100)
-			this.setDead();
+		if(++ticksInAir >= 100)
+			setDead();
 	}
 }

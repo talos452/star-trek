@@ -1,15 +1,18 @@
-package com.vulcanforge.startrekmod.network.handler;
+package startrekmod.network.handler;
 
+import startrekmod.network.packet.PacketPhaserDrill;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 
-import com.vulcanforge.startrekmod.entity.EntityPhaserDrill;
-import com.vulcanforge.startrekmod.network.packet.*;
+import startrekmod.entity.EntityPhaserDrill;
+import startrekmod.network.packet.*;
 
 import cpw.mods.fml.common.network.simpleimpl.*;
 
 public class HandlerPhaserDrill implements IMessageHandler<PacketPhaserDrill, IMessage>
 {
+	public HandlerPhaserDrill() {} //required for processing
+	
 	@Override
 	public IMessage onMessage(PacketPhaserDrill message, MessageContext ctx)
 	{
@@ -20,10 +23,10 @@ public class HandlerPhaserDrill implements IMessageHandler<PacketPhaserDrill, IM
 		
 		EntityPhaserDrill drill = (EntityPhaserDrill)entity;
 		
-		if(message.isFireEvent)
+		if(message.direction == null)
 			drill.countdownTicks = 100;
 		else
-			drill.setLocationAndAngles(drill.posX, drill.posY, drill.posZ, message.rotation, 0);
+			drill.setDirection(message.direction);
 		
 		return null;
 	}

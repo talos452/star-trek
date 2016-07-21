@@ -1,7 +1,7 @@
-package com.vulcanforge.startrekmod.items;
+package startrekmod.items;
 
-import com.vulcanforge.startrekmod.entity.*;
-import com.vulcanforge.startrekmod.entity.phaserblast.EntityPhaserBlastStun;
+import startrekmod.entity.*;
+import startrekmod.entity.phaserblast.EntityPhaserBlastStun;
 
 import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.player.EntityPlayer;

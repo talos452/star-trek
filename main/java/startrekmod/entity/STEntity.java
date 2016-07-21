@@ -1,33 +1,42 @@
-package com.vulcanforge.startrekmod.entity;
-
-import vulcanforge.startrekmod.STMod;
-
-import com.vulcanforge.startrekmod.entity.phaserblast.*;
-import com.vulcanforge.startrekmod.entity.npc.*;
+package startrekmod.entity;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
+import startrekmod.STMod;
+import startrekmod.entity.phaserblast.*;
+import startrekmod.entity.npc.*;
 
 public class STEntity 
 {
 	static int counter = 0;
+	static STMod instance = STMod.INSTANCE;
 	
 	public static void init()
 	{
-		EntityRegistry.registerModEntity(EntityPhaserBlastStun.class, "PhaserBlastStun",
-				getNextID(), STMod.instance, 64, 3, true);
-		EntityRegistry.registerModEntity(EntityPhaserBlastKill.class, "PhaserBlastKill",
-				getNextID(), STMod.instance, 64, 3, true);
-		EntityRegistry.registerModEntity(EntityPhaserBlastDrill.class, "PhaserBlastDrill",
-				getNextID(), STMod.instance, 64, 3, true);
-		EntityRegistry.registerModEntity(EntityPhaserDrill.class, "PhaserDrill",
-				getNextID(), STMod.instance, 64, 1, false);
-		EntityRegistry.registerModEntity(EntityKlingon.class, "Klingon",
-				getNextID(), STMod.instance, 64, 1, true);
+		initEntities();
+		initNPCs();
 	}
 	
-	//EntityRegistry.findGloballyUniqueEntityID() returns the same value on all calls
-	//Forge now stores entities sorted by mod, so unique ID's for this mod
-	//will not conflict with any other mod
+	public static void initEntities()
+	{
+		EntityRegistry.registerModEntity(EntityPhaserDrill.class, "PhaserDrill",
+			getNextID(), instance, 64, 3, false);
+		EntityRegistry.registerModEntity(EntityPhaserBlastStun.class, "PhaserBlastStun",
+			getNextID(), instance, 64, 3, true);
+		EntityRegistry.registerModEntity(EntityPhaserBlastKill.class, "PhaserBlastKill",
+			getNextID(), instance, 64, 3, true);
+		EntityRegistry.registerModEntity(EntityPhaserBlastDrill.class, "PhaserBlastDrill",
+			getNextID(), instance, 64, 3, true);		
+	}
+	
+	public static void initNPCs()
+	{
+		EntityRegistry.registerModEntity(EntityKlingon.class, "Klingon",
+			getNextID(), STMod.INSTANCE, 64, 1, true);
+	}
+	
+	/*
+	 * Returns a unique ID to register an entity.
+	 */
 	public static int getNextID()
 	{
 		return counter++;
