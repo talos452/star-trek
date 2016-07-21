@@ -13,6 +13,10 @@ item.gagh.name=gagh
 tile.dilithiumOre.name=Dilithium Ore
 tile.latinumOre.name=Latinum Ore
 tile.duraniumOre.name=Duranium Ore
+tile.duraniumBlock.name=Duranium Block
+tile.dilithiumBlock.name=Dilithium Block
 
 itemGroup.tabSTItems=Star Trek Items
 itemGroup.tabSTBlocks=Star Trek Blocks
+
+entity.startrekmod.Klingon.name=Klingon
