@@ -25,7 +25,7 @@ public abstract class EntityPhaserBlast extends EntityProjectile
 	
 	public EntityPhaserBlast(World world, EntityLivingBase player, Entity source)
 	{
-		super(world, player, source, 1);
+		super(world, player, source, 5);
 	}
 	
 	@Override

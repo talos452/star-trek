@@ -9,6 +9,7 @@ item.batleth.name=bat'leth
 item.goldLatinum.name=Gold-pressed Latinum
 item.phaserDrill.name=Phaser Drill
 item.gagh.name=gagh
+item.egg.name=Spawn Egg
 
 tile.dilithiumOre.name=Dilithium Ore
 tile.latinumOre.name=Latinum Ore

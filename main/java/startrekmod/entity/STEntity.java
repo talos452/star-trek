@@ -1,9 +1,12 @@
 package startrekmod.entity;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import startrekmod.STMod;
 import startrekmod.entity.phaserblast.*;
 import startrekmod.entity.npc.*;
+import startrekmod.items.ItemSpawnEgg;
+import startrekmod.items.STItem;
 
 public class STEntity 
 {
@@ -32,6 +35,7 @@ public class STEntity
 	{
 		EntityRegistry.registerModEntity(EntityKlingon.class, "Klingon",
 			getNextID(), STMod.INSTANCE, 64, 1, true);
+		STItem.spawnEggs.add(new ItemSpawnEgg("Klingon"));
 	}
 	
 	/*

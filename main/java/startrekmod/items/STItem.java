@@ -1,9 +1,10 @@
 package startrekmod.items;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import startrekmod.STMod;
-
 import startrekmod.blocks.STBlock;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -31,6 +32,16 @@ public class STItem extends Item
     	}
     };
     
+    public static final CreativeTabs tabSTEggs = new CreativeTabs("tabSTEggs")
+    {
+    	@Override
+    	@SideOnly(Side.CLIENT)
+    	public Item getTabIconItem()
+    	{
+    		return spawnEggs.get(0);
+    	}
+    };
+    
 	public static Item phaser = new ItemPhaser("phaser");
 	public static Item phaserRifle = new ItemPhaserRifle("phaserRifle");
 	public static Item powerCell = new STItem("powerCell");
@@ -42,6 +53,8 @@ public class STItem extends Item
 		.setTextureName(STMod.MODID + ":batleth").setUnlocalizedName("batleth");
 	public static Item phaserDrill = new ItemPhaserDrill("phaserDrill");
 	public static Item gagh = new ItemGagh();
+	
+	public static List<ItemSpawnEgg> spawnEggs = new ArrayList<ItemSpawnEgg>();
 	
 	public STItem(String texturename)
 	{
