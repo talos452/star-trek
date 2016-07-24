@@ -54,7 +54,7 @@ public class STItem extends Item
 		phaserDrill.setCreativeTab(STCreativeTabs.tabSTHuman);
 		gagh.setCreativeTab(STCreativeTabs.tabSTKlingon);
 		
-		GameRegistry.registerItem(batleth, "batleth");
+		//GameRegistry.registerItem(batleth, "batleth");
 		GameRegistry.registerItem(gagh, "gagh");
 	}
 }

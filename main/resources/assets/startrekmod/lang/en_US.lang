@@ -1,23 +1,25 @@
 ﻿
-item.dilithiumCrystal.name=Dilithium Crystal
-item.latinumIngot.name=Latinum Ingot
-item.duraniumIngot.name=Duranium Ingot
+item.dilithium_crystal.name=Dilithium Crystal
+item.latinum_ingot.name=Latinum Ingot
+item.duranium_ingot.name=Duranium Ingot
 item.phaser.name=Type II Phaser
-item.phaserRifle.name=Type III Phaser
-item.powerCell.name=Power Cell
+item.phaser_rifle.name=Type III Phaser
+item.power_cell.name=Power Cell
 item.batleth.name=bat'leth
-item.goldLatinum.name=Gold-pressed Latinum
-item.phaserDrill.name=Phaser Drill
+item.gold_pressed_latinum.name=Gold-pressed Latinum
+item.phaser_drill.name=Phaser Drill
 item.gagh.name=gagh
-item.egg.name=Spawn Egg
 
-tile.dilithiumOre.name=Dilithium Ore
-tile.latinumOre.name=Latinum Ore
-tile.duraniumOre.name=Duranium Ore
-tile.duraniumBlock.name=Duranium Block
-tile.dilithiumBlock.name=Dilithium Block
+tile.dilithium_ore.name=Dilithium Ore
+tile.latinum_ore.name=Latinum Ore
+tile.duranium_ore.name=Duranium Ore
+tile.duranium_block.name=Duranium Block
+tile.dilithium_block.name=Dilithium Block
 
-itemGroup.tabSTItems=Star Trek Items
-itemGroup.tabSTBlocks=Star Trek Blocks
+itemGroup.tabSTItems=Generic ST Items
+itemGroup.tabSTBlocks=Generic ST Blocks
+itemGroup.tabSTEggs=ST Spawn Eggs
+itemGroup.tabSTHuman=Human-related
+itemGroup.tabSTKlingon=Klingon-related
 
 entity.startrekmod.Klingon.name=Klingon
