@@ -1,8 +1,8 @@
 package startrekmod.entity.npc;
 
-import startrekmod.items.STItem;
+import startrekmod.STItem;
+
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

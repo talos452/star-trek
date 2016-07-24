@@ -1,9 +1,10 @@
 package startrekmod;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class STEventHandler 
 {

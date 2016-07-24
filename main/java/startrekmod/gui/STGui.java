@@ -1,8 +1,6 @@
 package startrekmod.gui;
 
-import startrekmod.STMod;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.ResourceLocation;
 
 public class STGui extends GuiScreen
 {

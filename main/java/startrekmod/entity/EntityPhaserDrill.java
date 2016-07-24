@@ -1,20 +1,13 @@
 package startrekmod.entity;
 
-import java.util.UUID;
-
-import startrekmod.CommonProxy;
-import startrekmod.STMod;
+import startrekmod.*;
 import startrekmod.entity.phaserblast.EntityPhaserBlastDrill;
-import startrekmod.items.STItem;
 import startrekmod.util.DirectionMode;
-import cpw.mods.fml.common.FMLLog;
-import net.minecraft.client.Minecraft;
+
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.DamageSource;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 public class EntityPhaserDrill extends Entity
@@ -41,7 +34,7 @@ public class EntityPhaserDrill extends Entity
 	{
 		if(!worldObj.isRemote) return false;
 		
-		player.openGui(STMod.INSTANCE, CommonProxy.GUI_PHASER_DRILL, worldObj,
+		player.openGui(STMod.INSTANCE, STCommonProxy.GUI_PHASER_DRILL, worldObj,
 			getEntityId(), player.getEntityId(), 0);
 		return true;
 	}

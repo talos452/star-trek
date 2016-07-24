@@ -1,7 +1,7 @@
 package startrekmod.entity.npc;
 
 import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.world.World;
 
 public abstract class STEntityNPC extends EntityCreature

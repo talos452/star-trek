@@ -1,16 +1,14 @@
 package startrekmod.gui;
 
-import org.lwjgl.opengl.GL11;
+import startrekmod.STNetwork;
+import startrekmod.entity.EntityPhaserDrill;
+import startrekmod.network.packet.PacketPhaserDrill;
+import startrekmod.util.DirectionMode;
+
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.entity.player.EntityPlayer;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
-import startrekmod.network.STNetwork;
-import startrekmod.STMod;
-import startrekmod.entity.EntityPhaserDrill;
-import startrekmod.network.packet.*;
-import startrekmod.util.DirectionMode;
-import net.minecraft.client.gui.*;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
 
 public class GuiPhaserDrill extends STGui
 {

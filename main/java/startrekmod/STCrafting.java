@@ -1,12 +1,9 @@
 package startrekmod;
 
-import startrekmod.blocks.*;
-import startrekmod.items.*;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
+import net.minecraft.init.*;
 import net.minecraft.item.ItemStack;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class STCrafting
 {
@@ -15,7 +12,6 @@ public final class STCrafting
 		initRecipes();
 		initShapelessRecipes();
 		initSmeltingRecipes();
-		initOreBlockRecipes();
 	}
 	
 	static void initRecipes()
@@ -67,18 +63,6 @@ public final class STCrafting
 			new ItemStack(STItem.duraniumIngot), 0);
 		GameRegistry.addSmelting(STBlock.latinumOre,
 			new ItemStack(STItem.latinumIngot), 0);
-	}
-	
-	static void initOreBlockRecipes()
-	{
-		for(STBlockOre ore : STBlock.oreBlockList)
-		{
-			GameRegistry.addRecipe(new ItemStack(ore),
-				new Object[] {"III", "III", "III",
-				'I', ore.ingot});
-			GameRegistry.addShapelessRecipe(new ItemStack(ore.ingot, 9),
-				new Object[] {ore});
-		}
 	}
 }
 

@@ -1,12 +1,8 @@
 package startrekmod.entity.phaserblast;
 
 import startrekmod.util.EntityProjectile;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.MovingObjectPosition.MovingObjectType;
+
+import net.minecraft.entity.*;
 import net.minecraft.world.World;
 
 public abstract class EntityPhaserBlast extends EntityProjectile

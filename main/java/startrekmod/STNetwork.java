@@ -1,8 +1,8 @@
-package startrekmod.network;
+package startrekmod;
 
-import startrekmod.STMod;
 import startrekmod.network.handler.HandlerPhaserDrill;
 import startrekmod.network.packet.PacketPhaserDrill;
+
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;

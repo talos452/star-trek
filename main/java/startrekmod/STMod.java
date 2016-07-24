@@ -2,11 +2,7 @@ package startrekmod;
 
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.Mod.*;
-import cpw.mods.fml.common.event.*;
-import startrekmod.blocks.STBlock;
-import startrekmod.entity.STEntity;
-import startrekmod.items.STItem;
-import startrekmod.network.STNetwork;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 
 @Mod(modid = STMod.MODID, version = STMod.VERSION, name = STMod.NAME)
 public class STMod 
@@ -18,13 +14,24 @@ public class STMod
 	@Instance
 	public static STMod INSTANCE = new STMod();
 	
-	@SidedProxy (clientSide = "startrekmod.ClientProxy",
-			serverSide = "startrekmod.ServerProxy")
-	public static CommonProxy PROXY;
+	@SidedProxy (clientSide = "startrekmod.STClientProxy",
+			serverSide = "startrekmod.STServerProxy")
+	public static STCommonProxy PROXY;
 	
+	/*
+	 * Guidelines for preinit and init methods.
+	 * Obviously, they should always be static.
+	 * They should belong to ST-something classes.
+	 * preinit() should do nothing but initialize static variables.
+	 * init() should set up their properties.
+	 */
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		STBlock.preinit();
+		STItem.preinit();
+		STCreativeTabs.preinit();
+		
 		PROXY.init();
 		STBlock.init();
 		STItem.init();

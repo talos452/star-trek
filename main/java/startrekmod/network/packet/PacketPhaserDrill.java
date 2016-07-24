@@ -1,10 +1,13 @@
 package startrekmod.network.packet;
 
-import net.minecraft.entity.player.EntityPlayer;
 import startrekmod.entity.EntityPhaserDrill;
 import startrekmod.util.DirectionMode;
+
+import net.minecraft.entity.player.EntityPlayer;
+
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+
 import io.netty.buffer.ByteBuf;
-import cpw.mods.fml.common.network.simpleimpl.*;
 
 public class PacketPhaserDrill implements IMessage
 {

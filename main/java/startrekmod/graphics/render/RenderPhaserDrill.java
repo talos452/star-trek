@@ -1,10 +1,12 @@
-package startrekmod.graphics;
+package startrekmod.graphics.render;
 
-import org.lwjgl.opengl.GL11;
+import startrekmod.graphics.model.ModelPhaserDrill;
+
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
 
 public class RenderPhaserDrill extends Render
 {

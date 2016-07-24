@@ -1,9 +1,9 @@
 package startrekmod.items;
 
 import startrekmod.STMod;
+
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 

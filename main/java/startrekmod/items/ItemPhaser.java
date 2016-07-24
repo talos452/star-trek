@@ -1,9 +1,8 @@
 package startrekmod.items;
 
-import startrekmod.entity.*;
+import startrekmod.STItem;
 import startrekmod.entity.phaserblast.EntityPhaserBlastStun;
 
-import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

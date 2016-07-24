@@ -2,9 +2,8 @@ package startrekmod.entity.phaserblast;
 
 import startrekmod.entity.EntityPhaserDrill;
 import startrekmod.util.DirectionMode;
-import net.minecraft.entity.Entity;
+
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 

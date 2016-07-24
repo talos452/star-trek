@@ -1,11 +1,14 @@
 package startrekmod.generation;
 
-import java.util.Random;
-import startrekmod.blocks.STBlock;
+import startrekmod.STBlock;
+
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+
 import cpw.mods.fml.common.IWorldGenerator;
+
+import java.util.Random;
 
 public class OreSpawnWorldGen implements IWorldGenerator 
 {

@@ -1,11 +1,12 @@
 package startrekmod.network.handler;
 
+import startrekmod.entity.EntityPhaserDrill;
 import startrekmod.network.packet.PacketPhaserDrill;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import startrekmod.entity.EntityPhaserDrill;
-import startrekmod.network.packet.*;
+
 import cpw.mods.fml.common.network.simpleimpl.*;
 
 public class HandlerPhaserDrill implements IMessageHandler<PacketPhaserDrill, IMessage>

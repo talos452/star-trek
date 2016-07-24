@@ -1,8 +1,8 @@
 package startrekmod.items;
 
-import startrekmod.STMod;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
+import startrekmod.*;
+
+import net.minecraft.entity.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -15,7 +15,7 @@ public class ItemSpawnEgg extends STItem
 	{
 		super("egg");
 		this.entityName = STMod.MODID + '.' + entityName;
-		setCreativeTab(STItem.tabSTEggs);
+		setCreativeTab(STCreativeTabs.tabSTEggs);
 	}
 	
 	@Override

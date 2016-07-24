@@ -1,4 +1,4 @@
-package startrekmod.graphics;
+package startrekmod.graphics.render;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;

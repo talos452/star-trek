@@ -1,11 +1,11 @@
-package startrekmod.graphics;
+package startrekmod;
 
-import net.minecraft.entity.Entity;
-import cpw.mods.fml.client.registry.*;
-
-import startrekmod.entity.*;
-import startrekmod.entity.npc.*;
+import startrekmod.entity.EntityPhaserDrill;
+import startrekmod.entity.npc.EntityKlingon;
 import startrekmod.entity.phaserblast.*;
+import startrekmod.graphics.render.*;
+
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class STGraphics
 {

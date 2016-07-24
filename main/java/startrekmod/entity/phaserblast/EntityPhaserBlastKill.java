@@ -1,8 +1,7 @@
 package startrekmod.entity.phaserblast;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 
 public class EntityPhaserBlastKill extends EntityPhaserBlast {

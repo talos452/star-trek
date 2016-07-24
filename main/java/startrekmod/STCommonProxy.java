@@ -1,16 +1,14 @@
 package startrekmod;
 
-import java.util.ArrayList;
-import java.util.List;
 import startrekmod.entity.EntityPhaserDrill;
 import startrekmod.gui.GuiPhaserDrill;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.world.World;
-import cpw.mods.fml.common.network.*;
 
-public abstract class CommonProxy implements IGuiHandler
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+
+import cpw.mods.fml.common.network.IGuiHandler;
+
+public abstract class STCommonProxy implements IGuiHandler
 {
 	public static final int GUI_PHASER_DRILL = 0;
 	
