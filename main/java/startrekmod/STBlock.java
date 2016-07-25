@@ -13,12 +13,12 @@ public class STBlock extends Block
 	public static Block duraniumBlock;
 	public static Block dilithiumBlock;
 	
-	public STBlock(Material material, String texturename)
+	public STBlock(Material material, String textureName)
 	{
 		super(material);
-		setBlockTextureName(STMod.MODID + ':' + texturename);
-		setBlockName(texturename);
-		GameRegistry.registerBlock(this, texturename);
+		setBlockTextureName(STMod.MODID + ':' + textureName);
+		setBlockName(textureName);
+		GameRegistry.registerBlock(this, textureName);
 	}
 	
 	public static void preinit()

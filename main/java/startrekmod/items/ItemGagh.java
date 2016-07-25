@@ -1,19 +1,16 @@
 package startrekmod.items;
 
-import startrekmod.STMod;
-
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.*;
 import net.minecraft.world.World;
 
-public class ItemGagh extends ItemFood
+public class ItemGagh extends STItemFood
 {
 	public ItemGagh()
 	{
-		super(6, true);
-		setTextureName(STMod.MODID + ":" + "gagh");
-		setUnlocalizedName("gagh");
+		super("gagh", 6, .6F);
+		setPotionEffect(Potion.confusion.id, 10, 0, 1F);
 	}
 	
 	@Override

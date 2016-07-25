@@ -19,12 +19,12 @@ public class STItem extends Item
 	public static Item phaserDrill;
 	public static Item gagh;
 	
-	public STItem(String texturename)
+	public STItem(String textureName)
 	{
 		super();
-		setTextureName(STMod.MODID + ":" + texturename);
-		setUnlocalizedName(texturename);
-		GameRegistry.registerItem(this, texturename);
+		setTextureName(STMod.MODID + ":" + textureName);
+		setUnlocalizedName(textureName);
+		GameRegistry.registerItem(this, textureName);
 	}
 	
 	public static void preinit()
@@ -36,7 +36,7 @@ public class STItem extends Item
 		latinumIngot = new STItem("latinum_ingot");
 		dilithiumCrystal = new STItem("dilithium_crystal");
 		goldLatinum = new STItem("gold_pressed_latinum");
-		batleth = new STItem("batleth");
+		batleth = new STItemSword("batleth", 8, -1);
 		phaserDrill = new ItemPhaserDrill("phaser_drill");
 		gagh = new ItemGagh();
 	}
@@ -53,8 +53,5 @@ public class STItem extends Item
 		goldLatinum.setCreativeTab(STCreativeTabs.tabSTItems);
 		phaserDrill.setCreativeTab(STCreativeTabs.tabSTHuman);
 		gagh.setCreativeTab(STCreativeTabs.tabSTKlingon);
-		
-		//GameRegistry.registerItem(batleth, "batleth");
-		GameRegistry.registerItem(gagh, "gagh");
 	}
 }

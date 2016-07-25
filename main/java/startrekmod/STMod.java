@@ -1,7 +1,8 @@
 package startrekmod;
 
 import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.Mod.*;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 
 @Mod(modid = STMod.MODID, version = STMod.VERSION, name = STMod.NAME)
@@ -39,5 +40,6 @@ public class STMod
 		STEntity.init();
 		STNetwork.init();
 		STEventHandler.init();
+		STGeneration.init();
 	}
 }
