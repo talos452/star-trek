@@ -19,6 +19,7 @@ public class RenderPhaserDrill extends Render
 	{
 		GL11.glPushMatrix();
 		bindTexture(getEntityTexture(entity));
+		//render at proper above-ground position
 		GL11.glTranslated(transX, transY + 3, transZ);
 		GL11.glScaled(1, 1, 1);
 		GL11.glRotated(entity.rotationYaw, 0, -1, 0);

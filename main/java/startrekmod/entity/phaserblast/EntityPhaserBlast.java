@@ -16,6 +16,7 @@ public abstract class EntityPhaserBlast extends EntityProjectile
 	
 	public EntityPhaserBlast(World world, EntityLivingBase player) 
 	{
+		//5 refers to projectile speed
 		super(world, player, 5);
 	}
 	
@@ -29,6 +30,7 @@ public abstract class EntityPhaserBlast extends EntityProjectile
 	{
 		super.onUpdate();
 		
+		//delete blast after 5 seconds
 		if(++ticksInAir >= 100)
 			setDead();
 	}

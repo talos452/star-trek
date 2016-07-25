@@ -2,7 +2,6 @@ package startrekmod.entity;
 
 import startrekmod.*;
 import startrekmod.entity.phaserblast.EntityPhaserBlastDrill;
-import startrekmod.util.DirectionMode;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,9 +11,10 @@ import net.minecraft.world.World;
 
 public class EntityPhaserDrill extends Entity
 {
+	//timer for fire event
 	public int countdownTicks = -1;
 	public EntityPlayer operator;
-	public DirectionMode direction;
+	public float angle;
 	
 	public EntityPhaserDrill(World world)
 	{
@@ -26,7 +26,6 @@ public class EntityPhaserDrill extends Entity
 		super(world);
 		setPosition(posX, posY, posZ);
 		this.operator = operator;
-		direction = direction.SOUTH;
 	}
 	
 	@Override
@@ -34,8 +33,9 @@ public class EntityPhaserDrill extends Entity
 	{
 		if(!worldObj.isRemote) return false;
 		
+		//pass in entity ID, no other params needed
 		player.openGui(STMod.INSTANCE, STCommonProxy.GUI_PHASER_DRILL, worldObj,
-			getEntityId(), player.getEntityId(), 0);
+			getEntityId(), 0, 0);
 		return true;
 	}
 	
@@ -51,6 +51,7 @@ public class EntityPhaserDrill extends Entity
 	}
 	
 	//players can only interact if this returns true
+	//EXTREMELY IMPORTANT for any entity that can be left or right clicked.
 	@Override
 	public boolean canBeCollidedWith()
 	{
@@ -70,6 +71,7 @@ public class EntityPhaserDrill extends Entity
 		if(operator == null) return;
 		if(countdownTicks == -1) return;
 		
+		//count down from five
 		if(countdownTicks % 20 == 0)
 			operator.addChatComponentMessage(new ChatComponentText("Firing in " + (countdownTicks / 20)));
 		
@@ -80,6 +82,8 @@ public class EntityPhaserDrill extends Entity
 		worldObj.spawnEntityInWorld(blast);
 	}
 
+	//be warned that timer will stop on relog until
+	//a player has interacted with the drill again
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound reader)
 	{
@@ -90,11 +94,5 @@ public class EntityPhaserDrill extends Entity
 	protected void writeEntityToNBT(NBTTagCompound writer)
 	{
 		writer.setInteger("FireTick", countdownTicks);
-	}
-	
-	public void setDirection(DirectionMode direction)
-	{
-		rotationYaw = direction.angle; //for rendering purposes
-		this.direction = direction; //for firing purposes
 	}
 }

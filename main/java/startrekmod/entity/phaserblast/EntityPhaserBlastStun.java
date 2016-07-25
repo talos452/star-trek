@@ -21,6 +21,7 @@ public class EntityPhaserBlastStun extends EntityPhaserBlast {
 	@Override
 	public void onImpact(MovingObjectPosition hitInfo)
 	{
+		//safety check and wasted shot check
 		if(operator == null || hitInfo.typeOfHit == MovingObjectType.BLOCK)
 		{
 			setDead();
@@ -37,7 +38,7 @@ public class EntityPhaserBlastStun extends EntityPhaserBlast {
 		
 		EntityLivingBase stunnedEntity = (EntityLivingBase)entityHit;
 		stunnedEntity.attackEntityFrom(DamageSource.onFire, 1F);
-		PotionEffect stun = new PotionEffect(Potion.moveSlowdown.id, 200);
+		PotionEffect stun = new PotionEffect(Potion.moveSlowdown.id, 200, 1);
 		stunnedEntity.addPotionEffect(stun);
 	}
 }

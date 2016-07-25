@@ -23,7 +23,6 @@ public class EntityKlingon extends STEntityNPC
 		super.setupAI();
 		targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.4, true));
-        tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 	}
 	
 	@Override
@@ -32,13 +31,7 @@ public class EntityKlingon extends STEntityNPC
 		entity.attackEntityFrom(DamageSource.causeMobDamage(this), damage);
 	}
 	
-	@Override
-	public Entity findPlayerToAttack()
-    {
-        EntityPlayer entityplayer = worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
-        return entityplayer != null && canEntityBeSeen(entityplayer) ? entityplayer : null;
-    }
-	
+	//required for AI
 	@Override
 	public boolean attackEntityAsMob(Entity target)
 	{

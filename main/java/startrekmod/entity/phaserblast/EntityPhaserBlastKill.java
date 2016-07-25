@@ -19,6 +19,7 @@ public class EntityPhaserBlastKill extends EntityPhaserBlast {
 	@Override
 	public void onImpact(MovingObjectPosition hitInfo)
 	{
+		//safety check, not sure if this will ever happen
 		if(operator == null)
 		{
 			setDead();
@@ -31,9 +32,7 @@ public class EntityPhaserBlastKill extends EntityPhaserBlast {
 			shotEntity.attackEntityFrom(DamageSource.inFire, 15F);
 		}
 		else
-		{
 			worldObj.createExplosion(operator, posX, posY, posZ, 2.0F, true);
-		}
 		
 		setDead();
 	}

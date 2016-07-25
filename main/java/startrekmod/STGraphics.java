@@ -23,6 +23,10 @@ public class STGraphics
 		initNPCs();
 	}
 	
+	/*
+	 * Just in case I want to do something special with NPCs later,
+	 * I put this here to make it more convenient/readable.
+	 */
 	public static void initNPCs()
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityKlingon.class,

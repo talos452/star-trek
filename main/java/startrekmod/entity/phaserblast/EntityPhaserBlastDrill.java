@@ -1,7 +1,6 @@
 package startrekmod.entity.phaserblast;
 
 import startrekmod.entity.EntityPhaserDrill;
-import startrekmod.util.DirectionMode;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MovingObjectPosition;
@@ -9,8 +8,6 @@ import net.minecraft.world.World;
 
 public class EntityPhaserBlastDrill extends EntityPhaserBlast
 {
-	DirectionMode direction;
-	
 	public EntityPhaserBlastDrill(World world) 
 	{
 		super(world);
@@ -19,6 +16,7 @@ public class EntityPhaserBlastDrill extends EntityPhaserBlast
 	public EntityPhaserBlastDrill(World world, EntityLivingBase player, EntityPhaserDrill source) 
 	{
 		super(world, player, source);
+		//spawn the entity at the drill emitter rather than base
 		setPosition(posX, posY + 3, posZ);
 	}
 
@@ -27,15 +25,18 @@ public class EntityPhaserBlastDrill extends EntityPhaserBlast
 	{
 		if(operator == null) return;
 		
+		//don't impact with the drill
 		if(hitInfo.entityHit == source) return;
 		
+		//wipe out anything that stands in the way of the drill target
 		if(hitInfo.entityHit != null)
 		{
 			hitInfo.entityHit.setDead();
 			return;
 		}
 		
-		worldObj.createExplosion(operator, posX, posY, posZ, 4.0F, true);
+		//boom!
+		worldObj.createExplosion(operator, posX, posY, posZ, 6.0F, true);
 		setDead();
 	}
 }

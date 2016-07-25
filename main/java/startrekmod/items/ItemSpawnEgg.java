@@ -13,7 +13,9 @@ public class ItemSpawnEgg extends STItem
 	
 	public ItemSpawnEgg(String entityName)
 	{
-		super("egg");
+		//eggKlingon, eggHuman, and so on
+		super("egg" + entityName);
+		//startrekmod.Klingon, startrekmod.Romulan, and so on
 		this.entityName = STMod.MODID + '.' + entityName;
 		setCreativeTab(STCreativeTabs.tabSTEggs);
 	}
@@ -26,6 +28,7 @@ public class ItemSpawnEgg extends STItem
 		if(world.isRemote) return true;
 		
 		stack.stackSize--;
+		//obviously totally unsuitable for entities with custom constructors
 		Entity entity = EntityList.createEntityByName(entityName, world);
 		entity.setPosition(blockPosX, blockPosY + 1, blockPosZ);
 		world.spawnEntityInWorld(entity);

@@ -10,9 +10,9 @@ import java.util.List;
 
 public abstract class EntityProjectile extends Entity implements IProjectile
 {
-	public EntityLivingBase operator; //initiator of projectile firing
-	public Entity source; //either the initiator or the device that generates the projectile
-	public double speed; //absolute value of x, y, and z velocity components
+	public EntityLivingBase operator;
+	public Entity source;
+	public double speed;
 	
 	public EntityProjectile(World world)
 	{
@@ -64,17 +64,20 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 	@Override
 	protected void entityInit()
 	{
+		//not even going to get into it, so don't ask
 		setSize(.25F, .25F);
 	}
 
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound reader)
 	{
-		setDead(); //don't bother re-initializing from world save
+		//don't bother re-initializing from world save
+		setDead();
 	}
 
+	//see above
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound writer) {} //see above
+	protected void writeEntityToNBT(NBTTagCompound writer) {}
 
 	@Override
 	public void onUpdate()

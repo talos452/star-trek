@@ -4,7 +4,7 @@ import startrekmod.items.STItemSword;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
@@ -35,9 +35,10 @@ public class STEventHandler
 	public void interceptSwordBreakingBlock(BreakEvent event)
 	{
 		EntityPlayer player = event.getPlayer();
-		Item breakingItem = player.getCurrentEquippedItem().getItem();
+		ItemStack breakingItem = player.getCurrentEquippedItem();
 		
-		if(player.capabilities.isCreativeMode && breakingItem instanceof STItemSword)
+		if(player.capabilities.isCreativeMode && breakingItem != null
+			&& breakingItem.getItem() instanceof STItemSword)
 			event.setCanceled(true);
 	}
 }

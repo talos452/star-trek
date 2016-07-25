@@ -43,8 +43,8 @@ public class STItem extends Item
 	
 	public static void init()
 	{
-		phaser.setMaxStackSize(0).setCreativeTab(STCreativeTabs.tabSTHuman);
-		phaserRifle.setMaxStackSize(0).setCreativeTab(STCreativeTabs.tabSTHuman);
+		phaser.setCreativeTab(STCreativeTabs.tabSTHuman);
+		phaserRifle.setCreativeTab(STCreativeTabs.tabSTHuman);
 		batleth.setCreativeTab(STCreativeTabs.tabSTKlingon);
 		powerCell.setCreativeTab(STCreativeTabs.tabSTItems);
 		duraniumIngot.setCreativeTab(STCreativeTabs.tabSTItems);

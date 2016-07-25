@@ -21,8 +21,8 @@ public class ItemPhaser extends STItem
 	{
 		if(stack.getItemDamage() == stack.getMaxDamage())
 		{
-			world.playSoundEffect(player.posX + 0.5, player.posY + 0.5, player.posZ + 0.5,
-					"fire.ignite", 1.0F, 1.0F); //phaser is empty
+			//phaser is empty, play click sound
+			world.playSoundAtEntity(player, "fire.ignite", 1F, 1F);
 			return stack;
 		}
 		
@@ -34,7 +34,7 @@ public class ItemPhaser extends STItem
 			if(!player.capabilities.isCreativeMode)
 				stack.damageItem(1, player);
 			
-			world.playSoundAtEntity(player, "startrekmod:phaser_blast", 1, 1);
+			world.playSoundAtEntity(player, "startrekmod:phaser_blast", 1F, 1F);
 		}
 		
 		return stack;

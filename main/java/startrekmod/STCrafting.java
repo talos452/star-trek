@@ -14,6 +14,10 @@ public final class STCrafting
 		initSmeltingRecipes();
 	}
 	
+	/*
+	 * Formatting on these recipes may look odd, but believe me,
+	 * it's easier to read.
+	 */
 	static void initRecipes()
 	{
 		GameRegistry.addRecipe(new ItemStack(STItem.phaser, 1,
@@ -43,6 +47,8 @@ public final class STCrafting
 	
 	static void initShapelessRecipes()
 	{
+		//the two phaser recipes below are recipes that actually
+		//charge the phaser rather than craft something new
 		GameRegistry.addShapelessRecipe(new ItemStack(STItem.phaser),
 			new Object[] {new ItemStack(STItem.phaser, 0, STItem.phaser.getMaxDamage()),
 			STItem.powerCell});

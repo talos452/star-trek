@@ -10,6 +10,12 @@ import cpw.mods.fml.relauncher.*;
 
 import com.google.common.collect.Multimap;
 
+/*
+ * Basically a re-tool of ItemSword but without misbegotten
+ * conceptions about how to apply damage or how to register
+ * textures. Instead, "double damage" and a constructor that
+ * takes a texture path!
+ */
 public class STItemSword extends STItem
 {
 	double damage;
@@ -27,12 +33,14 @@ public class STItemSword extends STItem
         return true;
     }
 	
+	//not sure if I need it, but I get the feeling I do
 	@SideOnly(Side.CLIENT)
     public boolean isFull3D()
     {
         return true;
     }
 	
+	//unabashedly stolen from ItemSword. I have no shame.
 	public Multimap getItemAttributeModifiers()
     {
         Multimap multimap = super.getItemAttributeModifiers();

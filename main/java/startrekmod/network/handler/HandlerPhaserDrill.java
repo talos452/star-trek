@@ -11,7 +11,8 @@ import cpw.mods.fml.common.network.simpleimpl.*;
 
 public class HandlerPhaserDrill implements IMessageHandler<PacketPhaserDrill, IMessage>
 {
-	public HandlerPhaserDrill() {} //required for processing
+	//typically, a default constructor required
+	public HandlerPhaserDrill() {}
 	
 	@Override
 	public IMessage onMessage(PacketPhaserDrill message, MessageContext ctx)
@@ -20,15 +21,16 @@ public class HandlerPhaserDrill implements IMessageHandler<PacketPhaserDrill, IM
 		Entity entity = world.getEntityByID(message.drillID);
 		
 		if(!(entity instanceof EntityPhaserDrill)) return null;
+		//but if entity is not an EntityPhaserDrill, I don't know what the hell it is
 		
 		EntityPhaserDrill drill = (EntityPhaserDrill)entity;
 		drill.operator = (EntityPlayer)world.getEntityByID(message.playerID);
 		
-		if(message.direction == null)
+		//-1 is a code to fire rather than rotate
+		if(message.angle == -1F)
 			drill.countdownTicks = 100;
 		else
-			drill.setDirection(message.direction);
-		
+			drill.rotationYaw = message.angle;		
 		return null;
 	}
 }

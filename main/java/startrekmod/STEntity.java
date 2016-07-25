@@ -29,6 +29,10 @@ public class STEntity
 			getNextID(), instance, 64, 3, true);		
 	}
 	
+	/*
+	 * In case I decide to do something special with NPCs later,
+	 * this method will let me do it properly.
+	 */
 	public static void initNPCs()
 	{
 		EntityRegistry.registerModEntity(EntityKlingon.class, "Klingon",
@@ -37,6 +41,7 @@ public class STEntity
 	
 	/*
 	 * Returns a unique ID to register an entity.
+	 * Compensates for buggy EntityRegistry.getUniqueID()
 	 */
 	public static int getNextID()
 	{

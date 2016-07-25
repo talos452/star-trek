@@ -21,10 +21,11 @@ public class STMod
 	
 	/*
 	 * Guidelines for preinit and init methods.
-	 * Obviously, they should always be static.
+	 * Obviously, they should usually be static.
 	 * They should belong to ST-something classes.
 	 * preinit() should do nothing but initialize static variables.
 	 * init() should set up their properties.
+	 * This prevents null reference exceptions on mod loading.
 	 */
 	@EventHandler
 	public void init(FMLInitializationEvent event)
