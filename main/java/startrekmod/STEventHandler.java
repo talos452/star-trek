@@ -37,6 +37,7 @@ public class STEventHandler
 		EntityPlayer player = event.getPlayer();
 		Item breakingItem = player.getCurrentEquippedItem().getItem();
 		
+		if(player.capabilities.isCreativeMode && breakingItem instanceof STItemSword)
 			event.setCanceled(true);
 	}
 }
