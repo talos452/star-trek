@@ -18,6 +18,9 @@ public class STItem extends Item
 	public static Item batleth;
 	public static Item phaserDrill;
 	public static Item gagh;
+	public static Item dktahg;
+	public static Item spawnKlingon;
+	public static Item painStick;
 	
 	public STItem(String textureName)
 	{
@@ -39,6 +42,8 @@ public class STItem extends Item
 		batleth = new STItemSword("batleth", 8, -1);
 		phaserDrill = new ItemPhaserDrill("phaser_drill");
 		gagh = new ItemGagh();
+		dktahg = new STItemSword("dktahg", 6, -1);
+		spawnKlingon = new ItemSpawnEgg("Klingon");
 	}
 	
 	public static void init()
@@ -53,5 +58,7 @@ public class STItem extends Item
 		goldLatinum.setCreativeTab(STCreativeTabs.tabSTItems);
 		phaserDrill.setCreativeTab(STCreativeTabs.tabSTHuman);
 		gagh.setCreativeTab(STCreativeTabs.tabSTKlingon);
+		dktahg.setCreativeTab(STCreativeTabs.tabSTKlingon);
+		spawnKlingon.setCreativeTab(STCreativeTabs.tabSTEggs);
 	}
 }
