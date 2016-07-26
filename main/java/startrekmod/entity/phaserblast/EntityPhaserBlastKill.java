@@ -29,7 +29,7 @@ public class EntityPhaserBlastKill extends EntityPhaserBlast {
 		if(hitInfo.entityHit != null && hitInfo.entityHit instanceof EntityLivingBase)
 		{
 			EntityLivingBase shotEntity = (EntityLivingBase)hitInfo.entityHit;
-			shotEntity.attackEntityFrom(DamageSource.inFire, 15F);
+			shotEntity.attackEntityFrom(DamageSource.causeMobDamage(operator), 15F);
 		}
 		else
 			worldObj.createExplosion(operator, posX, posY, posZ, 2.0F, true);

@@ -37,7 +37,7 @@ public class EntityPhaserBlastStun extends EntityPhaserBlast {
 		}
 		
 		EntityLivingBase stunnedEntity = (EntityLivingBase)entityHit;
-		stunnedEntity.attackEntityFrom(DamageSource.onFire, 1F);
+		stunnedEntity.attackEntityFrom(DamageSource.causeMobDamage(operator), 1F);
 		PotionEffect stun = new PotionEffect(Potion.moveSlowdown.id, 200, 1);
 		stunnedEntity.addPotionEffect(stun);
 	}
