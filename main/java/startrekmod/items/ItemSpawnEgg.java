@@ -14,7 +14,7 @@ public class ItemSpawnEgg extends STItem
 	public ItemSpawnEgg(String entityName)
 	{
 		//eggKlingon, eggHuman, and so on
-		super("egg" + entityName);
+		super("egg_" + entityName);
 		//startrekmod.Klingon, startrekmod.Romulan, and so on
 		this.entityName = STMod.MODID + '.' + entityName;
 		setCreativeTab(STCreativeTabs.tabSTEggs);

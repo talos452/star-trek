@@ -44,6 +44,7 @@ public class STItem extends Item
 		gagh = new ItemGagh();
 		dktahg = new STItemSword("dktahg", 6, -1);
 		spawnKlingon = new ItemSpawnEgg("Klingon");
+		painStick = new ItemPainStick();
 	}
 	
 	public static void init()
@@ -60,5 +61,6 @@ public class STItem extends Item
 		gagh.setCreativeTab(STCreativeTabs.tabSTKlingon);
 		dktahg.setCreativeTab(STCreativeTabs.tabSTKlingon);
 		spawnKlingon.setCreativeTab(STCreativeTabs.tabSTEggs);
+		painStick.setCreativeTab(STCreativeTabs.tabSTKlingon);
 	}
 }
