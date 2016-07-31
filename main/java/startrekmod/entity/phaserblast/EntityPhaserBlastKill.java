@@ -19,7 +19,7 @@ public class EntityPhaserBlastKill extends EntityPhaserBlast {
 	@Override
 	public void onImpact(MovingObjectPosition hitInfo)
 	{
-		//safety check, not sure if this will ever happen
+		//safety check
 		if(operator == null)
 		{
 			setDead();

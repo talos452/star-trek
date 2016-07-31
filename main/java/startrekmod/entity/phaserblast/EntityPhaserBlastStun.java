@@ -21,8 +21,20 @@ public class EntityPhaserBlastStun extends EntityPhaserBlast {
 	@Override
 	public void onImpact(MovingObjectPosition hitInfo)
 	{
-		//safety check and wasted shot check
-		if(operator == null || hitInfo.typeOfHit == MovingObjectType.BLOCK)
+		if(hitInfo.typeOfHit == MovingObjectType.BLOCK)
+		{
+			//test if block can be shot through
+			if(!worldObj.getBlock(hitInfo.blockX, hitInfo.blockY, hitInfo.blockZ).isOpaqueCube())
+				return;
+			else
+			{
+				setDead();
+				return;
+			}
+		}
+		
+		//safety check
+		if(operator == null)
 		{
 			setDead();
 			return;

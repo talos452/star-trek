@@ -10,7 +10,7 @@ public class ItemPainStick extends STItem
 {
 	public ItemPainStick()
 	{
-		super("pain_stick");
+		super("pain_stik");
 	}
 	
 	@Override
