@@ -117,7 +117,7 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 			{
 				Entity candidate = (Entity)nearby.get(j);
 
-				if (candidate.canBeCollidedWith() && (candidate != operator))
+				if (candidate.canBeCollidedWith() && (candidate != operator) && (candidate != source))
 				{
 					AxisAlignedBB axisalignedbb = candidate.boundingBox.expand(.3, .3, .3);
 					

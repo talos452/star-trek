@@ -1,8 +1,8 @@
 package startrekmod;
 
 import startrekmod.entity.EntityPhaserDrill;
+import startrekmod.entity.energyblast.*;
 import startrekmod.entity.npc.EntityKlingon;
-import startrekmod.entity.phaserblast.*;
 import startrekmod.graphics.render.*;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -17,7 +17,9 @@ public class STGraphics
 			new RenderPhaserBlast());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBlastKill.class,
 			new RenderPhaserBlast());
-		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBlastDrill.class,
+		RenderingRegistry.registerEntityRenderingHandler(EntityDrillBlast.class,
+			new RenderPhaserBlast());
+		RenderingRegistry.registerEntityRenderingHandler(EntityDisruptorBlastKill.class,
 			new RenderPhaserBlast());
 		
 		initNPCs();

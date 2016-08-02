@@ -1,7 +1,7 @@
 package startrekmod.entity;
 
 import startrekmod.*;
-import startrekmod.entity.phaserblast.EntityPhaserBlastDrill;
+import startrekmod.entity.energyblast.EntityDrillBlast;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -78,7 +78,7 @@ public class EntityPhaserDrill extends Entity
 		if(countdownTicks-- != 0) return;
 		
 		worldObj.playSoundAtEntity(this, "startrekmod:phaser_blast", 1, 1);
-		Entity blast = new EntityPhaserBlastDrill(worldObj, operator, this);
+		Entity blast = new EntityDrillBlast(worldObj, operator, this);
 		worldObj.spawnEntityInWorld(blast);
 	}
 

@@ -1,4 +1,4 @@
-package startrekmod.entity.phaserblast;
+package startrekmod.entity.energyblast;
 
 import net.minecraft.entity.*;
 import net.minecraft.potion.*;
@@ -6,16 +6,18 @@ import net.minecraft.util.*;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 
-public class EntityPhaserBlastStun extends EntityPhaserBlast {
+import java.awt.Color;
 
+public class EntityPhaserBlastStun extends EntityEnergyBlast
+{
 	public EntityPhaserBlastStun(World world) 
 	{
 		super(world);
 	}
 
-	public EntityPhaserBlastStun(World world, EntityLivingBase player) 
+	public EntityPhaserBlastStun(World world, EntityLivingBase operator) 
 	{
-		super(world, player);
+		super(world, operator);
 	}
 
 	@Override
@@ -41,6 +43,8 @@ public class EntityPhaserBlastStun extends EntityPhaserBlast {
 		}
 		
 		Entity entityHit = hitInfo.entityHit;
+		//simple knockback effect
+		entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, operator), 0);
 		
 		if(!(entityHit instanceof EntityLivingBase))
 		{
@@ -49,8 +53,16 @@ public class EntityPhaserBlastStun extends EntityPhaserBlast {
 		}
 		
 		EntityLivingBase stunnedEntity = (EntityLivingBase)entityHit;
-		stunnedEntity.attackEntityFrom(DamageSource.causeMobDamage(operator), 1F);
 		PotionEffect stun = new PotionEffect(Potion.moveSlowdown.id, 200, 1);
+		PotionEffect nausea = new PotionEffect(Potion.confusion.id, 600, 0);
 		stunnedEntity.addPotionEffect(stun);
+		stunnedEntity.addPotionEffect(nausea);		
+		setDead();
+	}
+	
+	@Override
+	public Color getBeamColour()
+	{
+		return new Color(1F, 0.25F, 0F);
 	}
 }

@@ -20,14 +20,14 @@ public final class STCrafting
 	 */
 	static void initRecipes()
 	{
-		GameRegistry.addRecipe(new ItemStack(STItem.phaser, 1,
-			STItem.phaser.getMaxDamage()),
+		GameRegistry.addRecipe(new ItemStack(STItem.phaserII, 1,
+			STItem.phaserII.getMaxDamage()),
 			new Object[] {"DTU",
 			'D', STItem.dilithiumCrystal,
 			'T', Blocks.stone_button,
 			'U', STItem.duraniumIngot});
-		GameRegistry.addRecipe(new ItemStack(STItem.phaserRifle, 1,
-			STItem.phaserRifle.getMaxDamage()),
+		GameRegistry.addRecipe(new ItemStack(STItem.phaserIII, 1,
+			STItem.phaserIII.getMaxDamage()),
 			new Object[] {"DUU", " TU",
 			'D', STItem.dilithiumCrystal,
 			'T', Blocks.stone_button,
@@ -49,12 +49,12 @@ public final class STCrafting
 	{
 		//the two phaser recipes below are recipes that actually
 		//charge the phaser rather than craft something new
-		GameRegistry.addShapelessRecipe(new ItemStack(STItem.phaser),
-			new Object[] {new ItemStack(STItem.phaser, 0, STItem.phaser.getMaxDamage()),
+		GameRegistry.addShapelessRecipe(new ItemStack(STItem.phaserII),
+			new Object[] {new ItemStack(STItem.phaserII, 0, STItem.phaserII.getMaxDamage()),
 			STItem.powerCell});
-		GameRegistry.addShapelessRecipe(new ItemStack(STItem.phaserRifle),
-			new Object[] {new ItemStack(STItem.phaserRifle, 0,
-			STItem.phaserRifle.getMaxDamage()), STItem.powerCell});
+		GameRegistry.addShapelessRecipe(new ItemStack(STItem.phaserIII),
+			new Object[] {new ItemStack(STItem.phaserIII, 0,
+			STItem.phaserIII.getMaxDamage()), STItem.powerCell});
 		GameRegistry.addShapelessRecipe(new ItemStack(STItem.powerCell),
 			new Object[] {STItem.duraniumIngot, Items.redstone});
 		GameRegistry.addShapelessRecipe(new ItemStack(STItem.goldLatinum, 2),

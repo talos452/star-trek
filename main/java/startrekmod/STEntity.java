@@ -1,8 +1,8 @@
 package startrekmod;
 
 import startrekmod.entity.EntityPhaserDrill;
+import startrekmod.entity.energyblast.*;
 import startrekmod.entity.npc.EntityKlingon;
-import startrekmod.entity.phaserblast.*;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
 
@@ -25,8 +25,10 @@ public class STEntity
 			getNextID(), instance, 64, 3, true);
 		EntityRegistry.registerModEntity(EntityPhaserBlastKill.class, "PhaserBlastKill",
 			getNextID(), instance, 64, 3, true);
-		EntityRegistry.registerModEntity(EntityPhaserBlastDrill.class, "PhaserBlastDrill",
-			getNextID(), instance, 64, 3, true);		
+		EntityRegistry.registerModEntity(EntityDrillBlast.class, "PhaserBlastDrill",
+			getNextID(), instance, 64, 3, true);
+		EntityRegistry.registerModEntity(EntityDisruptorBlastKill.class, "DisruptorBlastKill",
+			getNextID(), instance, 64, 3, true);
 	}
 	
 	/*

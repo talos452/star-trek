@@ -1,5 +1,6 @@
 package startrekmod;
 
+import startrekmod.entity.energyblast.*;
 import startrekmod.items.*;
 
 import net.minecraft.item.Item;
@@ -8,8 +9,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class STItem extends Item
 {
-    public static Item phaser;
-	public static Item phaserRifle;
+    public static Item phaserII;
+	public static Item phaserIII;
 	public static Item powerCell;
 	public static Item duraniumIngot;
 	public static Item latinumIngot;
@@ -21,6 +22,7 @@ public class STItem extends Item
 	public static Item dktahg;
 	public static Item spawnKlingon;
 	public static Item painStick;
+	public static Item disrupterKlingon;
 	
 	public STItem(String textureName)
 	{
@@ -32,8 +34,8 @@ public class STItem extends Item
 	
 	public static void preinit()
 	{
-		phaser = new ItemPhaser("phaser");
-		phaserRifle = new ItemPhaserRifle("phaser_rifle");
+		phaserII = new ItemEnergyWeapon("type_ii_phaser", EntityPhaserBlastStun.class, 400);
+		phaserIII = new ItemEnergyWeapon("type_iii_phaser", EntityPhaserBlastKill.class, 100);
 		powerCell = new STItem("power_cell");
 		duraniumIngot = new STItem("duranium_ingot");
 		latinumIngot = new STItem("latinum_ingot");
@@ -45,12 +47,13 @@ public class STItem extends Item
 		dktahg = new STItemSword("dktahg", 6, -1);
 		spawnKlingon = new ItemSpawnEgg("Klingon");
 		painStick = new ItemPainStick();
+		disrupterKlingon = new ItemEnergyWeapon("klingon_disruptor", EntityDisruptorBlastKill.class, 100);
 	}
 	
 	public static void init()
 	{
-		phaser.setCreativeTab(STCreativeTabs.tabSTHuman);
-		phaserRifle.setCreativeTab(STCreativeTabs.tabSTHuman);
+		phaserII.setCreativeTab(STCreativeTabs.tabSTHuman);
+		phaserIII.setCreativeTab(STCreativeTabs.tabSTHuman);
 		batleth.setCreativeTab(STCreativeTabs.tabSTKlingon);
 		powerCell.setCreativeTab(STCreativeTabs.tabSTItems);
 		duraniumIngot.setCreativeTab(STCreativeTabs.tabSTItems);
@@ -62,5 +65,6 @@ public class STItem extends Item
 		dktahg.setCreativeTab(STCreativeTabs.tabSTKlingon);
 		spawnKlingon.setCreativeTab(STCreativeTabs.tabSTEggs);
 		painStick.setCreativeTab(STCreativeTabs.tabSTKlingon);
+		disrupterKlingon.setCreativeTab(STCreativeTabs.tabSTKlingon);
 	}
 }

@@ -31,7 +31,7 @@ public class STCreativeTabs extends CreativeTabs
 		tabSTBlocks = new STCreativeTabs("tabSTBlocks", Item.getItemFromBlock(STBlock.dilithiumBlock));
 		tabSTItems = new STCreativeTabs("tabSTItems", STItem.dilithiumCrystal);
 		tabSTEggs = new STCreativeTabs("tabSTEggs", Items.egg);
-		tabSTHuman = new STCreativeTabs("tabSTHuman", STItem.phaser);
+		tabSTHuman = new STCreativeTabs("tabSTHuman", STItem.phaserII);
 		tabSTKlingon = new STCreativeTabs("tabSTKlingon", STItem.batleth);
 	}
 }
