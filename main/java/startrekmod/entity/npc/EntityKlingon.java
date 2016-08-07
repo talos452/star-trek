@@ -18,6 +18,24 @@ public class EntityKlingon extends STEntityNPC
 	}
 	
 	@Override
+	protected void entityInit()
+	{
+		//without this call, DataWatcher throws a NullPointerException of some sort
+		super.entityInit();
+		
+		speechBanks = new String[]
+			{
+					"bIHegh jIH",
+					"ghargh vISop bongIlchugh?",
+					"mInDu'wIj HoS DIvI'",
+					"tlhIngan wo' SuvwI'",
+					"SoHvaD laH moDbej. vabDot Saj targh",
+					"largh SoH rur chal quvHa'",
+					"tlhInganpu' 'ach HoS Segh lutu'lu'be'chugh."
+			};
+	}
+	
+	@Override
 	public void setupAI()
 	{
 		super.setupAI();
@@ -38,4 +56,7 @@ public class EntityKlingon extends STEntityNPC
 		attackEntity(target, 4);
 		return true;
 	}
+
+	@Override
+	public void performInteract(EntityPlayer player) {}
 }
