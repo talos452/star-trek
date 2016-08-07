@@ -1,15 +1,14 @@
 package startrekmod;
 
 import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 
 @Mod(modid = STMod.MODID, version = STMod.VERSION, name = STMod.NAME)
 public class STMod 
 {
 	public static final String MODID = "startrekmod";
-	public static final String VERSION = "1.5.0";
+	public static final String VERSION = "1.6.0";
 	public static final String NAME = "Star Trek mod";
 	
 	@Instance
