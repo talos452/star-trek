@@ -11,8 +11,6 @@ import java.awt.Color;
 
 public class EntityDrillBlast extends EntityEnergyBlast
 {
-	int impactsLeft = 4;
-	
 	public EntityDrillBlast(World world) 
 	{
 		super(world);
@@ -35,18 +33,9 @@ public class EntityDrillBlast extends EntityEnergyBlast
 		}
 		
 		if(hitInfo.typeOfHit == MovingObjectType.BLOCK)
-		{
-			worldObj.setBlockToAir(hitInfo.blockX, hitInfo.blockY, hitInfo.blockZ);
-			impactsLeft--;
-		}
+			worldObj.createExplosion(operator, hitInfo.blockX, hitInfo.blockY, hitInfo.blockZ, 2.0F, true);
 		else
-		{
 			hitInfo.entityHit.attackEntityFrom(DamageSource.onFire, 50);
-			impactsLeft--;
-		}
-		
-		if(impactsLeft == 0)
-			setDead();
 	}
 
 	@Override

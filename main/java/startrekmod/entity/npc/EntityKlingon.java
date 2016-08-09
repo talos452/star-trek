@@ -24,15 +24,15 @@ public class EntityKlingon extends STEntityNPC
 		super.entityInit();
 		
 		speechBanks = new String[]
-			{
-					"bIHegh jIH",
-					"ghargh vISop bongIlchugh?",
-					"mInDu'wIj HoS DIvI'",
-					"tlhIngan wo' SuvwI'",
-					"SoHvaD laH moDbej. vabDot Saj targh",
-					"largh SoH rur chal quvHa'",
-					"tlhInganpu' 'ach HoS Segh lutu'lu'be'chugh."
-			};
+		{
+			"bIHegh jIH",
+			"ghargh vISop bongIlchugh?",
+			"mInDu'wIj HoS DIvI'",
+			"tlhIngan wo' SuvwI'",
+			"SoHvaD laH moDbej. vabDot Saj targh",
+			"largh SoH rur chal quvHa'",
+			"tlhInganpu' 'ach HoS Segh lutu'lu'be'chugh."
+		};
 	}
 	
 	@Override
@@ -40,7 +40,7 @@ public class EntityKlingon extends STEntityNPC
 	{
 		super.setupAI();
 		targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-		tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.4, true));
+		tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.6, true));
 	}
 	
 	@Override

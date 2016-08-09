@@ -29,8 +29,8 @@ public class STMod
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		STBlock.preinit();
 		STItem.preinit();
+		STBlock.preinit();
 		STCreativeTabs.preinit();
 		
 		PROXY.init();

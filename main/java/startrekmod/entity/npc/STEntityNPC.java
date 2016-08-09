@@ -20,10 +20,11 @@ public abstract class STEntityNPC extends EntityCreature
 	public void setupAI()
 	{
 		//guessing that .4 refers to blocks per second? I have no idea.
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.4);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.6);
 		//same for this value
 		tasks.addTask(10, new EntityAIWander(this, 0.6));
         tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        tasks.addTask(10, new EntityAISwimming(this));
 	}
 	
 	@Override

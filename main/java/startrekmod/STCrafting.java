@@ -5,6 +5,10 @@ import net.minecraft.item.ItemStack;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
+/*
+ * This class does not provide all crafting recipes.
+ * The ore storage blocks set up their own crafting recipes.
+ */
 public final class STCrafting
 {
 	public static void init()

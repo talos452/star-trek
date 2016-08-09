@@ -24,3 +24,8 @@ Added recipes for phaser drills and gagh.
 Added new GUI for phaser drill.
 Added Klingon NPC.
 Added duranium and dilithium blocks.
+
+1.6.0 - The Klingon Update
+
+Added Klingon painstik, disruptor, d’k tagh, and spawn egg.
+Added speech capabilities to NPCs.
