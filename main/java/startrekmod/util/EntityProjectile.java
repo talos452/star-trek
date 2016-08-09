@@ -1,27 +1,18 @@
 package startrekmod.util;
 
-import java.util.List;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public abstract class EntityProjectile extends Entity implements IProjectile
 {
-	public EntityLivingBase operator; //initiator of projectile firing
-	public Entity source; //either the initiator or the device that generates the projectile
-	public double speed; //absolute value of x, y, and z velocity components
+	public EntityLivingBase operator;
+	public Entity source;
+	public double speed;
 	
 	public EntityProjectile(World world)
 	{
@@ -73,17 +64,20 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 	@Override
 	protected void entityInit()
 	{
+		//not even going to get into it, so don't ask
 		setSize(.25F, .25F);
 	}
 
 	@Override
 	protected void readEntityFromNBT(NBTTagCompound reader)
 	{
-		setDead(); //don't bother re-initializing from world save
+		//don't bother re-initializing from world save
+		setDead();
 	}
 
+	//see above
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound writer) {} //see above
+	protected void writeEntityToNBT(NBTTagCompound writer) {}
 
 	@Override
 	public void onUpdate()
@@ -123,7 +117,7 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 			{
 				Entity candidate = (Entity)nearby.get(j);
 
-				if (candidate.canBeCollidedWith() && (candidate != operator))
+				if (candidate.canBeCollidedWith() && (candidate != operator) && (candidate != source))
 				{
 					AxisAlignedBB axisalignedbb = candidate.boundingBox.expand(.3, .3, .3);
 					

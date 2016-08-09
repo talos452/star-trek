@@ -1,11 +1,11 @@
-package startrekmod.graphics;
+package startrekmod;
 
-import net.minecraft.entity.Entity;
-import cpw.mods.fml.client.registry.*;
+import startrekmod.entity.EntityPhaserDrill;
+import startrekmod.entity.energyblast.*;
+import startrekmod.entity.npc.EntityKlingon;
+import startrekmod.graphics.render.*;
 
-import startrekmod.entity.*;
-import startrekmod.entity.npc.*;
-import startrekmod.entity.phaserblast.*;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class STGraphics
 {
@@ -17,12 +17,18 @@ public class STGraphics
 			new RenderPhaserBlast());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBlastKill.class,
 			new RenderPhaserBlast());
-		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBlastDrill.class,
+		RenderingRegistry.registerEntityRenderingHandler(EntityDrillBlast.class,
+			new RenderPhaserBlast());
+		RenderingRegistry.registerEntityRenderingHandler(EntityDisruptorBlastKill.class,
 			new RenderPhaserBlast());
 		
 		initNPCs();
 	}
 	
+	/*
+	 * Just in case I want to do something special with NPCs later,
+	 * I put this here to make it more convenient/readable.
+	 */
 	public static void initNPCs()
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityKlingon.class,

@@ -1,8 +1,8 @@
 package startrekmod.entity.npc;
 
-import startrekmod.items.STItem;
+import startrekmod.STItem;
+
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -18,12 +18,29 @@ public class EntityKlingon extends STEntityNPC
 	}
 	
 	@Override
+	protected void entityInit()
+	{
+		//without this call, DataWatcher throws a NullPointerException of some sort
+		super.entityInit();
+		
+		speechBanks = new String[]
+		{
+			"bIHegh jIH",
+			"ghargh vISop bongIlchugh?",
+			"mInDu'wIj HoS DIvI'",
+			"tlhIngan wo' SuvwI'",
+			"SoHvaD laH moDbej. vabDot Saj targh",
+			"largh SoH rur chal quvHa'",
+			"tlhInganpu' 'ach HoS Segh lutu'lu'be'chugh."
+		};
+	}
+	
+	@Override
 	public void setupAI()
 	{
 		super.setupAI();
 		targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-		tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.4, true));
-        tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+		tasks.addTask(0, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.6, true));
 	}
 	
 	@Override
@@ -32,17 +49,14 @@ public class EntityKlingon extends STEntityNPC
 		entity.attackEntityFrom(DamageSource.causeMobDamage(this), damage);
 	}
 	
-	@Override
-	public Entity findPlayerToAttack()
-    {
-        EntityPlayer entityplayer = worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
-        return entityplayer != null && canEntityBeSeen(entityplayer) ? entityplayer : null;
-    }
-	
+	//required for AI
 	@Override
 	public boolean attackEntityAsMob(Entity target)
 	{
 		attackEntity(target, 4);
 		return true;
 	}
+
+	@Override
+	public void performInteract(EntityPlayer player) {}
 }

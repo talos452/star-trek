@@ -1,22 +1,25 @@
 package startrekmod.network.packet;
 
-import net.minecraft.entity.player.EntityPlayer;
 import startrekmod.entity.EntityPhaserDrill;
-import startrekmod.util.DirectionMode;
+
+import net.minecraft.entity.player.EntityPlayer;
+
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+
 import io.netty.buffer.ByteBuf;
-import cpw.mods.fml.common.network.simpleimpl.*;
 
 public class PacketPhaserDrill implements IMessage
 {
-	public DirectionMode direction;
+	public float angle;
 	public int drillID;
 	public int playerID;
 	
-	public PacketPhaserDrill() {} //required for processing
+	//typically, a default constructor required
+	public PacketPhaserDrill() {}
 	
-	public PacketPhaserDrill(DirectionMode direction, EntityPhaserDrill drill, EntityPlayer player)
+	public PacketPhaserDrill(float angle, EntityPhaserDrill drill, EntityPlayer player)
 	{
-		this.direction = direction;
+		this.angle = angle;
 		drillID = drill.getEntityId();
 		playerID = player.getEntityId();
 	}
@@ -24,8 +27,7 @@ public class PacketPhaserDrill implements IMessage
 	@Override
 	public void fromBytes(ByteBuf data)
 	{
-		int angle = data.readInt();
-		direction = (angle != 1) ? DirectionMode.fromAngle(angle) : null;
+		angle = data.readFloat();
 		drillID = data.readInt();
 		playerID = data.readInt();
 	}
@@ -33,7 +35,7 @@ public class PacketPhaserDrill implements IMessage
 	@Override
 	public void toBytes(ByteBuf data)
 	{
-		data.writeInt((direction != null) ? direction.angle : 1);
+		data.writeFloat(angle);
 		data.writeInt(drillID);
 		data.writeInt(playerID);
 	}

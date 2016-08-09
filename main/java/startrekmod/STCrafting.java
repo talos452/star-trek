@@ -1,13 +1,14 @@
 package startrekmod;
 
-import startrekmod.blocks.*;
-import startrekmod.items.*;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
+import net.minecraft.init.*;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
+/*
+ * This class does not provide all crafting recipes.
+ * The ore storage blocks set up their own crafting recipes.
+ */
 public final class STCrafting
 {
 	public static void init()
@@ -15,19 +16,22 @@ public final class STCrafting
 		initRecipes();
 		initShapelessRecipes();
 		initSmeltingRecipes();
-		initOreBlockRecipes();
 	}
 	
+	/*
+	 * Formatting on these recipes may look odd, but believe me,
+	 * it's easier to read.
+	 */
 	static void initRecipes()
 	{
-		GameRegistry.addRecipe(new ItemStack(STItem.phaser, 1,
-			STItem.phaser.getMaxDamage()),
+		GameRegistry.addRecipe(new ItemStack(STItem.phaserII, 1,
+			STItem.phaserII.getMaxDamage()),
 			new Object[] {"DTU",
 			'D', STItem.dilithiumCrystal,
 			'T', Blocks.stone_button,
 			'U', STItem.duraniumIngot});
-		GameRegistry.addRecipe(new ItemStack(STItem.phaserRifle, 1,
-			STItem.phaserRifle.getMaxDamage()),
+		GameRegistry.addRecipe(new ItemStack(STItem.phaserIII, 1,
+			STItem.phaserIII.getMaxDamage()),
 			new Object[] {"DUU", " TU",
 			'D', STItem.dilithiumCrystal,
 			'T', Blocks.stone_button,
@@ -47,12 +51,14 @@ public final class STCrafting
 	
 	static void initShapelessRecipes()
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(STItem.phaser),
-			new Object[] {new ItemStack(STItem.phaser, 0, STItem.phaser.getMaxDamage()),
+		//the two phaser recipes below are recipes that actually
+		//charge the phaser rather than craft something new
+		GameRegistry.addShapelessRecipe(new ItemStack(STItem.phaserII),
+			new Object[] {new ItemStack(STItem.phaserII, 0, STItem.phaserII.getMaxDamage()),
 			STItem.powerCell});
-		GameRegistry.addShapelessRecipe(new ItemStack(STItem.phaserRifle),
-			new Object[] {new ItemStack(STItem.phaserRifle, 0,
-			STItem.phaserRifle.getMaxDamage()), STItem.powerCell});
+		GameRegistry.addShapelessRecipe(new ItemStack(STItem.phaserIII),
+			new Object[] {new ItemStack(STItem.phaserIII, 0,
+			STItem.phaserIII.getMaxDamage()), STItem.powerCell});
 		GameRegistry.addShapelessRecipe(new ItemStack(STItem.powerCell),
 			new Object[] {STItem.duraniumIngot, Items.redstone});
 		GameRegistry.addShapelessRecipe(new ItemStack(STItem.goldLatinum, 2),
@@ -67,18 +73,6 @@ public final class STCrafting
 			new ItemStack(STItem.duraniumIngot), 0);
 		GameRegistry.addSmelting(STBlock.latinumOre,
 			new ItemStack(STItem.latinumIngot), 0);
-	}
-	
-	static void initOreBlockRecipes()
-	{
-		for(STBlockOre ore : STBlock.oreBlockList)
-		{
-			GameRegistry.addRecipe(new ItemStack(ore),
-				new Object[] {"III", "III", "III",
-				'I', ore.ingot});
-			GameRegistry.addShapelessRecipe(new ItemStack(ore.ingot, 9),
-				new Object[] {ore});
-		}
 	}
 }
 

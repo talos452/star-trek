@@ -1,5 +1,6 @@
 package startrekmod.items;
 
+import startrekmod.STItem;
 import startrekmod.entity.EntityPhaserDrill;
 
 import net.minecraft.entity.player.EntityPlayer;

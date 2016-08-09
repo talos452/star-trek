@@ -1,10 +1,12 @@
-package startrekmod.graphics;
+package startrekmod.graphics.render;
 
-import org.lwjgl.opengl.GL11;
+import startrekmod.graphics.model.ModelPhaserDrill;
+
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
 
 public class RenderPhaserDrill extends Render
 {
@@ -17,6 +19,7 @@ public class RenderPhaserDrill extends Render
 	{
 		GL11.glPushMatrix();
 		bindTexture(getEntityTexture(entity));
+		//render at proper above-ground position
 		GL11.glTranslated(transX, transY + 3, transZ);
 		GL11.glScaled(1, 1, 1);
 		GL11.glRotated(entity.rotationYaw, 0, -1, 0);

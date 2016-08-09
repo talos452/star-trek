@@ -1,10 +1,15 @@
-package startrekmod.graphics;
+package startrekmod.graphics.render;
 
-import org.lwjgl.opengl.GL11;
-import startrekmod.entity.phaserblast.EntityPhaserBlast;
+import startrekmod.entity.energyblast.EntityEnergyBlast;
+import startrekmod.graphics.model.ModelPhaserBlast;
+
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+
+import java.awt.Color;
+
+import org.lwjgl.opengl.GL11;
 
 public class RenderPhaserBlast extends Render 
 {
@@ -17,6 +22,9 @@ public class RenderPhaserBlast extends Render
 	{
 		GL11.glPushMatrix();
 		bindTexture(getEntityTexture(entity));
+		Color beamColour = ((EntityEnergyBlast)entity).getBeamColour();
+		//oddly enough, the ints don't work correctly so convert to float
+		GL11.glColor3f(beamColour.getRed() / 255F, beamColour.getGreen() / 255F, beamColour.getBlue() / 255F);
 		GL11.glTranslated(transX, transY, transZ);
 		GL11.glScaled(1, 1, 1);
 		//rotates around vector specified by 3 values
@@ -35,5 +43,4 @@ public class RenderPhaserBlast extends Render
 	{
 		return new ResourceLocation("startrekmod:textures/entity/phaser_blast.png");
 	}
-
 }

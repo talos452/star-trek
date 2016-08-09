@@ -1,4 +1,4 @@
-package startrekmod.graphics;
+package startrekmod.graphics.render;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
@@ -9,6 +9,7 @@ public class RenderKlingon extends RenderBiped
 {
 	public RenderKlingon()
 	{
+		//.5 is shadow size
 		super(new ModelBiped(), 0.5F);
 	}
 	

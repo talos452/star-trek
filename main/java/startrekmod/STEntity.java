@@ -1,9 +1,10 @@
-package startrekmod.entity;
+package startrekmod;
+
+import startrekmod.entity.EntityPhaserDrill;
+import startrekmod.entity.energyblast.*;
+import startrekmod.entity.npc.EntityKlingon;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
-import startrekmod.STMod;
-import startrekmod.entity.phaserblast.*;
-import startrekmod.entity.npc.*;
 
 public class STEntity 
 {
@@ -24,10 +25,16 @@ public class STEntity
 			getNextID(), instance, 64, 3, true);
 		EntityRegistry.registerModEntity(EntityPhaserBlastKill.class, "PhaserBlastKill",
 			getNextID(), instance, 64, 3, true);
-		EntityRegistry.registerModEntity(EntityPhaserBlastDrill.class, "PhaserBlastDrill",
-			getNextID(), instance, 64, 3, true);		
+		EntityRegistry.registerModEntity(EntityDrillBlast.class, "PhaserBlastDrill",
+			getNextID(), instance, 64, 3, true);
+		EntityRegistry.registerModEntity(EntityDisruptorBlastKill.class, "DisruptorBlastKill",
+			getNextID(), instance, 64, 3, true);
 	}
 	
+	/*
+	 * In case I decide to do something special with NPCs later,
+	 * this method will let me do it properly.
+	 */
 	public static void initNPCs()
 	{
 		EntityRegistry.registerModEntity(EntityKlingon.class, "Klingon",
@@ -36,6 +43,7 @@ public class STEntity
 	
 	/*
 	 * Returns a unique ID to register an entity.
+	 * Compensates for buggy EntityRegistry.getUniqueID()
 	 */
 	public static int getNextID()
 	{
