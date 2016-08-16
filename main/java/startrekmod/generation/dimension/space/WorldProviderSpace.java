@@ -1,12 +1,15 @@
 package startrekmod.generation.dimension.space;
 
 import startrekmod.STGeneration;
-import startrekmod.generation.dimension.space.*;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
+
+import cpw.mods.fml.relauncher.*;
 
 public class WorldProviderSpace extends WorldProvider
 {
@@ -21,7 +24,7 @@ public class WorldProviderSpace extends WorldProvider
 	@Override
 	public IChunkProvider createChunkGenerator()
 	{
-		return new ChunkProviderSpace();
+		return new ChunkProviderSpace(worldObj);
 	}
 
 	@Override
@@ -57,6 +60,31 @@ public class WorldProviderSpace extends WorldProvider
 	@Override
 	public int getRespawnDimension(EntityPlayerMP player)
     {
-        throw new UnsupportedOperationException("Add something to find the player's last planet.");
+        return 0;
     }
+	
+	@Override
+	public boolean isSurfaceWorld()
+	{
+		return false;
+	}
+
+	@SideOnly(Side.CLIENT)
+	@Override
+	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks)
+	{
+		return Vec3.createVectorHelper(0, 0, 0);
+	}
+
+	@Override
+	public Vec3 getFogColor(float p_76562_1_, float p_76562_2_)
+	{
+		return Vec3.createVectorHelper(0, 0, 0);
+	}
+	
+	@Override
+	public boolean canRespawnHere()
+	{
+		return false;
+	}
 }

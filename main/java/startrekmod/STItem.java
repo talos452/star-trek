@@ -9,6 +9,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class STItem extends Item
 {
+	//list of items added by the mod
     public static Item phaserII;
 	public static Item phaserIII;
 	public static Item powerCell;
@@ -23,15 +24,11 @@ public class STItem extends Item
 	public static Item spawnKlingon;
 	public static Item painStick;
 	public static Item disrupterKlingon;
+	public static Item communicator;
 	
-	public STItem(String textureName)
-	{
-		super();
-		setTextureName(STMod.MODID + ":" + textureName);
-		setUnlocalizedName(textureName);
-		GameRegistry.registerItem(this, textureName);
-	}
-	
+	/**
+	 * Initializes all items in the list.
+	 */
 	public static void preinit()
 	{
 		phaserII = new ItemEnergyWeapon("type_ii_phaser", EntityPhaserBlastStun.class, 400);
@@ -48,8 +45,12 @@ public class STItem extends Item
 		spawnKlingon = new ItemSpawnEgg("Klingon");
 		painStick = new ItemPainStick();
 		disrupterKlingon = new ItemEnergyWeapon("klingon_disruptor", EntityDisruptorBlastKill.class, 100);
+		communicator = new ItemCommunicator();
 	}
 	
+	/**
+	 * Sets up the properties of all items in the list.
+	 */
 	public static void init()
 	{
 		phaserII.setCreativeTab(STCreativeTabs.tabSTHuman);
@@ -66,5 +67,18 @@ public class STItem extends Item
 		spawnKlingon.setCreativeTab(STCreativeTabs.tabSTEggs);
 		painStick.setCreativeTab(STCreativeTabs.tabSTKlingon);
 		disrupterKlingon.setCreativeTab(STCreativeTabs.tabSTKlingon);
+		communicator.setCreativeTab(STCreativeTabs.tabSTItems);
+	}
+	
+	/**
+	 * Registers Item in GameRegistry automatically.
+	 * @param textureName Used for texture name, internal name, and registry name.
+	 */
+	public STItem(String textureName)
+	{
+		super();
+		setTextureName(STMod.MODID + ":" + textureName);
+		setUnlocalizedName(textureName);
+		GameRegistry.registerItem(this, textureName);
 	}
 }

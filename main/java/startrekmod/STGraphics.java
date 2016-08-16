@@ -9,6 +9,9 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class STGraphics
 {
+	/**
+	 * Registers rendering handlers for mod entities.
+	 */
 	public static void init()
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserDrill.class,
@@ -25,12 +28,12 @@ public class STGraphics
 		initNPCs();
 	}
 	
-	/*
-	 * Just in case I want to do something special with NPCs later,
-	 * I put this here to make it more convenient/readable.
+	/**
+	 * Register rendering handlers for mod NPCs.
 	 */
-	public static void initNPCs()
+	static void initNPCs()
 	{
+		//this method is separate in case I need to register NPCs differently at some point.
 		RenderingRegistry.registerEntityRenderingHandler(EntityKlingon.class,
 			new RenderKlingon());
 	}

@@ -9,7 +9,12 @@ import java.util.*;
 
 public class ChunkProviderSpace implements IChunkProvider
 {
-	public ChunkProviderSpace() {}
+	World world;
+	
+	public ChunkProviderSpace(World world)
+	{
+		this.world = world;
+	}
 
 	@Override
 	public boolean chunkExists(int x, int z)
@@ -26,7 +31,9 @@ public class ChunkProviderSpace implements IChunkProvider
 	@Override
 	public Chunk loadChunk(int x, int z)
 	{
-		throw new UnsupportedOperationException();
+		Chunk chunk = new Chunk(world, x, z);
+		chunk.generateSkylightMap();
+		return chunk;
 	}
 
 	@Override
@@ -53,6 +60,7 @@ public class ChunkProviderSpace implements IChunkProvider
 	@Override
 	public String makeString()
 	{
+		//returns something similar to other over-rides in other subclasses
 		return "SpaceLevelSource";
 	}
 
