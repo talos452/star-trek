@@ -13,6 +13,7 @@ item.dktahg.name=d'k tagh
 item.egg_Klingon.name=Spawn Klingon
 item.pain_stik.name=Klingon Painstik
 item.klingon_disruptor.name=Klingon Disruptor Pistol
+item.communicator.name=Communicator
 
 tile.dilithium_ore.name=Dilithium Ore
 tile.latinum_ore.name=Latinum Ore
