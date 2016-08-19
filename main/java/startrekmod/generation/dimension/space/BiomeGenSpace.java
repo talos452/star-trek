@@ -1,8 +1,8 @@
 package startrekmod.generation.dimension.space;
 
-import startrekmod.generation.STBiome;
+import startrekmod.generation.STBiomeGenBase;
 
-public class BiomeGenSpace extends STBiome
+public class BiomeGenSpace extends STBiomeGenBase
 {
 	public BiomeGenSpace()
 	{

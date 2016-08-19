@@ -4,12 +4,12 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 import java.util.ArrayList;
 
-public class STBiome extends BiomeGenBase
+public class STBiomeGenBase extends BiomeGenBase
 {
-	static int biomeID = 0; //starts at 40 because vanilla goes from 0 to 39
+	static int biomeID = 0;
 	static ArrayList starTrekBiomeList = new ArrayList();
-	
-	public STBiome()
+
+	public STBiomeGenBase()
 	{
 		super(getUniqueBiomeID(), false);
 		starTrekBiomeList.add(this);
@@ -18,7 +18,7 @@ public class STBiome extends BiomeGenBase
 		spawnableWaterCreatureList.clear();
 		spawnableCaveCreatureList.clear();
 	}
-	
+
 	public static int getUniqueBiomeID()
 	{
 		return biomeID++;

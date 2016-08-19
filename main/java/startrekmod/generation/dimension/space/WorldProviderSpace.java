@@ -14,11 +14,9 @@ import cpw.mods.fml.relauncher.*;
 public class WorldProviderSpace extends WorldProvider
 {
 	@Override
-	protected void registerWorldChunkManager()
+	public boolean canRespawnHere()
 	{
-		worldChunkMgr = new WorldChunkManagerHell(new BiomeGenSpace(), 0F);
-		dimensionId = STGeneration.spaceDimensionID;
-		hasNoSky = true;
+		return false;
 	}
 
 	@Override
@@ -28,45 +26,33 @@ public class WorldProviderSpace extends WorldProvider
 	}
 
 	@Override
-	public String getDimensionName()
-	{
-		return "Space";
-	}
-	
-	@Override
-	public String getSaveFolder()
-	{
-		return getDimensionName();
-	}
-	
-	@Override
-	public String getWelcomeMessage()
-	{
-		return "Departing planetary atmosphere";
-	}
-	
-	@Override
 	public String getDepartMessage()
 	{
 		return "Entering planetary atmosphere";
 	}
-	
+
 	@Override
-	public boolean shouldMapSpin(String entity, double x, double y, double z)
+	public String getDimensionName()
 	{
-		return false;
+		return "Space";
 	}
-	
+
+	@Override
+	public Vec3 getFogColor(float p_76562_1_, float p_76562_2_)
+	{
+		return Vec3.createVectorHelper(0, 0, 0);
+	}
+
 	@Override
 	public int getRespawnDimension(EntityPlayerMP player)
-    {
-        return 0;
-    }
-	
-	@Override
-	public boolean isSurfaceWorld()
 	{
-		return false;
+		return 0;
+	}
+
+	@Override
+	public String getSaveFolder()
+	{
+		return getDimensionName();
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -77,14 +63,28 @@ public class WorldProviderSpace extends WorldProvider
 	}
 
 	@Override
-	public Vec3 getFogColor(float p_76562_1_, float p_76562_2_)
+	public String getWelcomeMessage()
 	{
-		return Vec3.createVectorHelper(0, 0, 0);
+		return "Departing planetary atmosphere";
 	}
-	
+
 	@Override
-	public boolean canRespawnHere()
+	public boolean isSurfaceWorld()
 	{
 		return false;
+	}
+
+	@Override
+	public boolean shouldMapSpin(String entity, double x, double y, double z)
+	{
+		return false;
+	}
+
+	@Override
+	protected void registerWorldChunkManager()
+	{
+		worldChunkMgr = new WorldChunkManagerHell(new BiomeGenSpace(), 0F);
+		dimensionId = STGeneration.spaceDimensionID;
+		hasNoSky = true;
 	}
 }

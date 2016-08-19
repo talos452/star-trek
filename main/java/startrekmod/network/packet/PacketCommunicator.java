@@ -6,38 +6,37 @@ import io.netty.buffer.ByteBuf;
 
 public class PacketCommunicator implements IMessage
 {
-	//if true, packet represents a transport signal
-	//if false, packet represents a message
+	public int dimensionID;
 	public boolean isTransport;
-	public int dimensionID; //dimension to teleport player to
-	public String message; //message to send to player
-	public int playerID; //ID of player to send message to
-	
-	public PacketCommunicator() {}
-	
+	public String message;
+	public int recipientID;
+
+	public PacketCommunicator()
+	{}
+
 	public PacketCommunicator(int dimensionID)
 	{
 		isTransport = true;
 		this.dimensionID = dimensionID;
 	}
-	
-	public PacketCommunicator(String message, int playerID)
+
+	public PacketCommunicator(String message, int recipientID)
 	{
 		isTransport = false;
 		this.message = message;
-		this.playerID = playerID;
+		this.recipientID = recipientID;
 	}
 
 	@Override
 	public void fromBytes(ByteBuf data)
 	{
 		isTransport = data.readBoolean();
-		
-		if(isTransport)
+
+		if (isTransport)
 			dimensionID = data.readInt();
 		else
 		{
-			playerID = data.readInt();
+			recipientID = data.readInt();
 			message = data.readBytes(data.readableBytes()).toString();
 		}
 	}
@@ -45,7 +44,7 @@ public class PacketCommunicator implements IMessage
 	@Override
 	public void toBytes(ByteBuf data)
 	{
-		if(isTransport)
+		if (isTransport)
 		{
 			data.writeBoolean(true);
 			data.writeInt(dimensionID);
@@ -53,9 +52,8 @@ public class PacketCommunicator implements IMessage
 		else
 		{
 			data.writeBoolean(false);
-			data.writeInt(playerID);
+			data.writeInt(recipientID);
 			data.writeBytes(message.getBytes());
 		}
 	}
-
 }

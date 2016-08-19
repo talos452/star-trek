@@ -3,18 +3,16 @@ package startrekmod.graphics.render;
 import startrekmod.entity.EntityPlanet;
 import startrekmod.graphics.model.ModelPlanet;
 
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-public class RenderPlanet extends Render
+public class RenderPlanet extends STRender
 {
-	ModelPlanet model;
-
 	public RenderPlanet()
 	{
+		super(null);
 		model = new ModelPlanet();
 	}
 
@@ -33,6 +31,11 @@ public class RenderPlanet extends Render
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return new ResourceLocation("startrekmod:textures/entity/" + ((EntityPlanet)entity).name + ".png");
+		String name = ((EntityPlanet)entity).name;
+
+		if (name == null)
+			name = "earth";
+
+		return new ResourceLocation("startrekmod:textures/entity/" + name + ".png");
 	}
 }

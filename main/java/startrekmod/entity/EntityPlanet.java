@@ -26,7 +26,7 @@ public class EntityPlanet extends Entity
 	@Override
 	public void onUpdate()
 	{
-		if (rotationTimer++ % 10 == 0)
+		if (rotationTimer++ % 600 == 0)
 			rotationYaw += 90;
 	}
 

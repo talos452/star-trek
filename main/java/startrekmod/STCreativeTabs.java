@@ -7,13 +7,13 @@ import net.minecraft.item.Item;
 public class STCreativeTabs extends CreativeTabs
 {
 	Item icon;
-	
+
 	public static CreativeTabs tabSTBlocks;
-	public static CreativeTabs tabSTItems;
 	public static CreativeTabs tabSTEggs;
 	public static CreativeTabs tabSTHuman;
+	public static CreativeTabs tabSTItems;
 	public static CreativeTabs tabSTKlingon;
-	
+
 	public STCreativeTabs(String lable, Item icon)
 	{
 		super(lable);
@@ -25,7 +25,7 @@ public class STCreativeTabs extends CreativeTabs
 	{
 		return icon;
 	}
-	
+
 	public static void preinit()
 	{
 		tabSTBlocks = new STCreativeTabs("tabSTBlocks", Item.getItemFromBlock(STBlock.dilithiumBlock));

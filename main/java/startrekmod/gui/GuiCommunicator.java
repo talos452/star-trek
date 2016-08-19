@@ -8,9 +8,9 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class GuiCommunicator extends STGui
 {
-	EntityPlayer transportee;
 	GuiButton transport;
-	
+	EntityPlayer transportee;
+
 	public GuiCommunicator(EntityPlayer transportee)
 	{
 		super("guiTransporter");

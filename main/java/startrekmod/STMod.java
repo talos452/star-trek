@@ -5,38 +5,29 @@ import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 
 @Mod(modid = STMod.MODID, version = STMod.VERSION, name = STMod.NAME)
-public class STMod 
+public class STMod
 {
-	public static final String MODID = "startrekmod";
-	public static final String VERSION = "1.6.0";
-	public static final String NAME = "Star Trek mod";
-	
 	@Instance
 	public static STMod INSTANCE = new STMod();
-	
-	@SidedProxy (clientSide = "startrekmod.STClientProxy",
-			serverSide = "startrekmod.STServerProxy")
+	public static final String MODID = "startrekmod";
+	public static final String NAME = "Star Trek mod";
+
+	@SidedProxy(clientSide = "startrekmod.STClientProxy", serverSide = "startrekmod.STServerProxy")
 	public static STCommonProxy PROXY;
-	
-	/*
-	 * Guidelines for preinit and init methods.
-	 * Obviously, they should usually be static.
-	 * They should belong to ST-something classes.
-	 * preinit() should do nothing but initialize static variables.
-	 * init() should set up their properties.
-	 * This prevents null reference exceptions on mod loading.
-	 */
+
+	public static final String VERSION = "1.6.0";
+
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		STItem.preinit();
 		STBlock.preinit();
 		STCreativeTabs.preinit();
-		
+
 		PROXY.init();
 		STBlock.init();
 		STItem.init();
-		STCrafting.init();
+		STRecipes.init();
 		STEntity.init();
 		STNetwork.init();
 		STEventHandler.init();

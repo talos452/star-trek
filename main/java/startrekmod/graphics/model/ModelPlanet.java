@@ -1,21 +1,18 @@
 package startrekmod.graphics.model;
 
-import net.minecraft.client.model.*;
+import net.minecraft.client.model.ModelRenderer;
 
-public class ModelPlanet extends ModelBase
+public class ModelPlanet extends STModel
 {
-	ModelRenderer planet;
-
 	public ModelPlanet()
 	{
-		planet = new ModelRenderer(this, 0, 0);
+		ModelRenderer planet = new ModelRenderer(this, 0, 0);
+
+		addRenderers(planet);
+
 		planet.addBox(-3, -3, -3, 6, 6, 6);
 		planet.setRotationPoint(0, 0, 0);
 		planet.setTextureSize(256, 128);
-	}
-
-	public void render(float scale)
-	{
-		planet.render(scale);
+		planet.mirror = true;
 	}
 }

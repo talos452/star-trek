@@ -10,8 +10,6 @@ public class STTeleporter extends Teleporter
 		super(world);
 	}
 
-	//no need to create any sort of portal
-	//simply spawn entity in at 0, 128, 0
 	@Override
 	public void placeInPortal(Entity entity, double x, double y, double z, float yaw)
 	{
