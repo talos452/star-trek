@@ -7,7 +7,7 @@ public abstract class STModel extends ModelBase
 	public void render(float scale)
 	{
 		for (Object renderer : boxList)
-			((STModelRenderer)renderer).render(scale);
+			((ModelRenderer)renderer).render(scale);
 	}
 
 	void setRotation(ModelRenderer model, float x, float y, float z)

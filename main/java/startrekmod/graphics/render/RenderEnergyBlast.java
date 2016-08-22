@@ -18,17 +18,10 @@ public class RenderEnergyBlast extends STRender
 	}
 
 	@Override
-	public void doRender(Entity entity, double transX, double transY, double transZ, float f1, float f2)
+	void render(Entity entity, double translationX, double translationY, double translationZ, float yaw, float pitch)
 	{
-		GL11.glPushMatrix();
-		bindTexture(getEntityTexture(entity));
 		Color beamColour = ((EntityEnergyBlast)entity).getBeamColour();
 		GL11.glColor3f(beamColour.getRed() / 255F, beamColour.getGreen() / 255F, beamColour.getBlue() / 255F);
-		GL11.glTranslated(transX, transY, transZ);
-		GL11.glScaled(1, 1, 1);
-		GL11.glRotated(entity.rotationYaw + 90, 0, -1, 0);
-		GL11.glRotated(entity.rotationPitch, 0, 0, -1);
 		model.render(.0625F);
-		GL11.glPopMatrix();
 	}
 }

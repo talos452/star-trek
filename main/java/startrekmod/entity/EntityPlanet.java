@@ -24,20 +24,24 @@ public class EntityPlanet extends Entity
 	}
 
 	@Override
+	protected void entityInit()
+	{
+		setSize(6F, 6F);
+	}
+
+	@Override
 	public void onUpdate()
 	{
 		rotationYaw += .15F;
 	}
 
 	@Override
-	protected void entityInit()
-	{}
-
-	@Override
 	protected void readEntityFromNBT(NBTTagCompound p_70037_1_)
-	{}
+	{
+	}
 
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound p_70014_1_)
-	{}
+	{
+	}
 }
