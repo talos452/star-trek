@@ -2,15 +2,19 @@ package startrekmod.graphics.render;
 
 import startrekmod.graphics.model.ModelPhaserDrill;
 
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-public class RenderPhaserDrill extends STRender
+public class RenderPhaserDrill extends Render
 {
+	ModelPhaserDrill model;
+
 	public RenderPhaserDrill()
 	{
-		super("phaser_cannon");
+		super();
 		model = new ModelPhaserDrill();
 	}
 
@@ -25,5 +29,11 @@ public class RenderPhaserDrill extends STRender
 		GL11.glRotated(180, 0, 0, 1);
 		model.render(.125F);
 		GL11.glPopMatrix();
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(Entity p_110775_1_)
+	{
+		return new ResourceLocation("startrekmod:textures/entity/phaser_cannon.png");
 	}
 }

@@ -2,19 +2,12 @@ package startrekmod.graphics.model;
 
 import net.minecraft.client.model.*;
 
-import scala.actors.threadpool.Arrays;
-
 public abstract class STModel extends ModelBase
 {
 	public void render(float scale)
 	{
 		for (Object renderer : boxList)
-			((ModelRenderer)renderer).render(scale);
-	}
-
-	void addRenderers(ModelRenderer... modelRenderers)
-	{
-		boxList.addAll(Arrays.asList(modelRenderers));
+			((STModelRenderer)renderer).render(scale);
 	}
 
 	void setRotation(ModelRenderer model, float x, float y, float z)

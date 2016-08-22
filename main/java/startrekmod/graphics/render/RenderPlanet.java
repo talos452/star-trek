@@ -24,7 +24,7 @@ public class RenderPlanet extends STRender
 		GL11.glTranslated(translationX, translationY, translationZ);
 		GL11.glScaled(1, 1, 1);
 		GL11.glRotated(entity.rotationYaw, 0, -1, 0);
-		model.render(1F);
+		model.render(.09375F);
 		GL11.glPopMatrix();
 	}
 

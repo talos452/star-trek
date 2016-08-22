@@ -6,13 +6,12 @@ public class ModelPlanet extends STModel
 {
 	public ModelPlanet()
 	{
-		ModelRenderer planet = new ModelRenderer(this, 0, 0);
+		textureWidth = 256;
+		textureHeight = 128;
+		ModelRenderer planet = new STModelRenderer(this, 0, 0);
 
-		addRenderers(planet);
-
-		planet.addBox(-3, -3, -3, 6, 6, 6);
+		planet.addBox(-32F, -32F, -32F, 64, 64, 64);
 		planet.setRotationPoint(0, 0, 0);
-		planet.setTextureSize(256, 128);
 		planet.mirror = true;
 	}
 }
