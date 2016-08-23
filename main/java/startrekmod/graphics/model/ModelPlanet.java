@@ -12,6 +12,5 @@ public class ModelPlanet extends STModel
 
 		planet.addBox(-32F, -32F, -32F, 64, 64, 64);
 		planet.setRotationPoint(0, 0, 0);
-		planet.mirror = true;
 	}
 }

@@ -30,6 +30,15 @@ public class EntityKlingon extends STEntityNPC
 	}
 
 	@Override
+	protected void entityInit()
+	{
+		super.entityInit();
+
+		speechBanks = new String[]
+		{"bIHegh jIH", "ghargh vISop bongIlchugh?", "mInDu'wIj HoS DIvI'", "tlhIngan wo' SuvwI'", "SoHvaD laH moDbej. vabDot Saj targh", "largh SoH rur chal quvHa'", "tlhInganpu' 'ach HoS Segh lutu'lu'be'chugh."};
+	}
+
+	@Override
 	public void performInteract(EntityPlayer player)
 	{}
 
@@ -37,13 +46,5 @@ public class EntityKlingon extends STEntityNPC
 	public void setupAI()
 	{
 		super.setupAI();
-	}
-
-	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-
-		speechBanks = new String[] {"bIHegh jIH", "ghargh vISop bongIlchugh?", "mInDu'wIj HoS DIvI'", "tlhIngan wo' SuvwI'", "SoHvaD laH moDbej. vabDot Saj targh", "largh SoH rur chal quvHa'", "tlhInganpu' 'ach HoS Segh lutu'lu'be'chugh."};
 	}
 }

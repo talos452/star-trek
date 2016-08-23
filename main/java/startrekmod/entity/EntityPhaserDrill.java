@@ -45,6 +45,12 @@ public class EntityPhaserDrill extends Entity
 	}
 
 	@Override
+	protected void entityInit()
+	{
+		setSize(2F, 2F);
+	}
+
+	@Override
 	public boolean interactFirst(EntityPlayer player)
 	{
 		if (!worldObj.isRemote)
@@ -77,12 +83,6 @@ public class EntityPhaserDrill extends Entity
 		worldObj.playSoundAtEntity(this, "startrekmod:phaser_blast", 1, 1);
 		Entity blast = new EntityDrillBlast(worldObj, operator, this);
 		worldObj.spawnEntityInWorld(blast);
-	}
-
-	@Override
-	protected void entityInit()
-	{
-		setSize(2F, 2F);
 	}
 
 	@Override

@@ -10,9 +10,9 @@ item.gold_pressed_latinum.name=Gold-pressed Latinum
 item.phaser_drill.name=Phaser Drill
 item.gagh.name=gagh
 item.dktahg.name=d'k tagh
-item.egg_Klingon.name=Spawn Klingon
-item.pain_stik.name=Klingon Painstik
-item.klingon_disruptor.name=Klingon Disruptor Pistol
+item.egg_Klingon.name=boghDI' tlhIngan
+item.pain_stik.name=‘oy'naQ
+item.klingon_disruptor.name=nISwI' HIch
 item.communicator.name=Communicator
 
 tile.dilithium_ore.name=Dilithium Ore

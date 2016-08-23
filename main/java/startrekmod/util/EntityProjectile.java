@@ -41,6 +41,12 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 		setThrowableHeading(0, 0, 0, 0, 0);
 	}
 
+	@Override
+	protected void entityInit()
+	{
+		setSize(.25F, .25F);
+	}
+
 	public abstract void onImpact(MovingObjectPosition info);
 
 	@Override
@@ -116,6 +122,12 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 	}
 
 	@Override
+	protected void readEntityFromNBT(NBTTagCompound reader)
+	{
+		setDead();
+	}
+
+	@Override
 	public void setThrowableHeading(double motionX, double motionY, double motionZ, float speed, float deviation)
 	{
 		this.motionX = -MathHelper.sin(rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI);
@@ -125,18 +137,6 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 		this.motionX *= MathHelper.sqrt_double(this.speed);
 		this.motionY *= MathHelper.sqrt_double(this.speed);
 		this.motionZ *= MathHelper.sqrt_double(this.speed);
-	}
-
-	@Override
-	protected void entityInit()
-	{
-		setSize(.25F, .25F);
-	}
-
-	@Override
-	protected void readEntityFromNBT(NBTTagCompound reader)
-	{
-		setDead();
 	}
 
 	@Override

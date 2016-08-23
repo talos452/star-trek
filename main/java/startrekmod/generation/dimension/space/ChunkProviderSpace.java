@@ -1,43 +1,25 @@
 package startrekmod.generation.dimension.space;
 
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.util.IProgressUpdate;
-import net.minecraft.world.*;
-import net.minecraft.world.chunk.*;
+import startrekmod.entity.EntityPlanet;
+import startrekmod.generation.STChunkProvider;
+
+import net.minecraft.entity.*;
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
 
 import java.util.*;
 
-public class ChunkProviderSpace implements IChunkProvider
+public class ChunkProviderSpace extends STChunkProvider
 {
-	World world;
-
 	public ChunkProviderSpace(World world)
 	{
-		this.world = world;
+		super(world);
 	}
 
 	@Override
-	public boolean canSave()
-	{
-		return true;
-	}
-
-	@Override
-	public boolean chunkExists(int x, int z)
-	{
-		return true;
-	}
-
-	@Override
-	public ChunkPosition func_147416_a(World world, String structureID, int x, int y, int z)
+	protected BlockMetaArray createChunkBlockArray(int chunkX, int chunkZ)
 	{
 		return null;
-	}
-
-	@Override
-	public int getLoadedChunkCount()
-	{
-		return 0;
 	}
 
 	@Override
@@ -46,12 +28,9 @@ public class ChunkProviderSpace implements IChunkProvider
 		return new ArrayList(0);
 	}
 
-	@Override
-	public Chunk loadChunk(int x, int z)
+	boolean isEntityInChunk(Entity entity, int chunkX, int chunkZ)
 	{
-		Chunk chunk = new Chunk(world, x, z);
-		chunk.generateSkylightMap();
-		return chunk;
+		return (entity.posX - chunkX * 16) * (entity.posX - chunkX * 16) < 256 && (entity.posZ - chunkZ * 16) * (entity.posZ - chunkZ * 16) < 16;
 	}
 
 	@Override
@@ -61,32 +40,13 @@ public class ChunkProviderSpace implements IChunkProvider
 	}
 
 	@Override
-	public void populate(IChunkProvider provider, int x, int z)
-	{}
-
-	@Override
-	public Chunk provideChunk(int x, int z)
+	public void populate(IChunkProvider provider, int chunkX, int chunkZ)
 	{
-		return loadChunk(x, z);
-	}
+		if (PlanetList.planetList == null)
+			PlanetList.init();
 
-	@Override
-	public void recreateStructures(int x, int z)
-	{}
-
-	@Override
-	public boolean saveChunks(boolean saveAllChunks, IProgressUpdate progress)
-	{
-		return true;
-	}
-
-	@Override
-	public void saveExtraData()
-	{}
-
-	@Override
-	public boolean unloadQueuedChunks()
-	{
-		return false;
+		for (Object object : PlanetList.planetList)
+			if (isEntityInChunk((EntityPlanet)object, chunkX, chunkZ))
+				world.spawnEntityInWorld((Entity)object);
 	}
 }

@@ -29,7 +29,7 @@ public class STEntity
 		EntityRegistry.registerModEntity(EntityPhaserBlastKill.class, "PhaserBlastKill", getNextID(), instance, 64, 3, true);
 		EntityRegistry.registerModEntity(EntityDrillBlast.class, "PhaserBlastDrill", getNextID(), instance, 64, 3, true);
 		EntityRegistry.registerModEntity(EntityDisruptorBlastKill.class, "DisruptorBlastKill", getNextID(), instance, 64, 3, true);
-		EntityRegistry.registerModEntity(EntityPlanet.class, "Planet", getNextID(), instance, 128, 3, false);
+		EntityRegistry.registerModEntity(EntityPlanet.class, "Planet", getNextID(), instance, 256, 3, false);
 	}
 
 	public static void initNPCs()

@@ -75,16 +75,16 @@ public class WorldProviderSpace extends WorldProvider
 	}
 
 	@Override
-	public boolean shouldMapSpin(String entity, double x, double y, double z)
-	{
-		return false;
-	}
-
-	@Override
 	protected void registerWorldChunkManager()
 	{
 		worldChunkMgr = new WorldChunkManagerHell(new BiomeGenSpace(), 0F);
 		dimensionId = STGeneration.spaceDimensionID;
 		hasNoSky = true;
+	}
+
+	@Override
+	public boolean shouldMapSpin(String entity, double x, double y, double z)
+	{
+		return false;
 	}
 }
