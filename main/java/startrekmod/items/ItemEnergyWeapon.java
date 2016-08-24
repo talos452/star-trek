@@ -36,14 +36,14 @@ public class ItemEnergyWeapon extends STItem
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
+		if (world.isRemote)
+			return stack;
+
 		if (stack.getItemDamage() == stack.getMaxDamage())
 		{
 			world.playSoundAtEntity(player, "fire.ignite", 1F, 1F);
 			return stack;
 		}
-
-		if (world.isRemote)
-			return stack;
 
 		fireShot(world, player);
 		world.playSoundAtEntity(player, "startrekmod:phaser_blast", 1F, 1F);

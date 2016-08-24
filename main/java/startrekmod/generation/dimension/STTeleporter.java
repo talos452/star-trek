@@ -1,8 +1,9 @@
-package startrekmod.generation;
+package startrekmod.generation.dimension;
 
 import startrekmod.STGeneration;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.*;
@@ -32,7 +33,10 @@ public class STTeleporter extends Teleporter
 	public void placeInPortal(Entity entity, double x, double y, double z, float yaw)
 	{
 		if (dimensionID == STGeneration.spaceDimensionID)
-			entity.setLocationAndAngles(0, 128, 0, yaw, entity.rotationPitch);
+		{
+			entity.setLocationAndAngles(0, 32767, 0, yaw, entity.rotationPitch);
+			((EntityPlayer)entity).isAirBorne = true;
+		}
 		else
 			entity.setLocationAndAngles(0, getTopBlock(MinecraftServer.getServer().worldServerForDimension(dimensionID)) + 1, 0, yaw, entity.rotationPitch);
 	}

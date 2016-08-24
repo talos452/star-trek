@@ -1,4 +1,4 @@
-package startrekmod.generation;
+package startrekmod.generation.dimension;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;

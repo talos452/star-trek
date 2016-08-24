@@ -1,6 +1,6 @@
 package startrekmod.network.handler;
 
-import startrekmod.generation.STTeleporter;
+import startrekmod.generation.dimension.STTeleporter;
 import startrekmod.network.packet.PacketTransport;
 
 import net.minecraft.entity.player.EntityPlayerMP;

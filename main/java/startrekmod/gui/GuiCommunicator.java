@@ -20,8 +20,12 @@ public class GuiCommunicator extends STGui
 	@Override
 	protected void actionPerformed(GuiButton clicked)
 	{
-		STNetwork.network.sendToServer(new PacketTransport(STGeneration.spaceDimensionID, transportee.dimension));
 		mc.displayGuiScreen(null);
+
+		if (transportee.dimension == STGeneration.spaceDimensionID)
+			return;
+
+		STNetwork.network.sendToServer(new PacketTransport(STGeneration.spaceDimensionID, transportee.dimension));
 	}
 
 	@Override

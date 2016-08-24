@@ -2,9 +2,9 @@ package startrekmod.graphics.model;
 
 import net.minecraft.client.model.ModelRenderer;
 
-public class ModelPlanet extends STModel
+public class ModelCelestial extends STModel
 {
-	public ModelPlanet()
+	public ModelCelestial()
 	{
 		textureWidth = 256;
 		textureHeight = 128;

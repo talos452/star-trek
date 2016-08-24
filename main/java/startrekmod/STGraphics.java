@@ -16,7 +16,7 @@ public class STGraphics
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBlastKill.class, new RenderEnergyBlast());
 		RenderingRegistry.registerEntityRenderingHandler(EntityDrillBlast.class, new RenderEnergyBlast());
 		RenderingRegistry.registerEntityRenderingHandler(EntityDisruptorBlastKill.class, new RenderEnergyBlast());
-		RenderingRegistry.registerEntityRenderingHandler(EntityPlanet.class, new RenderPlanet());
+		RenderingRegistry.registerEntityRenderingHandler(EntityCelestial.class, new RenderCelestial());
 
 		initNPCs();
 	}

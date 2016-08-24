@@ -1,9 +1,9 @@
 package startrekmod.generation.dimension.space;
 
-import startrekmod.entity.EntityPlanet;
-import startrekmod.generation.STChunkProvider;
+import startrekmod.STCelestialData;
+import startrekmod.generation.dimension.STChunkProvider;
 
-import net.minecraft.entity.*;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 
@@ -28,11 +28,6 @@ public class ChunkProviderSpace extends STChunkProvider
 		return new ArrayList(0);
 	}
 
-	boolean isEntityInChunk(Entity entity, int chunkX, int chunkZ)
-	{
-		return (entity.posX - chunkX * 16) * (entity.posX - chunkX * 16) < 256 && (entity.posZ - chunkZ * 16) * (entity.posZ - chunkZ * 16) < 16;
-	}
-
 	@Override
 	public String makeString()
 	{
@@ -42,11 +37,11 @@ public class ChunkProviderSpace extends STChunkProvider
 	@Override
 	public void populate(IChunkProvider provider, int chunkX, int chunkZ)
 	{
-		if (PlanetList.planetList == null)
-			PlanetList.init();
+		for (STCelestialData celestial : STCelestialData.bodyList)
+			if (celestial.posX >= chunkX * 16 && celestial.posX < (chunkX + 1) * 16)
+				if (celestial.posZ >= chunkZ * 16 && celestial.posZ < (chunkZ + 1) * 16)
+					world.spawnEntityInWorld(STCelestialData.createEntityForCelestial(celestial, world));
 
-		for (Object object : PlanetList.planetList)
-			if (isEntityInChunk((EntityPlanet)object, chunkX, chunkZ))
-				world.spawnEntityInWorld((Entity)object);
+		return;
 	}
 }

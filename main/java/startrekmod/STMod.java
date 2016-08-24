@@ -30,7 +30,8 @@ public class STMod
 		STRecipes.init();
 		STEntity.init();
 		STNetwork.init();
-		STEventHandler.init();
 		STGeneration.init();
+		STEventHandler.init();
+		STCelestialData.init();
 	}
 }

@@ -1,6 +1,6 @@
 package startrekmod.generation.dimension.mars;
 
-import startrekmod.generation.STChunkProvider;
+import startrekmod.generation.dimension.STChunkProvider;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureType;
