@@ -13,10 +13,10 @@ public class PacketPhaserDrill implements IMessage
 	public float angle;
 	public int drillID;
 	public int playerID;
-	
-	//typically, a default constructor required
-	public PacketPhaserDrill() {}
-	
+
+	public PacketPhaserDrill()
+	{}
+
 	public PacketPhaserDrill(float angle, EntityPhaserDrill drill, EntityPlayer player)
 	{
 		this.angle = angle;

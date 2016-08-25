@@ -2,64 +2,45 @@ package startrekmod.entity.energyblast;
 
 import net.minecraft.entity.*;
 import net.minecraft.potion.*;
-import net.minecraft.util.*;
-import net.minecraft.util.MovingObjectPosition.MovingObjectType;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 import java.awt.Color;
 
 public class EntityPhaserBlastStun extends EntityEnergyBlast
 {
-	public EntityPhaserBlastStun(World world) 
+	public EntityPhaserBlastStun(World world)
 	{
 		super(world);
 	}
 
-	public EntityPhaserBlastStun(World world, EntityLivingBase operator) 
+	public EntityPhaserBlastStun(World world, EntityLivingBase operator)
 	{
 		super(world, operator);
 	}
 
 	@Override
-	public void onImpact(MovingObjectPosition hitInfo)
+	public void damageBlock(int posX, int posY, int posZ)
 	{
-		if(hitInfo.typeOfHit == MovingObjectType.BLOCK)
-		{
-			//test if block can be shot through
-			if(!worldObj.getBlock(hitInfo.blockX, hitInfo.blockY, hitInfo.blockZ).isOpaqueCube())
-				return;
-			else
-			{
-				setDead();
-				return;
-			}
-		}
-		
-		//safety check
-		if(operator == null)
-		{
-			setDead();
-			return;
-		}
-		
-		Entity entityHit = hitInfo.entityHit;
-		//simple knockback effect
-		entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, operator), 0);
-		
-		if(!(entityHit instanceof EntityLivingBase))
-		{
-			setDead();
-			return;
-		}
-		
-		EntityLivingBase stunnedEntity = (EntityLivingBase)entityHit;
-		PotionEffect stun = new PotionEffect(Potion.moveSlowdown.id, 200, 1);
-		PotionEffect nausea = new PotionEffect(Potion.confusion.id, 600, 0);
-		stunnedEntity.addPotionEffect(stun);
-		stunnedEntity.addPotionEffect(nausea);		
-		setDead();
+		if (worldObj.getBlock(posX, posY, posZ).getBlockHardness(worldObj, posX, posY, posZ) < 1.5F)
+			worldObj.setBlockToAir(posX, posY, posZ);
 	}
-	
+
+	@Override
+	public void damageEntity(Entity entity)
+	{
+		entity.attackEntityFrom(DamageSource.onFire, 2);
+
+		if (!(entity instanceof EntityLiving))
+			return;
+
+		EntityLiving victim = (EntityLiving)entity;
+		PotionEffect nausea = new PotionEffect(Potion.confusion.id, 600);
+		PotionEffect slowness = new PotionEffect(Potion.moveSlowdown.id, 600);
+		victim.addPotionEffect(nausea);
+		victim.addPotionEffect(slowness);
+	}
+
 	@Override
 	public Color getBeamColour()
 	{

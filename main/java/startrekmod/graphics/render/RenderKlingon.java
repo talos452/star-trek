@@ -9,10 +9,9 @@ public class RenderKlingon extends RenderBiped
 {
 	public RenderKlingon()
 	{
-		//.5 is shadow size
 		super(new ModelBiped(), 0.5F);
 	}
-	
+
 	@Override
 	public ResourceLocation getEntityTexture(EntityLiving entity)
 	{
