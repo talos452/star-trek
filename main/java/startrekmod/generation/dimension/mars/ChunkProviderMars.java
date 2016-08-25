@@ -14,7 +14,7 @@ public class ChunkProviderMars extends STChunkProvider
 {
 	public ChunkProviderMars(World world)
 	{
-		super(world);
+		super (world);
 	}
 
 	@Override
@@ -29,33 +29,33 @@ public class ChunkProviderMars extends STChunkProvider
 				{
 					if (y == 0)
 					{
-						IDMatrix[x][y][z] = (short)Block.getIdFromBlock(Blocks.bedrock);
+						IDMatrix[x][y][z] = (short) Block.getIdFromBlock (Blocks.bedrock);
 						metaMatrix[x][y][z] = 0;
 					}
 					else if (y < 60)
 					{
-						IDMatrix[x][y][z] = (short)Block.getIdFromBlock(Blocks.stone);
+						IDMatrix[x][y][z] = (short) Block.getIdFromBlock (Blocks.stone);
 						metaMatrix[x][y][z] = 0;
 					}
 					else if (y < 64)
 					{
-						IDMatrix[x][y][z] = (short)Block.getIdFromBlock(Blocks.sand);
+						IDMatrix[x][y][z] = (short) Block.getIdFromBlock (Blocks.sand);
 						metaMatrix[x][y][z] = 1;
 					}
 					else
 					{
-						IDMatrix[x][y][z] = (short)Block.getIdFromBlock(Blocks.air);
+						IDMatrix[x][y][z] = (short) Block.getIdFromBlock (Blocks.air);
 						metaMatrix[x][y][z] = 1;
 					}
 				}
 
-		return new BlockMetaArray(IDMatrix, metaMatrix);
+		return new BlockMetaArray (IDMatrix, metaMatrix);
 	}
 
 	@Override
 	public List getPossibleCreatures(EnumCreatureType p_73155_1_, int p_73155_2_, int p_73155_3_, int p_73155_4_)
 	{
-		return new ArrayList(0);
+		return new ArrayList (0);
 	}
 
 	@Override

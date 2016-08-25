@@ -21,8 +21,8 @@ public class STGui extends GuiScreen
 	@Override
 	public void drawScreen(int mousePosX, int mousePosY, float f3)
 	{
-		drawDefaultBackground();
-		super.drawScreen(mousePosX, mousePosY, f3);
+		drawDefaultBackground ();
+		super.drawScreen (mousePosX, mousePosY, f3);
 	}
 
 	@Override

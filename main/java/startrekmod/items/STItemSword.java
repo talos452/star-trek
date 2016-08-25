@@ -16,23 +16,23 @@ public class STItemSword extends STItem
 
 	public STItemSword(String textureName, double damage, int uses)
 	{
-		super(textureName);
+		super (textureName);
 		this.damage = damage;
-		setMaxDamage(uses);
+		setMaxDamage (uses);
 	}
 
 	@Override
 	public Multimap getItemAttributeModifiers()
 	{
-		Multimap multimap = super.getItemAttributeModifiers();
-		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", damage, 0));
+		Multimap multimap = super.getItemAttributeModifiers ();
+		multimap.put (SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName (), new AttributeModifier (field_111210_e, "Weapon modifier", damage, 0));
 		return multimap;
 	}
 
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase attacked, EntityLivingBase attacker)
 	{
-		stack.damageItem(1, attacked);
+		stack.damageItem (1, attacked);
 		return true;
 	}
 

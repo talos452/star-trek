@@ -16,25 +16,23 @@ public class EntityPhaserDrill extends Entity
 
 	public EntityPhaserDrill(World world)
 	{
-		super(world);
+		super (world);
 	}
 
 	public EntityPhaserDrill(World world, double posX, double posY, double posZ)
 	{
-		super(world);
-		setPosition(posX, posY, posZ);
+		super (world);
+		setPosition (posX, posY, posZ);
 	}
 
 	@Override
 	public boolean attackEntityFrom(DamageSource damage, float damageLevel)
 	{
-		if (worldObj.isRemote)
-			return false;
-		if (damage.isExplosion())
-			return false;
+		if (worldObj.isRemote) return false;
+		if (damage.isExplosion ()) return false;
 
-		dropItem(STItem.phaserDrill, 1);
-		setDead();
+		dropItem (STItem.phaserDrill, 1);
+		setDead ();
 		return true;
 	}
 
@@ -47,42 +45,36 @@ public class EntityPhaserDrill extends Entity
 	@Override
 	protected void entityInit()
 	{
-		setSize(2F, 2F);
+		setSize (2F, 2F);
 	}
 
 	@Override
 	public boolean interactFirst(EntityPlayer player)
 	{
-		if (!worldObj.isRemote)
-			return false;
+		if (!worldObj.isRemote) return false;
 
-		player.openGui(STMod.INSTANCE, STCommonProxy.GUI_PHASER_DRILL, worldObj, getEntityId(), 0, 0);
+		player.openGui (STMod.INSTANCE, STCommonProxy.GUI_PHASER_DRILL, worldObj, getEntityId (), 0, 0);
 		return true;
 	}
 
 	@Override
 	public void onUpdate()
 	{
-		Entity temp = worldObj.getEntityByID(operatorID);
+		Entity temp = worldObj.getEntityByID (operatorID);
 		EntityPlayer operator;
 
-		if (temp instanceof EntityPlayer)
-			operator = (EntityPlayer)temp;
-		else
-			return;
+		if (temp instanceof EntityPlayer) operator = (EntityPlayer) temp;
+		else return;
 
-		if (firingSequenceTicks == -1)
-			return;
+		if (firingSequenceTicks == -1) return;
 
-		if (firingSequenceTicks % 20 == 0)
-			operator.addChatComponentMessage(new ChatComponentText("Firing in " + (firingSequenceTicks / 20)));
+		if (firingSequenceTicks % 20 == 0) operator.addChatComponentMessage (new ChatComponentText ("Firing in " + (firingSequenceTicks / 20)));
 
-		if (firingSequenceTicks-- != 0)
-			return;
+		if (firingSequenceTicks-- != 0) return;
 
-		worldObj.playSoundAtEntity(this, "startrekmod:phaser_blast", 1, 1);
-		Entity blast = new EntityDrillBlast(worldObj, operator, this);
-		worldObj.spawnEntityInWorld(blast);
+		worldObj.playSoundAtEntity (this, "startrekmod:phaser_blast", 1, 1);
+		Entity blast = new EntityDrillBlast (worldObj, operator, this);
+		worldObj.spawnEntityInWorld (blast);
 	}
 
 	@Override

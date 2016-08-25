@@ -16,9 +16,9 @@ public class GenerateDuranium implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		WorldGenMinable duranium = new WorldGenMinable(STBlock.duraniumOre, 8);
+		WorldGenMinable duranium = new WorldGenMinable (STBlock.duraniumOre, 8);
 
 		for (int i = 0; i < 16; i++)
-			duranium.generate(world, random, chunkX * 16 + random.nextInt(16), 8 + random.nextInt(56), chunkZ * 16 + random.nextInt(16));
+			duranium.generate (world, random, chunkX * 16 + random.nextInt (16), 8 + random.nextInt (56), chunkZ * 16 + random.nextInt (16));
 	}
 }

@@ -48,13 +48,13 @@ public abstract class STChunkProvider implements IChunkProvider
 	@Override
 	public List getPossibleCreatures(EnumCreatureType p_73155_1_, int p_73155_2_, int p_73155_3_, int p_73155_4_)
 	{
-		return new ArrayList(0);
+		return new ArrayList (0);
 	}
 
 	@Override
 	public final Chunk loadChunk(int chunkX, int chunkZ)
 	{
-		return provideChunk(chunkX, chunkZ);
+		return provideChunk (chunkX, chunkZ);
 	}
 
 	@Override
@@ -63,44 +63,41 @@ public abstract class STChunkProvider implements IChunkProvider
 	@Override
 	public final Chunk provideChunk(int chunkX, int chunkZ)
 	{
-		Chunk chunk = new Chunk(world, chunkX, chunkZ);
-		ExtendedBlockStorage[] ebsList = chunk.getBlockStorageArray();
+		Chunk chunk = new Chunk (world, chunkX, chunkZ);
+		ExtendedBlockStorage[] ebsList = chunk.getBlockStorageArray ();
 
 		for (int i = 0; i < 16; i++)
-			if (ebsList[i] == null)
-				ebsList[i] = new ExtendedBlockStorage(i * 16, true);
+			if (ebsList[i] == null) ebsList[i] = new ExtendedBlockStorage (i * 16, true);
 
-		BlockMetaArray matrix = createChunkBlockArray(chunkX, chunkZ);
+		BlockMetaArray matrix = createChunkBlockArray (chunkX, chunkZ);
 
-		if (matrix == null)
-			for (int e = 0; e < 16; e++)
-			{
-				ExtendedBlockStorage cube = ebsList[e];
+		if (matrix == null) for (int e = 0; e < 16; e++)
+		{
+			ExtendedBlockStorage cube = ebsList[e];
 
-				for (int x = 0; x < 16; x++)
-					for (int y = 0; y < 16; y++)
-						for (int z = 0; z < 16; z++)
-						{
-							cube.func_150818_a(x, y, z, Blocks.air);
-							cube.setExtBlockMetadata(x, y, z, 0);
-						}
-			}
-		else
-			for (int e = 0; e < 16; e++)
-			{
-				ExtendedBlockStorage cube = ebsList[e];
+			for (int x = 0; x < 16; x++)
+				for (int y = 0; y < 16; y++)
+					for (int z = 0; z < 16; z++)
+					{
+						cube.func_150818_a (x, y, z, Blocks.air);
+						cube.setExtBlockMetadata (x, y, z, 0);
+					}
+		}
+		else for (int e = 0; e < 16; e++)
+		{
+			ExtendedBlockStorage cube = ebsList[e];
 
-				for (int x = 0; x < 16; x++)
-					for (int y = 0; y < 16; y++)
-						for (int z = 0; z < 16; z++)
-						{
-							cube.func_150818_a(x, y, z, Block.getBlockById(matrix.blockIDs[x][e * 16 + y][z]));
-							cube.setExtBlockMetadata(x, y, z, matrix.metas[x][e * 16 + y][z]);
+			for (int x = 0; x < 16; x++)
+				for (int y = 0; y < 16; y++)
+					for (int z = 0; z < 16; z++)
+					{
+						cube.func_150818_a (x, y, z, Block.getBlockById (matrix.blockIDs[x][e * 16 + y][z]));
+						cube.setExtBlockMetadata (x, y, z, matrix.metas[x][e * 16 + y][z]);
 
-						}
-			}
+					}
+		}
 
-		chunk.generateSkylightMap();
+		chunk.generateSkylightMap ();
 		return chunk;
 	}
 

@@ -19,9 +19,9 @@ public abstract class STCommonProxy implements IGuiHandler
 		switch (ID)
 		{
 			case GUI_PHASER_DRILL:
-				return new GuiPhaserDrill((EntityPhaserDrill)world.getEntityByID(x), player);
+				return new GuiPhaserDrill ((EntityPhaserDrill) world.getEntityByID (x), player);
 			case GUI_COMMUNICATOR:
-				return new GuiCommunicator(player);
+				return new GuiCommunicator (player);
 		}
 
 		return null;

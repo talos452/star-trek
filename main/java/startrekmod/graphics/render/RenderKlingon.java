@@ -9,12 +9,12 @@ public class RenderKlingon extends RenderBiped
 {
 	public RenderKlingon()
 	{
-		super(new ModelBiped(), 0.5F);
+		super (new ModelBiped (), 0.5F);
 	}
 
 	@Override
 	public ResourceLocation getEntityTexture(EntityLiving entity)
 	{
-		return new ResourceLocation("startrekmod:textures/entity/klingon.png");
+		return new ResourceLocation ("startrekmod:textures/entity/klingon.png");
 	}
 }

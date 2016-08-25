@@ -8,7 +8,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 public class STMod
 {
 	@Instance
-	public static STMod INSTANCE = new STMod();
+	public static STMod INSTANCE = new STMod ();
 	public static final String MODID = "startrekmod";
 	public static final String NAME = "Star Trek mod";
 
@@ -18,20 +18,21 @@ public class STMod
 	public static final String VERSION = "1.6.0";
 
 	@EventHandler
-	public void init(FMLInitializationEvent event)
+	public void init (FMLInitializationEvent event)
 	{
-		STItem.preinit();
-		STBlock.preinit();
-		STCreativeTabs.preinit();
+		STItem.preinit ();
+		STBlock.preinit ();
+		STCreativeTabs.preinit ();
 
-		PROXY.init();
-		STBlock.init();
-		STItem.init();
-		STRecipes.init();
-		STEntity.init();
-		STNetwork.init();
-		STGeneration.init();
-		STEventHandler.init();
-		STCelestialData.init();
+		PROXY.init ();
+		STBlock.init ();
+		STItem.init ();
+		STRecipes.init ();
+		STEntity.init ();
+		STNetwork.init ();
+		STDimension.init ();
+		STGeneration.init ();
+		STEventHandler.init ();
+		STCelestialData.init ();
 	}
 }

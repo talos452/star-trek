@@ -11,7 +11,7 @@ public class BlockOreStorage extends STBlock
 
 	public BlockOreStorage(String textureName, Item ingot)
 	{
-		super(Material.iron, textureName);
+		super (Material.iron, textureName);
 		this.ingot = ingot;
 	}
 }

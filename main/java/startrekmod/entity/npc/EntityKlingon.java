@@ -12,30 +12,31 @@ public class EntityKlingon extends STEntityNPC
 {
 	public EntityKlingon(World world)
 	{
-		super(world);
-		setCurrentItemOrArmor(0, new ItemStack(STItem.batleth));
+		super (world);
+		setCurrentItemOrArmor (0, new ItemStack (STItem.batleth));
 	}
 
 	@Override
 	public void attackEntity(Entity entity, float damage)
 	{
-		entity.attackEntityFrom(DamageSource.causeMobDamage(this), damage);
+		entity.attackEntityFrom (DamageSource.causeMobDamage (this), damage);
 	}
 
 	@Override
 	public boolean attackEntityAsMob(Entity target)
 	{
-		attackEntity(target, 4);
+		attackEntity (target, 4);
 		return true;
 	}
 
 	@Override
 	protected void entityInit()
 	{
-		super.entityInit();
+		super.entityInit ();
 
-		speechBanks = new String[]
-		{"bIHegh jIH", "ghargh vISop bongIlchugh?", "mInDu'wIj HoS DIvI'", "tlhIngan wo' SuvwI'", "SoHvaD laH moDbej. vabDot Saj targh", "largh SoH rur chal quvHa'", "tlhInganpu' 'ach HoS Segh lutu'lu'be'chugh."};
+		speechBanks = new String[] {"bIHegh jIH", "ghargh vISop bongIlchugh?", "mInDu'wIj HoS DIvI'",
+			"tlhIngan wo' SuvwI'", "SoHvaD laH moDbej. vabDot Saj targh", "largh SoH rur chal quvHa'",
+		"tlhInganpu' 'ach HoS Segh lutu'lu'be'chugh."};
 	}
 
 	@Override
@@ -45,6 +46,6 @@ public class EntityKlingon extends STEntityNPC
 	@Override
 	public void setupAI()
 	{
-		super.setupAI();
+		super.setupAI ();
 	}
 }

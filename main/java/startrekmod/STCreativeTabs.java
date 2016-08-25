@@ -16,7 +16,7 @@ public class STCreativeTabs extends CreativeTabs
 
 	public STCreativeTabs(String lable, Item icon)
 	{
-		super(lable);
+		super (lable);
 		this.icon = icon;
 	}
 
@@ -28,10 +28,10 @@ public class STCreativeTabs extends CreativeTabs
 
 	public static void preinit()
 	{
-		tabSTBlocks = new STCreativeTabs("tabSTBlocks", Item.getItemFromBlock(STBlock.dilithiumBlock));
-		tabSTItems = new STCreativeTabs("tabSTItems", STItem.dilithiumCrystal);
-		tabSTEggs = new STCreativeTabs("tabSTEggs", Items.egg);
-		tabSTHuman = new STCreativeTabs("tabSTHuman", STItem.phaserII);
-		tabSTKlingon = new STCreativeTabs("tabSTKlingon", STItem.batleth);
+		tabSTBlocks = new STCreativeTabs ("tabSTBlocks", Item.getItemFromBlock (STBlock.dilithiumBlock));
+		tabSTItems = new STCreativeTabs ("tabSTItems", STItem.dilithiumCrystal);
+		tabSTEggs = new STCreativeTabs ("tabSTEggs", Items.egg);
+		tabSTHuman = new STCreativeTabs ("tabSTHuman", STItem.phaserII);
+		tabSTKlingon = new STCreativeTabs ("tabSTKlingon", STItem.batleth);
 	}
 }

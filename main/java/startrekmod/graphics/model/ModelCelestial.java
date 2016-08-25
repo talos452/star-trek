@@ -8,9 +8,9 @@ public class ModelCelestial extends STModel
 	{
 		textureWidth = 256;
 		textureHeight = 128;
-		ModelRenderer planet = new ModelRenderer(this, 0, 0);
+		ModelRenderer planet = new ModelRenderer (this, 0, 0);
 
-		planet.addBox(-32F, -32F, -32F, 64, 64, 64);
-		planet.setRotationPoint(0, 0, 0);
+		planet.addBox (-32F, -32F, -32F, 64, 64, 64);
+		planet.setRotationPoint (0, 0, 0);
 	}
 }

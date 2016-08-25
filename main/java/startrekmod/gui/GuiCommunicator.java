@@ -11,28 +11,28 @@ public class GuiCommunicator extends STGui
 	GuiButton transport;
 	EntityPlayer transportee;
 
-	public GuiCommunicator(EntityPlayer transportee)
+	public GuiCommunicator (EntityPlayer transportee)
 	{
-		super("guiTransporter");
+		super ("guiTransporter");
 		this.transportee = transportee;
 	}
 
 	@Override
-	protected void actionPerformed(GuiButton clicked)
+	protected void actionPerformed (GuiButton clicked)
 	{
-		mc.displayGuiScreen(null);
+		mc.displayGuiScreen (null);
+		int space = STDimension.dimensionTable.get ("space").getDimensionID ();
 
-		if (transportee.dimension == STGeneration.spaceDimensionID)
-			return;
+		if (transportee.dimension == space) return;
 
-		STNetwork.network.sendToServer(new PacketTransport(STGeneration.spaceDimensionID, transportee.dimension));
+		STNetwork.network.sendToServer (new PacketTransport (space, transportee.dimension));
 	}
 
 	@Override
-	public void initGui()
+	public void initGui ()
 	{
-		super.initGui();
-		transport = new GuiButton(0, posX + 28, posY + 118, "Transport");
-		buttonList.add(transport);
+		super.initGui ();
+		transport = new GuiButton (0, posX + 28, posY + 118, "Transport");
+		buttonList.add (transport);
 	}
 }

@@ -20,23 +20,23 @@ public class PacketPhaserDrill implements IMessage
 	public PacketPhaserDrill(float angle, EntityPhaserDrill drill, EntityPlayer player)
 	{
 		this.angle = angle;
-		drillID = drill.getEntityId();
-		playerID = player.getEntityId();
+		drillID = drill.getEntityId ();
+		playerID = player.getEntityId ();
 	}
 
 	@Override
 	public void fromBytes(ByteBuf data)
 	{
-		angle = data.readFloat();
-		drillID = data.readInt();
-		playerID = data.readInt();
+		angle = data.readFloat ();
+		drillID = data.readInt ();
+		playerID = data.readInt ();
 	}
 
 	@Override
 	public void toBytes(ByteBuf data)
 	{
-		data.writeFloat(angle);
-		data.writeInt(drillID);
-		data.writeInt(playerID);
+		data.writeFloat (angle);
+		data.writeInt (drillID);
+		data.writeInt (playerID);
 	}
 }

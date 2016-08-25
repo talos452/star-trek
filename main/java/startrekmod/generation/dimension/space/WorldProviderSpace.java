@@ -1,6 +1,6 @@
 package startrekmod.generation.dimension.space;
 
-import startrekmod.STGeneration;
+import startrekmod.STDimension;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -14,76 +14,76 @@ import cpw.mods.fml.relauncher.*;
 public class WorldProviderSpace extends WorldProvider
 {
 	@Override
-	public boolean canRespawnHere()
+	public boolean canRespawnHere ()
 	{
 		return false;
 	}
 
 	@Override
-	public IChunkProvider createChunkGenerator()
+	public IChunkProvider createChunkGenerator ()
 	{
-		return new ChunkProviderSpace(worldObj);
+		return new ChunkProviderSpace (worldObj);
 	}
 
 	@Override
-	public String getDepartMessage()
+	public String getDepartMessage ()
 	{
 		return "Entering planetary atmosphere";
 	}
 
 	@Override
-	public String getDimensionName()
+	public String getDimensionName ()
 	{
 		return "Space";
 	}
 
 	@Override
-	public Vec3 getFogColor(float p_76562_1_, float p_76562_2_)
+	public Vec3 getFogColor (float p_76562_1_, float p_76562_2_)
 	{
-		return Vec3.createVectorHelper(0, 0, 0);
+		return Vec3.createVectorHelper (0, 0, 0);
 	}
 
 	@Override
-	public int getRespawnDimension(EntityPlayerMP player)
+	public int getRespawnDimension (EntityPlayerMP player)
 	{
 		return 0;
 	}
 
 	@Override
-	public String getSaveFolder()
+	public String getSaveFolder ()
 	{
-		return getDimensionName();
+		return getDimensionName ();
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public Vec3 getSkyColor(Entity cameraEntity, float partialTicks)
+	public Vec3 getSkyColor (Entity cameraEntity, float partialTicks)
 	{
-		return Vec3.createVectorHelper(0, 0, 0);
+		return Vec3.createVectorHelper (0, 0, 0);
 	}
 
 	@Override
-	public String getWelcomeMessage()
+	public String getWelcomeMessage ()
 	{
 		return "Departing planetary atmosphere";
 	}
 
 	@Override
-	public boolean isSurfaceWorld()
+	public boolean isSurfaceWorld ()
 	{
 		return false;
 	}
 
 	@Override
-	protected void registerWorldChunkManager()
+	protected void registerWorldChunkManager ()
 	{
-		worldChunkMgr = new WorldChunkManagerHell(new BiomeGenSpace(), 0F);
-		dimensionId = STGeneration.spaceDimensionID;
+		worldChunkMgr = new WorldChunkManagerHell (new BiomeGenSpace (), 0F);
+		dimensionId = STDimension.dimensionTable.get ("space").getDimensionID ();
 		hasNoSky = true;
 	}
 
 	@Override
-	public boolean shouldMapSpin(String entity, double x, double y, double z)
+	public boolean shouldMapSpin (String entity, double x, double y, double z)
 	{
 		return false;
 	}

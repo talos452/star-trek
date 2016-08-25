@@ -12,14 +12,14 @@ public class RenderPhaserDrill extends STRender
 
 	public RenderPhaserDrill()
 	{
-		super("phaser_cannon");
-		model = new ModelPhaserDrill();
+		super ("phaser_cannon");
+		model = new ModelPhaserDrill ();
 	}
 
 	@Override
 	void render(Entity entity, double translationX, double translationY, double translationZ, float yaw, float pitch)
 	{
-		GL11.glTranslated(0, -3, 0);
-		model.render(.125F);
+		GL11.glTranslated (0, -3, 0);
+		model.render (.125F);
 	}
 }

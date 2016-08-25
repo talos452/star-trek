@@ -14,17 +14,17 @@ public abstract class EntityEnergyBlast extends EntityProjectile
 
 	public EntityEnergyBlast(World world)
 	{
-		super(world);
+		super (world);
 	}
 
 	public EntityEnergyBlast(World world, EntityLivingBase operator)
 	{
-		this(world, operator, operator);
+		this (world, operator, operator);
 	}
 
 	public EntityEnergyBlast(World world, EntityLivingBase operator, Entity source)
 	{
-		super(world, operator, source, 5);
+		super (world, operator, source, 5);
 	}
 
 	public abstract void damageBlock(int posX, int posY, int posZ);
@@ -39,13 +39,12 @@ public abstract class EntityEnergyBlast extends EntityProjectile
 		switch (info.typeOfHit)
 		{
 			case BLOCK:
-				damageBlock(info.blockX, info.blockY, info.blockZ);
-				setDead();
+				damageBlock (info.blockX, info.blockY, info.blockZ);
+				setDead ();
 				break;
 			case ENTITY:
-				if (!info.entityHit.isEntityInvulnerable())
-					damageEntity(info.entityHit);
-				setDead();
+				if (!info.entityHit.isEntityInvulnerable ()) damageEntity (info.entityHit);
+				setDead ();
 				break;
 		}
 	}
@@ -53,9 +52,8 @@ public abstract class EntityEnergyBlast extends EntityProjectile
 	@Override
 	public void onUpdate()
 	{
-		super.onUpdate();
+		super.onUpdate ();
 
-		if (++ticksInAir >= 100)
-			setDead();
+		if (++ticksInAir >= 100) setDead ();
 	}
 }

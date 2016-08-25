@@ -19,11 +19,11 @@ public class STNetwork
 
 	public static void init()
 	{
-		network = NetworkRegistry.INSTANCE.newSimpleChannel("startrekmod");
-		NetworkRegistry.INSTANCE.registerGuiHandler(STMod.INSTANCE, STMod.PROXY);
+		network = NetworkRegistry.INSTANCE.newSimpleChannel ("startrekmod");
+		NetworkRegistry.INSTANCE.registerGuiHandler (STMod.INSTANCE, STMod.PROXY);
 
-		network.registerMessage(HandlerPhaserDrill.class, PacketPhaserDrill.class, getUniqueDiscriminator(), Side.SERVER);
-		network.registerMessage(HandlerCommunicator.class, PacketCommunicator.class, getUniqueDiscriminator(), Side.SERVER);
-		network.registerMessage(HandlerTransport.class, PacketTransport.class, getUniqueDiscriminator(), Side.SERVER);
+		network.registerMessage (HandlerPhaserDrill.class, PacketPhaserDrill.class, getUniqueDiscriminator (), Side.SERVER);
+		network.registerMessage (HandlerCommunicator.class, PacketCommunicator.class, getUniqueDiscriminator (), Side.SERVER);
+		network.registerMessage (HandlerTransport.class, PacketTransport.class, getUniqueDiscriminator (), Side.SERVER);
 	}
 }

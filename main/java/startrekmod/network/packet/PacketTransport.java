@@ -21,14 +21,14 @@ public class PacketTransport implements IMessage
 	@Override
 	public void fromBytes(ByteBuf data)
 	{
-		dimensionTo = data.readInt();
-		dimensionFrom = data.readInt();
+		dimensionTo = data.readInt ();
+		dimensionFrom = data.readInt ();
 	}
 
 	@Override
 	public void toBytes(ByteBuf data)
 	{
-		data.writeInt(dimensionTo);
-		data.writeInt(dimensionFrom);
+		data.writeInt (dimensionTo);
+		data.writeInt (dimensionFrom);
 	}
 }

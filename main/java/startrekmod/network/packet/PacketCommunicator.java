@@ -21,14 +21,14 @@ public class PacketCommunicator implements IMessage
 	@Override
 	public void fromBytes(ByteBuf data)
 	{
-		recipientID = data.readInt();
-		message = data.readBytes(data.readableBytes()).toString();
+		recipientID = data.readInt ();
+		message = data.readBytes (data.readableBytes ()).toString ();
 	}
 
 	@Override
 	public void toBytes(ByteBuf data)
 	{
-		data.writeInt(recipientID);
-		data.writeBytes(message.getBytes());
+		data.writeInt (recipientID);
+		data.writeBytes (message.getBytes ());
 	}
 }

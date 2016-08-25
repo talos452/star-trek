@@ -1,29 +1,27 @@
 package startrekmod;
 
-import startrekmod.entity.*;
+import net.minecraft.world.ChunkCoordIntPair;
 
-import net.minecraft.world.World;
-
-import java.util.*;
+import java.util.Hashtable;
 
 public class STCelestialData
 {
-	public int dimensionID;
 	public String name;
-	public STCelestialData orbiting;
-	public int orbitRadius;
-	public double orbitSpeed;
+
 	public double posX, posY, posZ;
 	public int size;
 
-	public static List<STCelestialData> bodyList;
+	public STCelestialData orbiting;
+	public int orbitRadius;
+	public double orbitPeriod;
 
-	public STCelestialData(String name, double posX, double posY, double posZ, int size)
-	{
-		this(name, -1, posX, posY, posZ, size, null, 0, 0);
-	}
+	public int dimensionID;
 
-	public STCelestialData(String name, int dimensionID, double posX, double posY, double posZ, int size, STCelestialData orbiting, int orbit, double orbitSpeed)
+	public static Hashtable <ChunkCoordIntPair, STCelestialData> bodyList;
+
+	public STCelestialData (String name, int dimensionID,
+		double posX, double posY, double posZ, int size,
+		STCelestialData orbiting, int orbit, double orbitPeriod)
 	{
 		this.name = name;
 		this.posX = posX;
@@ -33,55 +31,57 @@ public class STCelestialData
 		this.size = size;
 		this.orbiting = orbiting;
 		this.orbitRadius = orbit;
-		this.orbitSpeed = orbitSpeed;
+		this.orbitPeriod = orbitPeriod;
 
-		bodyList.add(this);
+		bodyList.put (new ChunkCoordIntPair ((int) posX, (int) posZ), this);
 	}
 
-	public STCelestialData(String name, int dimensionID, int size, STCelestialData orbiting, int orbit, double orbitSpeed)
+	public STCelestialData (String name,
+		double posX, double posY, double posZ, int size)
 	{
-		this(name, dimensionID, orbiting.posX, orbiting.posY + orbiting.size / 2 - size, orbiting.posZ + orbit, size, orbiting, orbit, orbitSpeed);
+		this (name, -1, posX, posY, posZ, size, null, 0, 0);
 	}
 
-	public STCelestialData(String name, int size, STCelestialData orbiting, int orbit, double orbitSpeed)
+	public STCelestialData (String name, int dimensionID, int size,
+		STCelestialData orbiting, int orbit, double orbitPeriod)
 	{
-		this(name, -1, orbiting.posX, orbiting.posY + orbiting.size / 2 - size, orbiting.posZ + orbit, size, orbiting, orbit, orbitSpeed);
+		this (name, dimensionID,
+			orbiting.posX, orbiting.posY + orbiting.size / 2 - size, orbiting.posZ + orbit,
+			size, orbiting, orbit, orbitPeriod);
 	}
 
-	public static EntityCelestial createEntityForCelestial(STCelestialData celestial, World world)
+	public STCelestialData (String name, int size,
+		STCelestialData orbiting, int orbit, double orbitPeriod)
 	{
-		EntityCelestial entity;
-
-		if (celestial.dimensionID == -1)
-			entity = new EntityCelestial(world, celestial);
-		else
-			entity = new EntityPlanet(world, celestial);
-
-		return entity;
+		this (name, -1,
+			orbiting.posX, orbiting.posY + orbiting.size / 2 - size, orbiting.posZ + orbit,
+			size, orbiting, orbit, orbitPeriod);
 	}
 
-	public static STCelestialData getCelestialByName(String name)
+	public static void init ()
 	{
-		for (STCelestialData celestial : bodyList)
-			if (celestial.name.equals(name))
-				return celestial;
+		bodyList = new Hashtable <ChunkCoordIntPair, STCelestialData> ();
 
-		return null;
-	}
-
-	public static void init()
-	{
-		bodyList = new ArrayList<STCelestialData>();
 		int yCenter = 32767;
 
-		STCelestialData sol = new STCelestialData("sol", 0, yCenter - 8, 0, 16);
-		STCelestialData mercury = new STCelestialData("mercury", 1, sol, 32, 2 * Math.PI / 600.0);
-		STCelestialData venus = new STCelestialData("venus", 4, sol, 48, 2 * Math.PI / 900.0);
-		STCelestialData earth = new STCelestialData("earth", 0, 4, sol, 64, 2 * Math.PI / 1200.0);
-		STCelestialData mars = new STCelestialData("mars", STGeneration.marsDimensionID, 2, sol, 92, 2 * Math.PI / 1800.0);
-		STCelestialData jupiter = new STCelestialData("jupiter", 8, sol, 128, 2 * Math.PI / 2400.0);
-		STCelestialData saturn = new STCelestialData("saturn", 8, sol, 192, 2 * Math.PI / 4800.0);
-		STCelestialData uranus = new STCelestialData("uranus", 6, sol, 256, 2 * Math.PI / 9600.0);
-		STCelestialData neptune = new STCelestialData("neptune", 6, sol, 512, 2 * Math.PI / 19200.0);
+		STCelestialData sol = new STCelestialData ("sol", 0, yCenter - 8, 0, 16);
+		new STCelestialData ("mercury", 1, sol, 32, 450);
+		new STCelestialData ("venus", 4, sol, 48, 2400);
+		new STCelestialData ("earth", 0, 4, sol, 64, 3600);
+		new STCelestialData ("mars", getDimension ("mars"), 2, sol, 92, 7200);
+		new STCelestialData ("jupiter", 8, sol, 128, 45000);
+		new STCelestialData ("saturn", 8, sol, 192, 90000);
+		new STCelestialData ("uranus", 6, sol, 256, 270000);
+		new STCelestialData ("neptune", 6, sol, 512, 540000);
+	}
+
+	public static STCelestialData getCelestialByName (String name)
+	{
+		return bodyList.get (name);
+	}
+
+	static int getDimension (String name)
+	{
+		return STDimension.dimensionTable.get (name).dimensionID;
 	}
 }
