@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelRenderer;
 
 public class ModelPhaserDrill extends STModel
 {
-	public ModelPhaserDrill()
+	public ModelPhaserDrill ()
 	{
 		textureWidth = 128;
 		textureHeight = 256;

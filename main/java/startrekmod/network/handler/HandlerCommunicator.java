@@ -9,14 +9,11 @@ import cpw.mods.fml.common.network.simpleimpl.*;
 
 public class HandlerCommunicator implements IMessageHandler <PacketCommunicator, IMessage>
 {
-	public HandlerCommunicator()
-	{}
-
 	@Override
-	public IMessage onMessage(PacketCommunicator message, MessageContext ctx)
+	public IMessage onMessage (PacketCommunicator message, MessageContext ctx)
 	{
-		EntityPlayer operator = ctx.getServerHandler ().playerEntity;
-		EntityPlayer recipient = (EntityPlayer) operator.worldObj.getEntityByID (message.recipientID);
+		EntityPlayer sender = ctx.getServerHandler ().playerEntity;
+		EntityPlayer recipient = message.getPlayerRecipient ();
 		recipient.addChatComponentMessage (new ChatComponentText (message.message));
 		return null;
 	}

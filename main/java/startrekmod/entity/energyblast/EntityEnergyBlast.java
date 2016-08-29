@@ -1,40 +1,34 @@
 package startrekmod.entity.energyblast;
 
-import startrekmod.util.EntityProjectile;
+import startrekmod.entity.EntityProjectile;
 
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import java.awt.Color;
+import java.util.UUID;
 
 public abstract class EntityEnergyBlast extends EntityProjectile
 {
-	int ticksInAir = 0;
-
-	public EntityEnergyBlast(World world)
+	protected EntityEnergyBlast (World world)
 	{
 		super (world);
 	}
 
-	public EntityEnergyBlast(World world, EntityLivingBase operator)
+	protected EntityEnergyBlast (World world, UUID sourceID)
 	{
-		this (world, operator, operator);
+		super (world, sourceID, 5);
 	}
 
-	public EntityEnergyBlast(World world, EntityLivingBase operator, Entity source)
-	{
-		super (world, operator, source, 5);
-	}
+	protected abstract void damageBlock (int posX, int posY, int posZ);
 
-	public abstract void damageBlock(int posX, int posY, int posZ);
+	protected abstract void damageEntity (Entity entity);
 
-	public abstract void damageEntity(Entity entity);
-
-	public abstract Color getBeamColour();
+	public abstract Color getBeamColour ();
 
 	@Override
-	public final void onImpact(MovingObjectPosition info)
+	protected final void onImpact (MovingObjectPosition info)
 	{
 		switch (info.typeOfHit)
 		{
@@ -43,17 +37,19 @@ public abstract class EntityEnergyBlast extends EntityProjectile
 				setDead ();
 				break;
 			case ENTITY:
-				if (!info.entityHit.isEntityInvulnerable ()) damageEntity (info.entityHit);
+				if (!info.entityHit.isEntityInvulnerable ())
+					damageEntity (info.entityHit);
 				setDead ();
 				break;
 		}
 	}
 
 	@Override
-	public void onUpdate()
+	public void onUpdate ()
 	{
 		super.onUpdate ();
 
-		if (++ticksInAir >= 100) setDead ();
+		if (ticksExisted > 99)
+			setDead ();
 	}
 }

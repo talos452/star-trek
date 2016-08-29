@@ -9,26 +9,14 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 
-import cpw.mods.fml.relauncher.*;
-
 public class WorldProviderMars extends WorldProvider
 {
 	@Override
-	public boolean canRespawnHere ()
+	protected void registerWorldChunkManager ()
 	{
-		return true;
-	}
-
-	@Override
-	public IChunkProvider createChunkGenerator ()
-	{
-		return new ChunkProviderMars (worldObj);
-	}
-
-	@Override
-	public String getDimensionName ()
-	{
-		return "Mars";
+		worldChunkMgr = new WorldChunkManagerHell (new BiomeGenMars (), 0F);
+		dimensionId = STDimension.dimensionTable.get ("mars").getDimensionID ();
+		hasNoSky = false;
 	}
 
 	@Override
@@ -46,19 +34,6 @@ public class WorldProviderMars extends WorldProvider
 	}
 
 	@Override
-	public int getRespawnDimension (EntityPlayerMP player)
-	{
-		return dimensionId;
-	}
-
-	@Override
-	public String getSaveFolder ()
-	{
-		return getDimensionName ();
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
 	public Vec3 getSkyColor (Entity cameraEntity, float partialTicks)
 	{
 		double brightnessMultiplier = MathHelper.cos ((float) (worldObj.getWorldTime () / 24000.0 * Math.PI * 2)) * 2 + 0.5;
@@ -71,17 +46,39 @@ public class WorldProviderMars extends WorldProvider
 	}
 
 	@Override
+	public IChunkProvider createChunkGenerator ()
+	{
+		return new ChunkProviderMars (worldObj);
+	}
+
+	@Override
+	public String getDimensionName ()
+	{
+		return "Mars";
+	}
+
+	@Override
+	public String getSaveFolder ()
+	{
+		return getDimensionName ();
+	}
+
+	@Override
+	public int getRespawnDimension (EntityPlayerMP player)
+	{
+		return dimensionId;
+	}
+
+	@Override
 	public boolean isSurfaceWorld ()
 	{
 		return true;
 	}
 
 	@Override
-	protected void registerWorldChunkManager ()
+	public boolean canRespawnHere ()
 	{
-		worldChunkMgr = new WorldChunkManagerHell (new BiomeGenMars (), 0F);
-		dimensionId = STDimension.dimensionTable.get ("mars").getDimensionID ();
-		hasNoSky = false;
+		return true;
 	}
 
 	@Override

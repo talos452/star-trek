@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelRenderer;
 
 public class ModelCelestial extends STModel
 {
-	public ModelCelestial()
+	public ModelCelestial ()
 	{
 		textureWidth = 256;
 		textureHeight = 128;

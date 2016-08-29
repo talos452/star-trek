@@ -11,7 +11,7 @@ public class ItemSpawnEgg extends STItem
 {
 	String entityName;
 
-	public ItemSpawnEgg(String entityName)
+	public ItemSpawnEgg (String entityName)
 	{
 		super ("egg_" + entityName);
 		this.entityName = STMod.MODID + '.' + entityName;
@@ -19,14 +19,17 @@ public class ItemSpawnEgg extends STItem
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int blockPosX, int blockPosY, int blockPosZ, int side, float innerPosX, float innerPosY, float innerPosZ)
+	public boolean onItemUse (ItemStack stack, EntityPlayer player, World world, int blockPosX, int blockPosY, int blockPosZ, int side, float innerPosX, float innerPosY, float innerPosZ)
 	{
-		if (world.isRemote) return true;
+		if (!world.isRemote)
+		{
+			stack.stackSize--;
+			Entity entity = EntityList.createEntityByName (entityName, world);
+			entity.setPosition (blockPosX, blockPosY + 1, blockPosZ);
+			world.spawnEntityInWorld (entity);
+			return true;
+		}
 
-		stack.stackSize--;
-		Entity entity = EntityList.createEntityByName (entityName, world);
-		entity.setPosition (blockPosX, blockPosY + 1, blockPosZ);
-		world.spawnEntityInWorld (entity);
-		return true;
+		return false;
 	}
 }

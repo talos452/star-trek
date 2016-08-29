@@ -14,19 +14,19 @@ public class STCreativeTabs extends CreativeTabs
 	public static CreativeTabs tabSTItems;
 	public static CreativeTabs tabSTKlingon;
 
-	public STCreativeTabs(String lable, Item icon)
+	public STCreativeTabs (String lable, Item icon)
 	{
 		super (lable);
 		this.icon = icon;
 	}
 
 	@Override
-	public Item getTabIconItem()
+	public Item getTabIconItem ()
 	{
 		return icon;
 	}
 
-	public static void preinit()
+	public static void preinit ()
 	{
 		tabSTBlocks = new STCreativeTabs ("tabSTBlocks", Item.getItemFromBlock (STBlock.dilithiumBlock));
 		tabSTItems = new STCreativeTabs ("tabSTItems", STItem.dilithiumCrystal);

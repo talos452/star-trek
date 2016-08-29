@@ -1,56 +1,53 @@
-package startrekmod.util;
+package startrekmod.entity;
+
+import startrekmod.STUtilities;
 
 import net.minecraft.entity.*;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-import java.util.List;
+import java.util.*;
 
 public abstract class EntityProjectile extends Entity implements IProjectile
 {
-	public EntityLivingBase operator;
-	public Entity source;
-	public double speed;
+	UUID sourceID;
+	double speed;
 
-	public EntityProjectile(World world)
+	protected EntityProjectile (World world)
 	{
 		super (world);
 	}
 
-	public EntityProjectile(World world, EntityLivingBase source, double speed)
-	{
-		this (world, source, source, speed);
-	}
-
-	public EntityProjectile(World world, EntityLivingBase operator, Entity source, double speed)
+	protected EntityProjectile (World world, UUID sourceID, double speed)
 	{
 		super (world);
-		this.operator = operator;
-		this.source = source;
+		this.sourceID = sourceID;
+
+		Entity source = getProjectileSource ();
+
 		posX = source.posX;
-
-		posY = (source == operator) ? operator.posY + 1.5 : source.posY;
 		posZ = source.posZ;
+		posY = (source instanceof EntityPlayer) ? source.posY + 1.5 : source.posY;
 		setPosition (posX, posY, posZ);
 
-		rotationYaw = (source == operator) ? operator.rotationYawHead : source.rotationYaw;
+		rotationYaw = (source instanceof EntityPlayer) ? ((EntityPlayer) source).rotationYawHead : source.rotationYaw;
 		rotationPitch = source.rotationPitch;
+
 		this.speed = speed;
 		setThrowableHeading (0, 0, 0, 0, 0);
 	}
 
 	@Override
-	protected void entityInit()
+	protected void entityInit ()
 	{
 		setSize (.25F, .25F);
 	}
 
-	public abstract void onImpact(MovingObjectPosition info);
-
 	@Override
-	public void onUpdate()
+	public void onUpdate ()
 	{
 		lastTickPosX = posX;
 		lastTickPosY = posY;
@@ -62,7 +59,8 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 		pos = Vec3.createVectorHelper (posX, posY, posZ);
 		projectedPos = Vec3.createVectorHelper (posX + motionX, posY + motionY, posZ + motionZ);
 
-		if (movingobjectposition != null) projectedPos = Vec3.createVectorHelper (movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
+		if (movingobjectposition != null)
+			projectedPos = Vec3.createVectorHelper (movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
 
 		if (!worldObj.isRemote)
 		{
@@ -76,7 +74,7 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 			{
 				Entity candidate = (Entity) nearby.get (j);
 
-				if (candidate.canBeCollidedWith () && (candidate != operator) && (candidate != source))
+				if (candidate.canBeCollidedWith () && (candidate != getSourceOperator ()) && (candidate != getProjectileSource ()))
 				{
 					AxisAlignedBB axisalignedbb = candidate.boundingBox.expand (.3, .3, .3);
 
@@ -121,13 +119,7 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound reader)
-	{
-		setDead ();
-	}
-
-	@Override
-	public void setThrowableHeading(double motionX, double motionY, double motionZ, float speed, float deviation)
+	public void setThrowableHeading (double motionX, double motionY, double motionZ, float speed, float deviation)
 	{
 		this.motionX = -MathHelper.sin (rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos (this.rotationPitch / 180.0F * (float) Math.PI);
 		this.motionZ = MathHelper.cos (rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos (this.rotationPitch / 180.0F * (float) Math.PI);
@@ -138,7 +130,32 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 		this.motionZ *= MathHelper.sqrt_double (this.speed);
 	}
 
+	protected abstract void onImpact (MovingObjectPosition info);
+
+	public Entity getProjectileSource ()
+	{
+		return STUtilities.getEntityByUUID (sourceID, worldObj);
+	}
+
+	public EntityPlayer getSourceOperator ()
+	{
+		Entity entity = getProjectileSource ();
+
+		if (entity instanceof EntityPlayer)
+			return (EntityPlayer) entity;
+		else if (entity instanceof EntityPhaserDrill)
+			return ((EntityPhaserDrill) entity).getLastOperator ();
+
+		return null;
+	}
+
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound writer)
+	protected void readEntityFromNBT (NBTTagCompound reader)
+	{
+		setDead ();
+	}
+
+	@Override
+	protected void writeEntityToNBT (NBTTagCompound writer)
 	{}
 }

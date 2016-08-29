@@ -1,39 +1,40 @@
 package startrekmod.entity.energyblast;
 
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 import java.awt.Color;
+import java.util.UUID;
 
 public class EntityDisruptorBlastKill extends EntityEnergyBlast
 {
-	public EntityDisruptorBlastKill(World world)
+	public EntityDisruptorBlastKill (World world)
 	{
 		super (world);
 	}
 
-	public EntityDisruptorBlastKill(World world, EntityLivingBase operator)
+	public EntityDisruptorBlastKill (World world, UUID playerID)
 	{
-		super (world, operator, operator);
+		super (world, playerID);
 	}
 
 	@Override
-	public void damageBlock(int posX, int posY, int posZ)
+	protected void damageBlock (int posX, int posY, int posZ)
 	{
 		worldObj.setBlock (posX, posY, posZ, Blocks.fire);
 	}
 
 	@Override
-	public void damageEntity(Entity entity)
+	protected void damageEntity (Entity entity)
 	{
-		entity.attackEntityFrom (DamageSource.onFire, 10F);
+		entity.attackEntityFrom (DamageSource.causePlayerDamage (getSourceOperator ()), 10F);
 		entity.setFire (3);
 	}
 
 	@Override
-	public Color getBeamColour()
+	public Color getBeamColour ()
 	{
 		return new Color (1F, 0.25F, 0F);
 	}

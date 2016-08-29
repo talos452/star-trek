@@ -11,7 +11,7 @@ public abstract class STEntityNPC extends EntityCreature
 	int lastSpeechIndex;
 	static String[] speechBanks;
 
-	public STEntityNPC(World world)
+	protected STEntityNPC (World world)
 	{
 		super (world);
 		setupAI ();
@@ -19,23 +19,29 @@ public abstract class STEntityNPC extends EntityCreature
 	}
 
 	@Override
-	public boolean interact(EntityPlayer player)
+	protected boolean interact (EntityPlayer player)
 	{
-		if (worldObj.isRemote) return false;
+		if (!worldObj.isRemote)
+		{
+			speakToPlayer (player);
+			return true;
+		}
 
-		speakToPlayer (player);
-		return true;
+		return false;
 	}
 
-	@Override
-	public boolean isAIEnabled()
+	protected void speakToPlayer (EntityPlayer player)
 	{
-		return true;
+		int index = rand.nextInt (speechBanks.length);
+
+		if (lastSpeechIndex == index)
+			index = (index + 1) % speechBanks.length;
+
+		lastSpeechIndex = index;
+		player.addChatComponentMessage (new ChatComponentText (speechBanks[index]));
 	}
 
-	public abstract void performInteract(EntityPlayer player);
-
-	public void setupAI()
+	protected void setupAI ()
 	{
 		getEntityAttribute (SharedMonsterAttributes.movementSpeed).setBaseValue (0.6);
 		tasks.addTask (10, new EntityAIWander (this, 0.6));
@@ -43,13 +49,11 @@ public abstract class STEntityNPC extends EntityCreature
 		tasks.addTask (10, new EntityAISwimming (this));
 	}
 
-	public void speakToPlayer(EntityPlayer player)
+	protected abstract void performInteract (EntityPlayer player);
+
+	@Override
+	final protected boolean isAIEnabled ()
 	{
-		int index = rand.nextInt (speechBanks.length);
-
-		if (lastSpeechIndex == index) index = (index + 1) % speechBanks.length;
-
-		lastSpeechIndex = index;
-		player.addChatComponentMessage (new ChatComponentText (speechBanks[index]));
+		return true;
 	}
 }

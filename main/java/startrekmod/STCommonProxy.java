@@ -1,6 +1,5 @@
 package startrekmod;
 
-import startrekmod.entity.EntityPhaserDrill;
 import startrekmod.gui.*;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,21 +13,21 @@ public abstract class STCommonProxy implements IGuiHandler
 	public static final int GUI_PHASER_DRILL = 0;
 
 	@Override
-	public STGui getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	public STGui getClientGuiElement (int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		switch (ID)
 		{
 			case GUI_PHASER_DRILL:
-				return new GuiPhaserDrill ((EntityPhaserDrill) world.getEntityByID (x), player);
+				return new GuiPhaserDrill (x);
 			case GUI_COMMUNICATOR:
-				return new GuiCommunicator (player);
+				return new GuiCommunicator (player.getEntityId (), player.dimension);
 		}
 
 		return null;
 	}
 
 	@Override
-	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	public Object getServerGuiElement (int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		switch (ID)
 		{
@@ -41,6 +40,6 @@ public abstract class STCommonProxy implements IGuiHandler
 		return null;
 	}
 
-	public void init()
+	public void init ()
 	{}
 }

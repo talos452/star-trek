@@ -24,16 +24,23 @@ public class STEntity
 
 	public static void initEntities ()
 	{
-		EntityRegistry.registerModEntity (EntityPhaserDrill.class, "PhaserDrill", getNextID (), instance, 64, 3, false);
-		EntityRegistry.registerModEntity (EntityPhaserBlastStun.class, "PhaserBlastStun", getNextID (), instance, 64, 3, true);
-		EntityRegistry.registerModEntity (EntityPhaserBlastKill.class, "PhaserBlastKill", getNextID (), instance, 64, 3, true);
-		EntityRegistry.registerModEntity (EntityDrillBlast.class, "PhaserBlastDrill", getNextID (), instance, 64, 3, true);
-		EntityRegistry.registerModEntity (EntityDisruptorBlastKill.class, "DisruptorBlastKill", getNextID (), instance, 64, 3, true);
-		EntityRegistry.registerModEntity (EntityCube.class, "Cube", getNextID (), instance, 64, 3, false);
+		EntityRegistry.registerModEntity (EntityPhaserDrill.class, "PhaserDrill",
+			getNextID (), instance, 64, 3, false);
+		EntityRegistry.registerModEntity (EntityPhaserBlastStun.class, "PhaserBlastStun",
+			getNextID (), instance, 64, 3, true);
+		EntityRegistry.registerModEntity (EntityPhaserBlastKill.class, "PhaserBlastKill",
+			getNextID (), instance, 64, 3, true);
+		EntityRegistry.registerModEntity (EntityDrillBlast.class, "PhaserBlastDrill",
+			getNextID (), instance, 64, 3, true);
+		EntityRegistry.registerModEntity (EntityDisruptorBlastKill.class, "DisruptorBlastKill",
+			getNextID (), instance, 64, 3, true);
+		EntityRegistry.registerModEntity (EntityCube.class, "Cube",
+			getNextID (), instance, 64, 3, false);
 	}
 
 	public static void initNPCs ()
 	{
-		EntityRegistry.registerModEntity (EntityKlingon.class, "Klingon", getNextID (), STMod.INSTANCE, 64, 1, true);
+		EntityRegistry.registerModEntity (EntityKlingon.class, "Klingon",
+			getNextID (), STMod.INSTANCE, 64, 1, true);
 	}
 }

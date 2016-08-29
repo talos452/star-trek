@@ -6,9 +6,9 @@ import net.minecraft.world.World;
 
 public class EntityCube extends Entity
 {
-	public EntityCube (World p_i1582_1_)
+	public EntityCube (World world)
 	{
-		super (p_i1582_1_);
+		super (world);
 	}
 
 	@Override
@@ -16,10 +16,10 @@ public class EntityCube extends Entity
 	{}
 
 	@Override
-	protected void readEntityFromNBT (NBTTagCompound p_70037_1_)
+	protected void readEntityFromNBT (NBTTagCompound reader)
 	{}
 
 	@Override
-	protected void writeEntityToNBT (NBTTagCompound p_70014_1_)
+	protected void writeEntityToNBT (NBTTagCompound writer)
 	{}
 }

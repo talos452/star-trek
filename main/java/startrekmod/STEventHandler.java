@@ -18,7 +18,9 @@ public class STEventHandler
 	@SubscribeEvent
 	public void interceptRifleThrowback (LivingAttackEvent event)
 	{
-		if (event.source.isExplosion ()) if (event.source.getSourceOfDamage () == event.entityLiving) event.setCanceled (true);
+		if (event.source.isExplosion ())
+			if (event.source.getSourceOfDamage () == event.entityLiving)
+				event.setCanceled (true);
 	}
 
 	@SubscribeEvent
@@ -27,13 +29,19 @@ public class STEventHandler
 		EntityPlayer player = event.getPlayer ();
 		ItemStack breakingItem = player.getCurrentEquippedItem ();
 
-		if (breakingItem != null) if (breakingItem.getItem () instanceof STItemSword) if (player.capabilities.isCreativeMode) event.setCanceled (true);
+		if (breakingItem != null)
+			if (breakingItem.getItem () instanceof STItemSword)
+				if (player.capabilities.isCreativeMode)
+					event.setCanceled (true);
 	}
 
 	@SubscribeEvent
-	public void respawnCelestialBodies (ChunkDataEvent event)
+	public void respawnCelestialBodies (ChunkDataEvent.Load event)
 	{
-		if (event instanceof ChunkDataEvent.Save)
+		if (event.world.isRemote)
+			return;
+
+		if (event.world.provider.dimensionId != STDimension.dimensionTable.get ("space").dimensionID)
 		{
 
 		}

@@ -2,11 +2,8 @@ package startrekmod.generation.dimension.space;
 
 import startrekmod.generation.dimension.STChunkProvider;
 
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-
-import java.util.*;
 
 public class ChunkProviderSpace extends STChunkProvider
 {
@@ -22,12 +19,6 @@ public class ChunkProviderSpace extends STChunkProvider
 	}
 
 	@Override
-	public List getPossibleCreatures (EnumCreatureType filter, int x, int y, int z)
-	{
-		return new ArrayList (0);
-	}
-
-	@Override
 	public String makeString ()
 	{
 		return "SpaceLevelSource";
@@ -35,7 +26,5 @@ public class ChunkProviderSpace extends STChunkProvider
 
 	@Override
 	public void populate (IChunkProvider provider, int chunkX, int chunkZ)
-	{
-
-	}
+	{}
 }

@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelRenderer;
 
 public class ModelEnergyBlast extends STModel
 {
-	public ModelEnergyBlast()
+	public ModelEnergyBlast ()
 	{
 		ModelRenderer beam = new ModelRenderer (this, 0, 0);
 		textureWidth = 64;

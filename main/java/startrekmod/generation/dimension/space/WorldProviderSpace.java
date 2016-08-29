@@ -9,32 +9,14 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 
-import cpw.mods.fml.relauncher.*;
-
 public class WorldProviderSpace extends WorldProvider
 {
 	@Override
-	public boolean canRespawnHere ()
+	protected void registerWorldChunkManager ()
 	{
-		return false;
-	}
-
-	@Override
-	public IChunkProvider createChunkGenerator ()
-	{
-		return new ChunkProviderSpace (worldObj);
-	}
-
-	@Override
-	public String getDepartMessage ()
-	{
-		return "Entering planetary atmosphere";
-	}
-
-	@Override
-	public String getDimensionName ()
-	{
-		return "Space";
+		worldChunkMgr = new WorldChunkManagerHell (new BiomeGenSpace (), 0F);
+		dimensionId = STDimension.dimensionTable.get ("space").getDimensionID ();
+		hasNoSky = true;
 	}
 
 	@Override
@@ -44,9 +26,21 @@ public class WorldProviderSpace extends WorldProvider
 	}
 
 	@Override
-	public int getRespawnDimension (EntityPlayerMP player)
+	public Vec3 getSkyColor (Entity cameraEntity, float partialTicks)
 	{
-		return 0;
+		return Vec3.createVectorHelper (0, 0, 0);
+	}
+
+	@Override
+	public IChunkProvider createChunkGenerator ()
+	{
+		return new ChunkProviderSpace (worldObj);
+	}
+
+	@Override
+	public String getDimensionName ()
+	{
+		return "Space";
 	}
 
 	@Override
@@ -55,17 +49,10 @@ public class WorldProviderSpace extends WorldProvider
 		return getDimensionName ();
 	}
 
-	@SideOnly(Side.CLIENT)
 	@Override
-	public Vec3 getSkyColor (Entity cameraEntity, float partialTicks)
+	public int getRespawnDimension (EntityPlayerMP player)
 	{
-		return Vec3.createVectorHelper (0, 0, 0);
-	}
-
-	@Override
-	public String getWelcomeMessage ()
-	{
-		return "Departing planetary atmosphere";
+		return 0;
 	}
 
 	@Override
@@ -75,11 +62,9 @@ public class WorldProviderSpace extends WorldProvider
 	}
 
 	@Override
-	protected void registerWorldChunkManager ()
+	public boolean canRespawnHere ()
 	{
-		worldChunkMgr = new WorldChunkManagerHell (new BiomeGenSpace (), 0F);
-		dimensionId = STDimension.dimensionTable.get ("space").getDimensionID ();
-		hasNoSky = true;
+		return false;
 	}
 
 	@Override

@@ -4,7 +4,7 @@ import startrekmod.generation.dimension.STBiomeGenBase;
 
 public class BiomeGenMars extends STBiomeGenBase
 {
-	public BiomeGenMars()
+	public BiomeGenMars ()
 	{
 		setDisableRain ();
 		setBiomeName ("Mars");

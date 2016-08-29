@@ -1,41 +1,23 @@
 package startrekmod.gui;
 
 import startrekmod.STNetwork;
-import startrekmod.entity.EntityPhaserDrill;
 import startrekmod.network.packet.PacketPhaserDrill;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.entity.player.EntityPlayer;
 
 public class GuiPhaserDrill extends STGui
 {
-	EntityPhaserDrill drill;
+	int drillID;
 	GuiButton north, east, south, west, fire;
-	EntityPlayer operator;
 
-	public GuiPhaserDrill(EntityPhaserDrill drill, EntityPlayer operator)
+	public GuiPhaserDrill (int drillID)
 	{
 		super ("guiPhaserDrill");
-		this.drill = drill;
-		this.operator = operator;
+		this.drillID = drillID;
 	}
 
 	@Override
-	public void actionPerformed(GuiButton clicked)
-	{
-		STNetwork.network.sendToServer (new PacketPhaserDrill (clicked.id, drill, operator));
-		mc.displayGuiScreen (null);
-	}
-
-	@Override
-	public void drawScreen(int mousePosX, int mousePosY, float f3)
-	{
-		super.drawScreen (mousePosX, mousePosY, f3);
-		fontRendererObj.drawString ("Targetting Display", posX + 80, posY + 64, 0xFFFFFFFF);
-	}
-
-	@Override
-	public void initGui()
+	public void initGui ()
 	{
 		super.initGui ();
 
@@ -50,5 +32,19 @@ public class GuiPhaserDrill extends STGui
 		buttonList.add (east);
 		buttonList.add (south);
 		buttonList.add (west);
+	}
+
+	@Override
+	public void actionPerformed (GuiButton clicked)
+	{
+		STNetwork.network.sendToServer (new PacketPhaserDrill (clicked.id, drillID));
+		mc.displayGuiScreen (null);
+	}
+
+	@Override
+	public void drawScreen (int mousePosX, int mousePosY, float f3)
+	{
+		super.drawScreen (mousePosX, mousePosY, f3);
+		fontRendererObj.drawString ("Targetting Display", posX + 80, posY + 64, 0xFFFFFFFF);
 	}
 }

@@ -9,9 +9,9 @@ public class STBiomeGenBase extends BiomeGenBase
 	static int biomeID = 0;
 	static ArrayList starTrekBiomeList = new ArrayList ();
 
-	public STBiomeGenBase()
+	public STBiomeGenBase ()
 	{
-		super (getUniqueBiomeID (), false);
+		super (getUniqueBiomeID () + 40, false);
 		starTrekBiomeList.add (this);
 		spawnableMonsterList.clear ();
 		spawnableCreatureList.clear ();
@@ -19,7 +19,7 @@ public class STBiomeGenBase extends BiomeGenBase
 		spawnableCaveCreatureList.clear ();
 	}
 
-	public static int getUniqueBiomeID()
+	static int getUniqueBiomeID ()
 	{
 		return biomeID++;
 	}

@@ -1,5 +1,6 @@
 package startrekmod;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.world.ChunkCoordIntPair;
 
 import java.util.Hashtable;
@@ -7,72 +8,30 @@ import java.util.Hashtable;
 public class STCelestialData
 {
 	public String name;
-
-	public double posX, posY, posZ;
-	public int size;
-
-	public STCelestialData orbiting;
-	public int orbitRadius;
-	public double orbitPeriod;
-
 	public int dimensionID;
+	public int size;
+	public PhysicsGovernor governor;
 
 	public static Hashtable <ChunkCoordIntPair, STCelestialData> bodyList;
 
-	public STCelestialData (String name, int dimensionID,
-		double posX, double posY, double posZ, int size,
-		STCelestialData orbiting, int orbit, double orbitPeriod)
+	public STCelestialData (String name, int dimensionID, int size, PhysicsGovernor governor)
 	{
 		this.name = name;
-		this.posX = posX;
-		this.posY = posY;
-		this.posZ = posZ;
 		this.dimensionID = dimensionID;
 		this.size = size;
-		this.orbiting = orbiting;
-		this.orbitRadius = orbit;
-		this.orbitPeriod = orbitPeriod;
-
-		bodyList.put (new ChunkCoordIntPair ((int) posX, (int) posZ), this);
-	}
-
-	public STCelestialData (String name,
-		double posX, double posY, double posZ, int size)
-	{
-		this (name, -1, posX, posY, posZ, size, null, 0, 0);
-	}
-
-	public STCelestialData (String name, int dimensionID, int size,
-		STCelestialData orbiting, int orbit, double orbitPeriod)
-	{
-		this (name, dimensionID,
-			orbiting.posX, orbiting.posY + orbiting.size / 2 - size, orbiting.posZ + orbit,
-			size, orbiting, orbit, orbitPeriod);
-	}
-
-	public STCelestialData (String name, int size,
-		STCelestialData orbiting, int orbit, double orbitPeriod)
-	{
-		this (name, -1,
-			orbiting.posX, orbiting.posY + orbiting.size / 2 - size, orbiting.posZ + orbit,
-			size, orbiting, orbit, orbitPeriod);
+		this.governor = governor;
 	}
 
 	public static void init ()
 	{
 		bodyList = new Hashtable <ChunkCoordIntPair, STCelestialData> ();
 
-		int yCenter = 32767;
-
-		STCelestialData sol = new STCelestialData ("sol", 0, yCenter - 8, 0, 16);
-		new STCelestialData ("mercury", 1, sol, 32, 450);
-		new STCelestialData ("venus", 4, sol, 48, 2400);
-		new STCelestialData ("earth", 0, 4, sol, 64, 3600);
-		new STCelestialData ("mars", getDimension ("mars"), 2, sol, 92, 7200);
-		new STCelestialData ("jupiter", 8, sol, 128, 45000);
-		new STCelestialData ("saturn", 8, sol, 192, 90000);
-		new STCelestialData ("uranus", 6, sol, 256, 270000);
-		new STCelestialData ("neptune", 6, sol, 512, 540000);
+		PhysicsGovernor sol = new StationaryGovernor (0, 0);
+		PhysicsGovernor mercury = new OrbitGovernor (sol, 16, 1200);
+		PhysicsGovernor venus = new OrbitGovernor (sol, 24, 1800);
+		PhysicsGovernor earth = new OrbitGovernor (sol, 36, 2700);
+		PhysicsGovernor moon = new OrbitGovernor (earth, 6, 1200);
+		PhysicsGovernor mars = new OrbitGovernor (sol, 54, 4050);
 	}
 
 	public static STCelestialData getCelestialByName (String name)
@@ -83,5 +42,54 @@ public class STCelestialData
 	static int getDimension (String name)
 	{
 		return STDimension.dimensionTable.get (name).dimensionID;
+	}
+
+	public static abstract class PhysicsGovernor
+	{
+		public double posX, posZ;
+
+		public abstract void updatePosition (Entity entity);
+	}
+
+	public static class StationaryGovernor extends PhysicsGovernor
+	{
+		public StationaryGovernor (double posX, double posZ)
+		{
+			this.posX = posX;
+			this.posZ = posZ;
+		}
+
+		@Override
+		public void updatePosition (Entity entity)
+		{
+			entity.setPosition (posX, 127, posZ);
+		}
+	}
+
+	public static class OrbitGovernor extends PhysicsGovernor
+	{
+		PhysicsGovernor center;
+		double radius, increment;
+		double angle;
+
+		public OrbitGovernor (PhysicsGovernor center, double radius, double period)
+		{
+			this.center = center;
+			this.radius = Math.abs (radius);
+			this.increment = 2 * Math.PI / period;
+			posX = center.posX + radius;
+			posZ = center.posZ;
+			angle = 0;
+		}
+
+		@Override
+		public void updatePosition (Entity entity)
+		{
+			angle += increment;
+			posX = center.posX + Math.cos (angle) * radius;
+			posZ = center.posZ + Math.sin (angle) * radius;
+
+			entity.setPosition (posX, 127, posZ);
+		}
 	}
 }

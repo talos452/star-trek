@@ -11,14 +11,14 @@ import org.lwjgl.opengl.GL11;
 
 public class RenderEnergyBlast extends STRender
 {
-	public RenderEnergyBlast()
+	public RenderEnergyBlast ()
 	{
 		super ("phaser_blast");
 		model = new ModelEnergyBlast ();
 	}
 
 	@Override
-	void render(Entity entity, double translationX, double translationY, double translationZ, float yaw, float pitch)
+	void render (Entity entity, double translationX, double translationY, double translationZ, float yaw, float pitch)
 	{
 		Color beamColour = ((EntityEnergyBlast) entity).getBeamColour ();
 		GL11.glColor3f (beamColour.getRed () / 255F, beamColour.getGreen () / 255F, beamColour.getBlue () / 255F);

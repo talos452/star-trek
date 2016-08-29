@@ -34,5 +34,6 @@ public class STMod
 		STGeneration.init ();
 		STEventHandler.init ();
 		STCelestialData.init ();
+		STUtilities.init ();
 	}
 }
