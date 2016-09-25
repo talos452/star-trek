@@ -1,5 +1,7 @@
 package startrekmod.generation.dimension;
 
+import startrekmod.STDimension;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.ServerConfigurationManager;
@@ -21,7 +23,13 @@ public class STTeleporter extends Teleporter
 		MinecraftServer mc = MinecraftServer.getServer ();
 		ServerConfigurationManager manager = mc.getConfigurationManager ();
 		World world = mc.worldServerForDimension (dimensionID);
-		int topYCoordinate = world.getTopSolidOrLiquidBlock (0, 0);
-		entity.setPosition (x, topYCoordinate, z);
+
+		if (dimensionID == STDimension.dimensionTable.get ("space").getDimensionID ())
+			entity.setPosition (0, 160, 0);
+		else
+		{
+			int topYCoordinate = world.getTopSolidOrLiquidBlock (0, 0);
+			entity.setPosition (0, topYCoordinate, 0);
+		}
 	}
 }

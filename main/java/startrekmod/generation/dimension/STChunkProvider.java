@@ -13,10 +13,12 @@ import java.util.*;
 public abstract class STChunkProvider implements IChunkProvider
 {
 	protected World world;
+	protected Random rand;
 
 	public STChunkProvider (World world)
 	{
 		this.world = world;
+		rand = new Random (world.getSeed ());
 	}
 
 	@Override

@@ -1,10 +1,13 @@
 package startrekmod.graphics.render;
 
+import startrekmod.STGraphics;
 import startrekmod.graphics.model.STModel;
 
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+
+import cpw.mods.fml.common.FMLLog;
 
 import org.lwjgl.opengl.GL11;
 
@@ -15,7 +18,7 @@ public abstract class STRender extends Render
 
 	public STRender (String location)
 	{
-		this.location = "startrekmod:textures/entity/" + location + ".png";
+		this.location = STGraphics.location + location + ".png";
 	}
 
 	@Override
@@ -27,7 +30,17 @@ public abstract class STRender extends Render
 		 */
 
 		GL11.glPushMatrix ();
-		bindTexture (getEntityTexture (entity));
+
+		try
+		{
+			bindTexture (getEntityTexture (entity));
+		}
+		catch (Exception e)
+		{
+			FMLLog.info ("Texture screwed up.", null);
+			return;
+		}
+
 		GL11.glDisable (GL11.GL_CULL_FACE);
 		GL11.glTranslated (translationX, translationY, translationZ);
 		GL11.glRotated (entity.rotationYaw, 0, -1, 0);

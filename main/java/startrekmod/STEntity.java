@@ -36,6 +36,8 @@ public class STEntity
 			getNextID (), instance, 64, 3, true);
 		EntityRegistry.registerModEntity (EntityCube.class, "Cube",
 			getNextID (), instance, 64, 3, false);
+		EntityRegistry.registerModEntity (EntityCelestial.class, "Celestial",
+			getNextID (), instance, 256, 3, true);
 	}
 
 	public static void initNPCs ()

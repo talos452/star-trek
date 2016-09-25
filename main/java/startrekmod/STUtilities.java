@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.ServerConfigurationManager;
 import net.minecraft.world.*;
+import net.minecraft.world.chunk.Chunk;
 
 import java.util.UUID;
 
@@ -80,5 +81,15 @@ public class STUtilities
 		}
 
 		return text;
+	}
+
+	public static boolean fallsWithinChunk (Chunk chunk, double posX, double posZ)
+	{
+		int chunkX = chunk.xPosition * 16;
+		int chunkZ = chunk.zPosition * 16;
+		int chunkX2 = chunkX + 16;
+		int chunkZ2 = chunkZ + 16;
+
+		return posX < chunkX2 && posX >= chunkX && posZ < chunkZ2 && posZ >= chunkZ;
 	}
 }

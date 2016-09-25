@@ -1,13 +1,16 @@
 package startrekmod;
 
+import startrekmod.entity.EntityCelestial;
 import startrekmod.items.STItemSword;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.*;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
-import net.minecraftforge.event.world.ChunkDataEvent;
+import net.minecraftforge.event.world.ChunkEvent;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -36,15 +39,25 @@ public class STEventHandler
 	}
 
 	@SubscribeEvent
-	public void respawnCelestialBodies (ChunkDataEvent.Load event)
+	public void updateCelestialEntities (ChunkEvent.Load event)
 	{
-		if (event.world.isRemote)
+		World world = event.world;
+
+		if (world.isRemote)
 			return;
 
-		if (event.world.provider.dimensionId != STDimension.dimensionTable.get ("space").dimensionID)
-		{
+		WorldProvider provider = world.provider;
+		Chunk chunk = event.getChunk ();
+		int dimensionID = STDimension.dimensionTable.get ("space").dimensionID;
 
-		}
+		if (provider.dimensionId == dimensionID)
+			for (STCelestialData data : STCelestialData.bodyList.values ())
+				if (STUtilities.fallsWithinChunk (chunk, data.governor.posX, data.governor.posZ))
+					if (data.associated == null)
+					{
+						EntityCelestial entity = new EntityCelestial (world, data);
+						world.spawnEntityInWorld (entity);
+					}
 	}
 
 	public static void init ()
