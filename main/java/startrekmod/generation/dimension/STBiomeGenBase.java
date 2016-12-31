@@ -11,7 +11,7 @@ public class STBiomeGenBase extends BiomeGenBase
 
 	public STBiomeGenBase ()
 	{
-		super (getUniqueBiomeID () + 40, false);
+		super (getUniqueBiomeID () + 40, true);
 		starTrekBiomeList.add (this);
 		spawnableMonsterList.clear ();
 		spawnableCreatureList.clear ();

@@ -54,7 +54,7 @@ public class EntityCelestial extends Entity
 	@Override
 	public boolean interactFirst (EntityPlayer player)
 	{
-		if (!worldObj.isRemote)
+		if (!worldObj.isRemote && data.dimensionID != -1)
 		{
 			STUtilities.getManager ().transferPlayerToDimension ((EntityPlayerMP) player,
 				data.dimensionID, new STTeleporter ((WorldServer) worldObj));

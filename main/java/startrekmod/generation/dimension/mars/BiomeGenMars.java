@@ -6,6 +6,7 @@ public class BiomeGenMars extends STBiomeGenBase
 {
 	public BiomeGenMars ()
 	{
+		super ();
 		setDisableRain ();
 		setBiomeName ("Mars");
 	}

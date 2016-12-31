@@ -65,6 +65,9 @@ public class STCelestialData
 
 	static int getDimension (String name)
 	{
+		if (name.equals ("earth"))
+			return 0;
+		
 		STDimension dimension = STDimension.dimensionTable.get (name);
 
 		if (dimension == null)

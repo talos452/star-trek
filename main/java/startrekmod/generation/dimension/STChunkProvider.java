@@ -61,6 +61,7 @@ public abstract class STChunkProvider implements IChunkProvider
 						}
 			}
 
+		Arrays.fill (chunk.getBiomeArray(), (byte) 40);
 		chunk.generateSkylightMap ();
 		return chunk;
 	}

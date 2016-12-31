@@ -15,7 +15,7 @@ public class STMod
 	@SidedProxy(clientSide = "startrekmod.STClientProxy", serverSide = "startrekmod.STServerProxy")
 	public static STCommonProxy PROXY;
 
-	public static final String VERSION = "1.6.0";
+	public static final String VERSION = "1.7.0";
 
 	@EventHandler
 	public void init (FMLInitializationEvent event)
