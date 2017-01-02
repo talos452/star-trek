@@ -37,7 +37,6 @@ public abstract class STRender extends Render
 		}
 		catch (Exception e)
 		{
-			FMLLog.info ("Texture screwed up.", null);
 			return;
 		}
 

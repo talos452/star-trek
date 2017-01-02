@@ -56,8 +56,9 @@ public class EntityCelestial extends Entity
 	{
 		if (!worldObj.isRemote && data.dimensionID != -1)
 		{
+			WorldServer world = STUtilities.getServer().worldServerForDimension (data.dimensionID);
 			STUtilities.getManager ().transferPlayerToDimension ((EntityPlayerMP) player,
-				data.dimensionID, new STTeleporter ((WorldServer) worldObj));
+				data.dimensionID, new STTeleporter (world));
 			return true;
 		}
 

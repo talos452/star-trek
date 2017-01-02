@@ -6,6 +6,7 @@ public class BiomeGenSpace extends STBiomeGenBase
 {
 	public BiomeGenSpace ()
 	{
+		super ();
 		setDisableRain ();
 		setBiomeName ("Space");
 	}

@@ -97,17 +97,17 @@ public abstract class EntityProjectile extends Entity implements IProjectile
 			{
 				movingobjectposition = new MovingObjectPosition (entity);
 			}
-		}
-
-		if (movingobjectposition != null)
-		{
-			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK && this.worldObj.getBlock (movingobjectposition.blockX, movingobjectposition.blockY, movingobjectposition.blockZ) == Blocks.portal)
+	
+			if (movingobjectposition != null)
 			{
-				setInPortal ();
-			}
-			else
-			{
-				onImpact (movingobjectposition);
+				if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK && this.worldObj.getBlock (movingobjectposition.blockX, movingobjectposition.blockY, movingobjectposition.blockZ) == Blocks.portal)
+				{
+					setInPortal ();
+				}
+				else
+				{
+					onImpact (movingobjectposition);
+				}
 			}
 		}
 
