@@ -9,27 +9,28 @@ import net.minecraft.world.World;
 
 public class ItemSpawnEgg extends STItem
 {
-	String entityName;
+    String entityName;
 
-	public ItemSpawnEgg (String entityName)
-	{
-		super ("egg_" + entityName);
-		this.entityName = STMod.MODID + '.' + entityName;
-		setCreativeTab (STCreativeTabs.tabSTEggs);
-	}
+    public ItemSpawnEgg (String entityName)
+    {
+        super ("egg_" + entityName);
+        this.entityName = STMod.MODID + '.' + entityName;
+        setCreativeTab (STCreativeTabs.tabSTEggs);
+    }
 
-	@Override
-	public boolean onItemUse (ItemStack stack, EntityPlayer player, World world, int blockPosX, int blockPosY, int blockPosZ, int side, float innerPosX, float innerPosY, float innerPosZ)
-	{
-		if (!world.isRemote)
-		{
-			stack.stackSize--;
-			Entity entity = EntityList.createEntityByName (entityName, world);
-			entity.setPosition (blockPosX, blockPosY + 1, blockPosZ);
-			world.spawnEntityInWorld (entity);
-			return true;
-		}
+    @Override
+    public boolean onItemUse (ItemStack stack, EntityPlayer player, World world, int blockPosX, int blockPosY,
+                    int blockPosZ, int side, float innerPosX, float innerPosY, float innerPosZ)
+    {
+        if (!world.isRemote)
+        {
+            stack.stackSize--;
+            Entity entity = EntityList.createEntityByName (entityName, world);
+            entity.setPosition (blockPosX, blockPosY + 1, blockPosZ);
+            world.spawnEntityInWorld (entity);
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

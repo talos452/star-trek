@@ -10,32 +10,32 @@ import java.util.UUID;
 
 public class EntityPhaserBlastKill extends EntityEnergyBlast
 {
-	public EntityPhaserBlastKill (World world)
-	{
-		super (world);
-	}
+    public EntityPhaserBlastKill (World world)
+    {
+        super (world);
+    }
 
-	public EntityPhaserBlastKill (World world, UUID playerID)
-	{
-		super (world, playerID);
-	}
+    public EntityPhaserBlastKill (World world, UUID playerID)
+    {
+        super (world, playerID);
+    }
 
-	@Override
-	protected void damageBlock (int posX, int posY, int posZ)
-	{
-		worldObj.setBlock (posX, posY, posZ, Blocks.fire);
-	}
+    @Override
+    protected void damageBlock (int posX, int posY, int posZ)
+    {
+        worldObj.setBlock (posX, posY, posZ, Blocks.fire);
+    }
 
-	@Override
-	protected void damageEntity (Entity entity)
-	{
-		entity.attackEntityFrom (DamageSource.causePlayerDamage (getSourceOperator ()), 10F);
-		entity.setFire (3);
-	}
+    @Override
+    protected void damageEntity (Entity entity)
+    {
+        entity.attackEntityFrom (DamageSource.causePlayerDamage (getSourceOperator ()), 10F);
+        entity.setFire (3);
+    }
 
-	@Override
-	public Color getBeamColour ()
-	{
-		return new Color (1F, 0.25F, 0F);
-	}
+    @Override
+    public Color getBeamColour ()
+    {
+        return new Color (1F, 0.25F, 0F);
+    }
 }

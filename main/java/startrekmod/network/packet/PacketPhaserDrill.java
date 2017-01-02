@@ -6,29 +6,30 @@ import io.netty.buffer.ByteBuf;
 
 public class PacketPhaserDrill implements IMessage
 {
-	public float angle;
-	public int drillID;
+    public float angle;
+    public int drillID;
 
-	public PacketPhaserDrill ()
-	{}
+    public PacketPhaserDrill ()
+    {
+    }
 
-	public PacketPhaserDrill (float angle, int drillID)
-	{
-		this.angle = angle;
-		this.drillID = drillID;
-	}
+    public PacketPhaserDrill (float angle, int drillID)
+    {
+        this.angle = angle;
+        this.drillID = drillID;
+    }
 
-	@Override
-	public void fromBytes (ByteBuf data)
-	{
-		angle = data.readFloat ();
-		drillID = data.readInt ();
-	}
+    @Override
+    public void fromBytes (ByteBuf data)
+    {
+        angle = data.readFloat ();
+        drillID = data.readInt ();
+    }
 
-	@Override
-	public void toBytes (ByteBuf data)
-	{
-		data.writeFloat (angle);
-		data.writeInt (drillID);
-	}
+    @Override
+    public void toBytes (ByteBuf data)
+    {
+        data.writeFloat (angle);
+        data.writeInt (drillID);
+    }
 }

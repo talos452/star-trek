@@ -11,45 +11,45 @@ import java.util.UUID;
 
 public abstract class EntityEnergyBlast extends EntityProjectile
 {
-	protected EntityEnergyBlast (World world)
-	{
-		super (world);
-	}
+    protected EntityEnergyBlast (World world)
+    {
+        super (world);
+    }
 
-	protected EntityEnergyBlast (World world, UUID sourceID)
-	{
-		super (world, sourceID, 5);
-	}
+    protected EntityEnergyBlast (World world, UUID sourceID)
+    {
+        super (world, sourceID, 5);
+    }
 
-	protected abstract void damageBlock (int posX, int posY, int posZ);
+    protected abstract void damageBlock (int posX, int posY, int posZ);
 
-	protected abstract void damageEntity (Entity entity);
+    protected abstract void damageEntity (Entity entity);
 
-	public abstract Color getBeamColour ();
+    public abstract Color getBeamColour ();
 
-	@Override
-	protected final void onImpact (MovingObjectPosition info)
-	{
-		switch (info.typeOfHit)
-		{
-			case BLOCK:
-				damageBlock (info.blockX, info.blockY, info.blockZ);
-				setDead ();
-				break;
-			case ENTITY:
-				if (!info.entityHit.isEntityInvulnerable ())
-					damageEntity (info.entityHit);
-				setDead ();
-				break;
-		}
-	}
+    @Override
+    protected final void onImpact (MovingObjectPosition info)
+    {
+        switch (info.typeOfHit)
+        {
+            case BLOCK:
+                damageBlock (info.blockX, info.blockY, info.blockZ);
+                setDead ();
+                break;
+            case ENTITY:
+                if (!info.entityHit.isEntityInvulnerable ())
+                    damageEntity (info.entityHit);
+                setDead ();
+                break;
+        }
+    }
 
-	@Override
-	public void onUpdate ()
-	{
-		super.onUpdate ();
+    @Override
+    public void onUpdate ()
+    {
+        super.onUpdate ();
 
-		if (ticksExisted > 99)
-			setDead ();
-	}
+        if (ticksExisted > 99)
+            setDead ();
+    }
 }

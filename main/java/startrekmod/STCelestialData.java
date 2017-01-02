@@ -9,122 +9,121 @@ import java.util.Hashtable;
 
 public class STCelestialData
 {
-	public String name;
-	public int dimensionID;
-	public int size;
-	public PhysicsGovernor governor;
-	public EntityCelestial associated;
+    public String name;
+    public int dimensionID;
+    public int size;
+    public PhysicsGovernor governor;
+    public EntityCelestial associated;
 
-	public static Hashtable <String, STCelestialData> bodyList;
+    public static Hashtable<String, STCelestialData> bodyList;
 
-	public STCelestialData (String name, int size, PhysicsGovernor governor)
-	{
-		this.name = name;
-		this.size = size;
-		this.governor = governor;
-		this.dimensionID = getDimension (name);
+    public STCelestialData (String name, int size, PhysicsGovernor governor)
+    {
+        this.name = name;
+        this.size = size;
+        this.governor = governor;
+        this.dimensionID = getDimension (name);
 
-		bodyList.put (name, this);
-	}
+        bodyList.put (name, this);
+    }
 
-	public void writeToNBT (NBTTagCompound data)
-	{
-		if (governor instanceof OrbitGovernor)
-			data.setDouble ("Angle", ((OrbitGovernor) governor).angle);
-	}
+    public void writeToNBT (NBTTagCompound data)
+    {
+        if (governor instanceof OrbitGovernor)
+            data.setDouble ("Angle", ((OrbitGovernor) governor).angle);
+    }
 
-	public void readFromNBT (NBTTagCompound data)
-	{
-		if (governor instanceof OrbitGovernor)
-			((OrbitGovernor) governor).angle = data.getDouble ("Angle");
-	}
+    public void readFromNBT (NBTTagCompound data)
+    {
+        if (governor instanceof OrbitGovernor)
+            ((OrbitGovernor) governor).angle = data.getDouble ("Angle");
+    }
 
-	public static void init ()
-	{
-		bodyList = new Hashtable <String, STCelestialData> ();
+    public static void init ()
+    {
+        bodyList = new Hashtable<String, STCelestialData> ();
 
-		PhysicsGovernor sol = new StationaryGovernor (0, 0, 8);
-		PhysicsGovernor mercury = new OrbitGovernor (sol, 16, 1200, 1);
-		PhysicsGovernor venus = new OrbitGovernor (sol, 24, 1800, 2);
-		PhysicsGovernor earth = new OrbitGovernor (sol, 36, 2700, 2);
-		PhysicsGovernor moon = new OrbitGovernor (earth, 6, 1200, 1);
-		PhysicsGovernor mars = new OrbitGovernor (sol, 54, 4050, 2);
+        PhysicsGovernor sol = new StationaryGovernor (0, 0, 8);
+        PhysicsGovernor mercury = new OrbitGovernor (sol, 16, 1200, 1);
+        PhysicsGovernor venus = new OrbitGovernor (sol, 24, 1800, 2);
+        PhysicsGovernor earth = new OrbitGovernor (sol, 36, 2700, 2);
+        PhysicsGovernor moon = new OrbitGovernor (earth, 6, 1200, 1);
+        PhysicsGovernor mars = new OrbitGovernor (sol, 54, 4050, 2);
 
-		new STCelestialData ("sol", 8, sol);
-		new STCelestialData ("mercury", 1, mercury);
-		new STCelestialData ("venus", 2, venus);
-		new STCelestialData ("earth", 2, earth);
-		new STCelestialData ("moon", 1, moon);
-		new STCelestialData ("mars", 2, mars);
-	}
+        new STCelestialData ("sol", 8, sol);
+        new STCelestialData ("mercury", 1, mercury);
+        new STCelestialData ("venus", 2, venus);
+        new STCelestialData ("earth", 2, earth);
+        new STCelestialData ("moon", 1, moon);
+        new STCelestialData ("mars", 2, mars);
+    }
 
-	public static STCelestialData getCelestialByName (String name)
-	{
-		return bodyList.get (name);
-	}
+    public static STCelestialData getCelestialByName (String name)
+    {
+        return bodyList.get (name);
+    }
 
-	static int getDimension (String name)
-	{
-		if (name.equals ("earth"))
-			return 0;
-		
-		STDimension dimension = STDimension.dimensionTable.get (name);
+    static int getDimension (String name)
+    {
+        if (name.equals ("earth"))
+            return 0;
 
-		if (dimension == null)
-			return -1;
-		else
-			return dimension.dimensionID;
-	}
+        STDimension dimension = STDimension.dimensionTable.get (name);
 
-	public static abstract class PhysicsGovernor
-	{
-		public double posX, posZ;
-		public int size;
+        if (dimension == null)
+            return -1;
+        else return dimension.dimensionID;
+    }
 
-		public abstract void updatePosition (Entity entity);
-	}
+    public static abstract class PhysicsGovernor
+    {
+        public double posX, posZ;
+        public int size;
 
-	public static class StationaryGovernor extends PhysicsGovernor
-	{
-		public StationaryGovernor (double posX, double posZ, int size)
-		{
-			this.posX = posX;
-			this.posZ = posZ;
-			this.size = size;
-		}
+        public abstract void updatePosition (Entity entity);
+    }
 
-		@Override
-		public void updatePosition (Entity entity)
-		{
-			entity.setPosition (posX, 127 - size / 2.0, posZ);
-		}
-	}
+    public static class StationaryGovernor extends PhysicsGovernor
+    {
+        public StationaryGovernor (double posX, double posZ, int size)
+        {
+            this.posX = posX;
+            this.posZ = posZ;
+            this.size = size;
+        }
 
-	public static class OrbitGovernor extends PhysicsGovernor
-	{
-		PhysicsGovernor center;
-		double radius, increment;
-		double angle;
+        @Override
+        public void updatePosition (Entity entity)
+        {
+            entity.setPosition (posX, 127 - size / 2.0, posZ);
+        }
+    }
 
-		public OrbitGovernor (PhysicsGovernor center, double radius, double period, int size)
-		{
-			this.center = center;
-			this.radius = Math.abs (radius);
-			this.increment = 2 * Math.PI / period;
-			this.size = size;
-			posX = center.posX + radius;
-			posZ = center.posZ;
-			angle = 0;
-		}
+    public static class OrbitGovernor extends PhysicsGovernor
+    {
+        PhysicsGovernor center;
+        double radius, increment;
+        double angle;
 
-		@Override
-		public void updatePosition (Entity entity)
-		{
-			angle += increment;
-			posX = center.posX + Math.cos (angle) * radius;
-			posZ = center.posZ + Math.sin (angle) * radius;
+        public OrbitGovernor (PhysicsGovernor center, double radius, double period, int size)
+        {
+            this.center = center;
+            this.radius = Math.abs (radius);
+            this.increment = 2 * Math.PI / period;
+            this.size = size;
+            posX = center.posX + radius;
+            posZ = center.posZ;
+            angle = 0;
+        }
 
-			entity.setPosition (posX, 127 - size / 2.0, posZ);
-		}
-	}
+        @Override
+        public void updatePosition (Entity entity)
+        {
+            angle += increment;
+            posX = center.posX + Math.cos (angle) * radius;
+            posZ = center.posZ + Math.sin (angle) * radius;
+
+            entity.setPosition (posX, 127 - size / 2.0, posZ);
+        }
+    }
 }

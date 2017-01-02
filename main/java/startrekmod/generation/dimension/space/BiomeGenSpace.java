@@ -4,10 +4,10 @@ import startrekmod.generation.dimension.STBiomeGenBase;
 
 public class BiomeGenSpace extends STBiomeGenBase
 {
-	public BiomeGenSpace ()
-	{
-		super ();
-		setDisableRain ();
-		setBiomeName ("Space");
-	}
+    public BiomeGenSpace ()
+    {
+        super ();
+        setDisableRain ();
+        setBiomeName ("Space");
+    }
 }

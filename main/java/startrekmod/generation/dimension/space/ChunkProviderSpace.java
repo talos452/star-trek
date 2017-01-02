@@ -7,24 +7,25 @@ import net.minecraft.world.chunk.IChunkProvider;
 
 public class ChunkProviderSpace extends STChunkProvider
 {
-	public ChunkProviderSpace (World world)
-	{
-		super (world);
-	}
+    public ChunkProviderSpace (World world)
+    {
+        super (world);
+    }
 
-	@Override
-	protected BlockMetaArray createChunkBlockArray (int chunkX, int chunkZ)
-	{
-		return null;
-	}
+    @Override
+    protected BlockMetaArray createChunkBlockArray (int chunkX, int chunkZ)
+    {
+        return null;
+    }
 
-	@Override
-	public String makeString ()
-	{
-		return "SpaceLevelSource";
-	}
+    @Override
+    public String makeString ()
+    {
+        return "SpaceLevelSource";
+    }
 
-	@Override
-	public void populate (IChunkProvider provider, int chunkX, int chunkZ)
-	{}
+    @Override
+    public void populate (IChunkProvider provider, int chunkX, int chunkZ)
+    {
+    }
 }

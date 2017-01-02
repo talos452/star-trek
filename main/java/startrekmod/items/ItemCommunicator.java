@@ -8,15 +8,15 @@ import net.minecraft.world.World;
 
 public class ItemCommunicator extends STItem
 {
-	public ItemCommunicator ()
-	{
-		super ("communicator");
-	}
+    public ItemCommunicator ()
+    {
+        super ("communicator");
+    }
 
-	@Override
-	public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player)
-	{
-		player.openGui (STMod.INSTANCE, STCommonProxy.GUI_COMMUNICATOR, world, 0, 0, 0);
-		return stack;
-	}
+    @Override
+    public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player)
+    {
+        player.openGui (STMod.INSTANCE, STCommonProxy.GUI_COMMUNICATOR, world, 0, 0, 0);
+        return stack;
+    }
 }
