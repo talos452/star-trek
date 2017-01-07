@@ -29,3 +29,9 @@ Added duranium and dilithium blocks.
 
 Added Klingon painstik, disruptor, d’k tagh, and spawn egg.
 Added speech capabilities to NPCs.
+
+1.7.0 - The Space Update
+
+Added a Mars dimension.
+Added a communicator for interplanetary transport.
+Added a lot of backbone code useless to users and incredibly useful for the next update.
