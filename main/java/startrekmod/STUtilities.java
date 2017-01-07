@@ -92,4 +92,12 @@ public class STUtilities
 
         return posX < chunkX2 && posX >= chunkX && posZ < chunkZ2 && posZ >= chunkZ;
     }
+    
+    public static double getCelestialRadians (World world)
+    {
+        double angle = world.provider.getWorldTime () / 24000.0 * 2 * Math.PI;
+        double deviation = Math.PI / 2.0 - angle;
+        angle = Math.PI / 2.0 - deviation * .9;
+        return angle;
+    }
 }

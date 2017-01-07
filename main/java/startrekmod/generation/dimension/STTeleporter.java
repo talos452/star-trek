@@ -25,24 +25,6 @@ public class STTeleporter extends Teleporter
         MinecraftServer mc = MinecraftServer.getServer ();
         ServerConfigurationManager manager = mc.getConfigurationManager ();
         World world = mc.worldServerForDimension (dimensionID);
-
-        if (dimensionID == STDimension.dimensionTable.get ("Space").getDimensionID ())
-        {
-            entity.setPosition (0, 160, 0);
-        }
-        else
-        {
-            int topYCoordinate = topBlock (0, 0, world);
-            entity.setPosition (0, topYCoordinate + 2, 0);
-        }
-    }
-
-    int topBlock (int x, int z, World world)
-    {
-        for (int i = 1; i < 256; i++)
-            if (world.getBlock (x, i, z) == Blocks.air)
-                return i;
-
-        return 256;
+        entity.setPosition (0, world.getTopSolidOrLiquidBlock (0, 0), 0);
     }
 }

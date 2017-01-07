@@ -44,7 +44,7 @@ public class STDimension
     {
         dimensionTable = new Hashtable<String, STDimension> ();
 
-        new STDimension ("Space", WorldProviderSpace.class);
+        //new STDimension ("Space", WorldProviderSpace.class);
         new STDimension ("Mars", WorldProviderMars.class);
     }
     

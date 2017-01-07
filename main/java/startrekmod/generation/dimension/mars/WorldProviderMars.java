@@ -4,6 +4,7 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import startrekmod.STDimension;
+import startrekmod.STUtilities;
 import startrekmod.graphics.render.RenderSky;
 
 import net.minecraft.entity.Entity;
@@ -29,21 +30,17 @@ public class WorldProviderMars extends WorldProvider
     @Override
     public Vec3 getFogColor (float par1, float p_76562_2_)
     {
-        float angle = (float) (getWorldTime () / 24000.0 * Math.PI * 2F);
-        float extendedAngle = (float) (Math.PI * .5 - .9 * (Math.PI * .5 - angle));
-        float brightness = MathHelper.sin (angle);
-        float redFactor = MathHelper.sin (extendedAngle);
-
+        /*
+         * Rain counteraction algorithm:
+         * red, green: brightness = brightness / (1.0 - worldObj.getRainStrength (1) * .5);
+         * blue: brightness = brightness / (1.0 - worldObj.getRainStrength (1) * .4);
+         */
+        double brightness = Math.sin (STUtilities.getCelestialRadians (worldObj));
+        
         if (brightness < 0)
             brightness = 0;
 
-        if (redFactor < 0)
-            redFactor = 0;
-
-        // DO. NOT. PLAY. WITH. THIS. CODE.
-        // I will not go rooting through God knows what classes to find
-        // the rain dimming algorithm a second time.
-        double red = redFactor / (1.0 - worldObj.getRainStrength (1) * .5);
+        double red = brightness / (1.0 - worldObj.getRainStrength (1) * .5);
         double green = brightness * .875 / (1.0 - worldObj.getRainStrength (1) * .5);
         double blue = brightness * .875 / (1.0 - worldObj.getRainStrength (1) * .4);
 
@@ -53,20 +50,15 @@ public class WorldProviderMars extends WorldProvider
     @Override
     public Vec3 getSkyColor (Entity cameraEntity, float partialTicks)
     {
-        float angle = (float) (getWorldTime () / 24000.0 * Math.PI * 2F);
-        float extendedAngle = (float) (angle * .9F + Math.PI * .4F);
-        float brightness = MathHelper.sin (angle);
-        float redFactor = MathHelper.sin (extendedAngle);
+        double brightness = Math.sin (STUtilities.getCelestialRadians (worldObj));
 
         if (brightness < 0)
             brightness = 0;
 
-        if (redFactor < 0)
-            redFactor = 0;
-
-        double red = redFactor;
-        double green = brightness * .875;
-        double blue = brightness * .875;
+        //Yellow at noon, redder the further towards night.
+        double red = 1;
+        double green = brightness;
+        double blue = 0;
 
         return Vec3.createVectorHelper (red, green, blue);
     }
