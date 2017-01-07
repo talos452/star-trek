@@ -1,42 +1,55 @@
 package startrekmod.entity.energyblast;
 
-import startrekmod.util.EntityProjectile;
+import startrekmod.entity.EntityProjectile;
 
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import java.awt.Color;
+import java.util.UUID;
 
 public abstract class EntityEnergyBlast extends EntityProjectile
 {
-	int ticksInAir = 0;
-	
-	public EntityEnergyBlast(World world)
-	{
-		super(world);
-	}
-	
-	public EntityEnergyBlast(World world, EntityLivingBase operator) 
-	{
-		//5 refers to projectile speed
-		this(world, operator, operator);
-	}
-	
-	public EntityEnergyBlast(World world, EntityLivingBase operator, Entity source)
-	{
-		super(world, operator, source, 5);
-	}
-	
-	@Override
-	public void onUpdate()
-	{
-		super.onUpdate();
-		
-		//delete blast after 5 seconds
-		if(++ticksInAir >= 100)
-			setDead();
-	}
-	
-	//using function avoids odd sync problems
-	public abstract Color getBeamColour();
+    protected EntityEnergyBlast (World world)
+    {
+        super (world);
+    }
+
+    protected EntityEnergyBlast (World world, UUID sourceID)
+    {
+        super (world, sourceID, 5);
+    }
+
+    protected abstract void damageBlock (int posX, int posY, int posZ);
+
+    protected abstract void damageEntity (Entity entity);
+
+    public abstract Color getBeamColour ();
+
+    @Override
+    protected final void onImpact (MovingObjectPosition info)
+    {
+        switch (info.typeOfHit)
+        {
+            case BLOCK:
+                damageBlock (info.blockX, info.blockY, info.blockZ);
+                setDead ();
+                break;
+            case ENTITY:
+                if (!info.entityHit.isEntityInvulnerable ())
+                    damageEntity (info.entityHit);
+                setDead ();
+                break;
+        }
+    }
+
+    @Override
+    public void onUpdate ()
+    {
+        super.onUpdate ();
+
+        if (ticksExisted > 99)
+            setDead ();
+    }
 }
