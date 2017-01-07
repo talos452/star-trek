@@ -22,7 +22,7 @@ public class WorldProviderMars extends WorldProvider
     protected void registerWorldChunkManager ()
     {
         worldChunkMgr = new WorldChunkManagerHell (new BiomeGenMars (), 0F);
-        dimensionId = STDimension.dimensionTable.get ("mars").getDimensionID ();
+        dimensionId = STDimension.dimensionTable.get ("Mars").getDimensionID ();
         hasNoSky = false;
     }
 

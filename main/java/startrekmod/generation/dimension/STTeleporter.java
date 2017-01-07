@@ -26,7 +26,7 @@ public class STTeleporter extends Teleporter
         ServerConfigurationManager manager = mc.getConfigurationManager ();
         World world = mc.worldServerForDimension (dimensionID);
 
-        if (dimensionID == STDimension.dimensionTable.get ("space").getDimensionID ())
+        if (dimensionID == STDimension.dimensionTable.get ("Space").getDimensionID ())
         {
             entity.setPosition (0, 160, 0);
         }

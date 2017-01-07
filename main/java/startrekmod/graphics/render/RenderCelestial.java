@@ -21,7 +21,7 @@ public class RenderCelestial extends STRender
     @Override
     void render (Entity entity, double translationX, double translationY, double translationZ, float yaw, float pitch)
     {
-        STCelestialData data = ((EntityCelestial) entity).getCelestialData ();
+        STCelestialData data = ((EntityCelestial) entity).data;
         GL11.glDisable (GL11.GL_LIGHTING);
         OpenGlHelper.setLightmapTextureCoords (OpenGlHelper.lightmapTexUnit, 240f, 240f);
         GL11.glTranslated (0, data.size / 2.0, 0);
@@ -35,9 +35,9 @@ public class RenderCelestial extends STRender
     {
         EntityCelestial celestial = (EntityCelestial) entity;
 
-        if (celestial.getCelestialData () != null)
+        if (celestial.data != null)
             return new ResourceLocation (STGraphics.location
-                            + celestial.getCelestialData ().name + ".png");
+                            + celestial.data.name + ".png");
         else
         {
             return new ResourceLocation (STGraphics.location

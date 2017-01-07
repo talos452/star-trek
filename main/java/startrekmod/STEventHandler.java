@@ -38,28 +38,6 @@ public class STEventHandler
                     event.setCanceled (true);
     }
 
-    @SubscribeEvent
-    public void updateCelestialEntities (ChunkEvent.Load event)
-    {
-        World world = event.world;
-
-        if (world.isRemote)
-            return;
-
-        WorldProvider provider = world.provider;
-        Chunk chunk = event.getChunk ();
-        int dimensionID = STDimension.dimensionTable.get ("space").dimensionID;
-
-        if (provider.dimensionId == dimensionID)
-            for (STCelestialData data : STCelestialData.bodyList.values ())
-                if (STUtilities.fallsWithinChunk (chunk, data.governor.posX, data.governor.posZ))
-                    if (data.associated == null)
-                    {
-                        EntityCelestial entity = new EntityCelestial (world, data);
-                        world.spawnEntityInWorld (entity);
-                    }
-    }
-
     public static void init ()
     {
         INSTANCE = new STEventHandler ();

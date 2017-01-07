@@ -12,7 +12,7 @@ import cpw.mods.fml.relauncher.*;
 
 public class EntityCelestial extends Entity
 {
-    STCelestialData data;
+    public STCelestialData data;
 
     public EntityCelestial (World world)
     {
@@ -23,25 +23,10 @@ public class EntityCelestial extends Entity
     {
         super (world);
         this.data = data;
-        this.setPosition (data.governor.posX, 128, data.governor.posZ);
+        
         dataWatcher.updateObject (2, data.name);
+        
         setSize (data.size, data.size);
-
-        if (data.associated != null)
-            setDead ();
-        else data.associated = this;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public STCelestialData getCelestialData ()
-    {
-        if (data == null)
-        {
-            data = STCelestialData.getCelestialByName (dataWatcher.getWatchableObjectString (2));
-            setSize (data.size, data.size);
-        }
-
-        return data;
     }
 
     @Override
@@ -74,24 +59,14 @@ public class EntityCelestial extends Entity
     @Override
     protected void readEntityFromNBT (NBTTagCompound reader)
     {
-        data = STCelestialData.getCelestialByName (reader.getString ("Celestial Data"));
-
-        if (data.associated != null)
-            setDead ();
-        else
-        {
-            data.associated = this;
-            data.readFromNBT (reader);
-            dataWatcher.updateObject (2, data.name);
-        }
+        data = STCelestialData.getCelestialByName (reader.getString ("CelestialData"));
+        dataWatcher.updateObject (2, data.name);
     }
 
     @Override
     protected void writeEntityToNBT (NBTTagCompound writer)
     {
-        writer.setString ("Celestial Data", data.name);
-        data.writeToNBT (writer);
-        data.associated = null;
+        writer.setString ("CelestialData", data.name);
     }
 
     @Override

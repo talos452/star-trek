@@ -15,7 +15,7 @@ public class WorldProviderSpace extends WorldProvider
     protected void registerWorldChunkManager ()
     {
         worldChunkMgr = new WorldChunkManagerHell (new BiomeGenSpace (), 0F);
-        dimensionId = STDimension.dimensionTable.get ("space").getDimensionID ();
+        dimensionId = STDimension.dimensionTable.get ("Space").getDimensionID ();
         hasNoSky = true;
     }
 

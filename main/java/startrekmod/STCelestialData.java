@@ -1,5 +1,8 @@
 package startrekmod;
 
+import startrekmod.celestial.OrbitalGovernor;
+import startrekmod.celestial.StationaryGovernor;
+import startrekmod.celestial.PhysicsGovernor;
 import startrekmod.entity.EntityCelestial;
 
 import net.minecraft.entity.Entity;
@@ -13,7 +16,6 @@ public class STCelestialData
     public int dimensionID;
     public int size;
     public PhysicsGovernor governor;
-    public EntityCelestial associated;
 
     public static Hashtable<String, STCelestialData> bodyList;
 
@@ -27,28 +29,16 @@ public class STCelestialData
         bodyList.put (name, this);
     }
 
-    public void writeToNBT (NBTTagCompound data)
-    {
-        if (governor instanceof OrbitGovernor)
-            data.setDouble ("Angle", ((OrbitGovernor) governor).angle);
-    }
-
-    public void readFromNBT (NBTTagCompound data)
-    {
-        if (governor instanceof OrbitGovernor)
-            ((OrbitGovernor) governor).angle = data.getDouble ("Angle");
-    }
-
     public static void init ()
     {
         bodyList = new Hashtable<String, STCelestialData> ();
 
         PhysicsGovernor sol = new StationaryGovernor (0, 0, 8);
-        PhysicsGovernor mercury = new OrbitGovernor (sol, 16, 1200, 1);
-        PhysicsGovernor venus = new OrbitGovernor (sol, 24, 1800, 2);
-        PhysicsGovernor earth = new OrbitGovernor (sol, 36, 2700, 2);
-        PhysicsGovernor moon = new OrbitGovernor (earth, 6, 1200, 1);
-        PhysicsGovernor mars = new OrbitGovernor (sol, 54, 4050, 2);
+        PhysicsGovernor mercury = new OrbitalGovernor (16, .01F, sol);
+        PhysicsGovernor venus = new OrbitalGovernor (24, .02F, sol);
+        PhysicsGovernor earth = new OrbitalGovernor (36, .04F, sol);
+        PhysicsGovernor moon = new OrbitalGovernor (6, .01F, sol);
+        PhysicsGovernor mars = new OrbitalGovernor (54, .06F, sol);
 
         new STCelestialData ("sol", 8, sol);
         new STCelestialData ("mercury", 1, mercury);
@@ -73,57 +63,5 @@ public class STCelestialData
         if (dimension == null)
             return -1;
         else return dimension.dimensionID;
-    }
-
-    public static abstract class PhysicsGovernor
-    {
-        public double posX, posZ;
-        public int size;
-
-        public abstract void updatePosition (Entity entity);
-    }
-
-    public static class StationaryGovernor extends PhysicsGovernor
-    {
-        public StationaryGovernor (double posX, double posZ, int size)
-        {
-            this.posX = posX;
-            this.posZ = posZ;
-            this.size = size;
-        }
-
-        @Override
-        public void updatePosition (Entity entity)
-        {
-            entity.setPosition (posX, 127 - size / 2.0, posZ);
-        }
-    }
-
-    public static class OrbitGovernor extends PhysicsGovernor
-    {
-        PhysicsGovernor center;
-        double radius, increment;
-        double angle;
-
-        public OrbitGovernor (PhysicsGovernor center, double radius, double period, int size)
-        {
-            this.center = center;
-            this.radius = Math.abs (radius);
-            this.increment = 2 * Math.PI / period;
-            this.size = size;
-            posX = center.posX + radius;
-            posZ = center.posZ;
-            angle = 0;
-        }
-
-        @Override
-        public void updatePosition (Entity entity)
-        {
-            angle += increment;
-            posX = center.posX + Math.cos (angle) * radius;
-            posZ = center.posZ + Math.sin (angle) * radius;
-
-            entity.setPosition (posX, 127 - size / 2.0, posZ);
-        }
     }
 }

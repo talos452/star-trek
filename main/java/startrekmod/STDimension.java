@@ -7,6 +7,8 @@ import net.minecraft.world.WorldProvider;
 import net.minecraftforge.common.DimensionManager;
 
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 public class STDimension
 {
@@ -42,7 +44,12 @@ public class STDimension
     {
         dimensionTable = new Hashtable<String, STDimension> ();
 
-        new STDimension ("space", WorldProviderSpace.class);
-        new STDimension ("mars", WorldProviderMars.class);
+        new STDimension ("Space", WorldProviderSpace.class);
+        new STDimension ("Mars", WorldProviderMars.class);
+    }
+    
+    public static Iterator<Entry<String, STDimension>> tableIterator ()
+    {
+        return dimensionTable.entrySet ().iterator ();
     }
 }
